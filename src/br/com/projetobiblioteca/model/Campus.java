@@ -15,4 +15,54 @@ public class Campus {
     public Campus(){
         super();
     }
+
+    public Campus(String nome, String endereco, String telefone, Biblioteca biblioteca, List<Aluno> listAlunos) {
+        this.nome = nome;
+        this.endereco = endereco;
+        this.telefone = telefone;
+        this.biblioteca = biblioteca;
+        this.listAlunos = listAlunos;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public String getEndereco() {
+        return endereco;
+    }
+
+    public void setEndereco(String endereco) {
+        this.endereco = endereco;
+    }
+
+    public String getTelefone() {
+        return telefone;
+    }
+
+    public void setTelefone(String telefone) {
+        this.telefone = telefone;
+    }
+
+    public Biblioteca getBiblioteca() {
+        return biblioteca;
+    }
+
+    public void setBiblioteca(Biblioteca biblioteca) {
+        this.biblioteca = biblioteca;
+    }
+
+    public List<Aluno> getListAlunos() {
+        return listAlunos;
+    }
+
+    public void setListAlunos(List<Aluno> listAlunos) {
+        this.listAlunos = listAlunos;
+    }
+
+    
 }

@@ -18,6 +18,72 @@ public class Emprestimo {
         super();
     }
 
+    public Emprestimo(long idEmprestimo, Date dataEmprestimo, Date dataDevolucao, Date dataDevolucaoEfetiva,
+            String status, Aluno aluno, Obra obras) {
+        this.idEmprestimo = idEmprestimo;
+        this.dataEmprestimo = dataEmprestimo;
+        this.dataDevolucao = dataDevolucao;
+        this.dataDevolucaoEfetiva = dataDevolucaoEfetiva;
+        this.status = status;
+        this.aluno = aluno;
+        this.obras = obras;
+    }
+
+    public long getIdEmprestimo() {
+        return idEmprestimo;
+    }
+
+    public void setIdEmprestimo(long idEmprestimo) {
+        this.idEmprestimo = idEmprestimo;
+    }
+
+    public Date getDataEmprestimo() {
+        return dataEmprestimo;
+    }
+
+    public void setDataEmprestimo(Date dataEmprestimo) {
+        this.dataEmprestimo = dataEmprestimo;
+    }
+
+    public Date getDataDevolucao() {
+        return dataDevolucao;
+    }
+
+    public void setDataDevolucao(Date dataDevolucao) {
+        this.dataDevolucao = dataDevolucao;
+    }
+
+    public Date getDataDevolucaoEfetiva() {
+        return dataDevolucaoEfetiva;
+    }
+
+    public void setDataDevolucaoEfetiva(Date dataDevolucaoEfetiva) {
+        this.dataDevolucaoEfetiva = dataDevolucaoEfetiva;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public Aluno getAluno() {
+        return aluno;
+    }
+
+    public void setAluno(Aluno aluno) {
+        this.aluno = aluno;
+    }
+
+    public Obra getObras() {
+        return obras;
+    }
+
+    public void setObras(Obra obras) {
+        this.obras = obras;
+    }
 
     
 }

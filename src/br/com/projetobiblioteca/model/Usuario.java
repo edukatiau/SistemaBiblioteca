@@ -1,7 +1,5 @@
 package br.com.projetobiblioteca.model;
 
-import java.util.concurrent.atomic.AtomicInteger;
-
 public class Usuario {
     private long idUsuario;
     private String nome;
