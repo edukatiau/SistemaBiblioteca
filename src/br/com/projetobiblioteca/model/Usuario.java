@@ -48,5 +48,4 @@ public class Usuario {
     public String toString() {
         return "Usuario [idUsuario=" + idUsuario + ", nome=" + nome + ", email=" + email + ", senha=" + senha + "]";
     }
-    
 }

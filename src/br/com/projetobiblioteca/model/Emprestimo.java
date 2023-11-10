@@ -85,5 +85,10 @@ public class Emprestimo {
         this.obras = obras;
     }
 
-    
+    @Override
+    public String toString() {
+        return "Emprestimo [idEmprestimo=" + idEmprestimo + ", dataEmprestimo=" + dataEmprestimo + ", dataDevolucao="
+                + dataDevolucao + ", dataDevolucaoEfetiva=" + dataDevolucaoEfetiva + ", status=" + status + ", aluno="
+                + aluno + ", obras=" + obras + "]";
+    }
 }

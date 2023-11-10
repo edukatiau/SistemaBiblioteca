@@ -63,6 +63,9 @@ public class Aluno extends Usuario{
         this.campus = campus;
     }
 
-    
-    
+    @Override
+    public String toString() {
+        return "Aluno [matricula=" + matricula + ", curso=" + curso + ", listEmprestimos=" + listEmprestimos
+                + ", campus=" + campus + "]";
+    }    
 }

@@ -37,5 +37,8 @@ public class Funcionário extends Usuario{
         this.biblioteca = biblioteca;
     }
 
-    
+    @Override
+    public String toString() {
+        return "Funcionário [salario=" + salario + ", biblioteca=" + biblioteca + "]";
+    }
 }

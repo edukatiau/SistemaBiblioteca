@@ -97,5 +97,10 @@ public class Obra {
         this.listEmprestimos = listEmprestimos;
     }
 
-    
+    @Override
+    public String toString() {
+        return "Obra [idLivro=" + idLivro + ", titulo=" + titulo + ", autor=" + autor + ", edicao=" + edicao
+                + ", dataLancamento=" + dataLancamento + ", tipoObra=" + tipoObra + ", biblioteca=" + biblioteca
+                + ", listEmprestimos=" + listEmprestimos + "]";
+    }
 }

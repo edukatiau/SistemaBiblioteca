@@ -64,5 +64,9 @@ public class Campus {
         this.listAlunos = listAlunos;
     }
 
-    
+    @Override
+    public String toString() {
+        return "Campus [nome=" + nome + ", endereco=" + endereco + ", telefone=" + telefone + ", biblioteca="
+                + biblioteca + ", listAlunos=" + listAlunos + "]";
+    }
 }

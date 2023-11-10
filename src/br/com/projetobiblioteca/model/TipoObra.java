@@ -52,4 +52,10 @@ public class TipoObra {
     public void setListObras(List<Obra> listObras) {
         this.listObras = listObras;
     }
+
+    @Override
+    public String toString() {
+        return "TipoObra [LIVRO=" + LIVRO + ", ARTIGO=" + ARTIGO + ", REVISTA=" + REVISTA + ", OUTROS=" + OUTROS
+                + ", listObras=" + listObras + "]";
+    }
 }
