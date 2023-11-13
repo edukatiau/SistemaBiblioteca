@@ -14,6 +14,10 @@ public class ConexaoMySQL {
 
     private Connection conexao;
 
+    public ConexaoMySQL() {
+		super();
+	}
+
     public ConexaoMySQL(String ip, String porta, String login, String senha, String banco) {
         this.ip = ip;
         this.porta = porta;
@@ -22,10 +26,14 @@ public class ConexaoMySQL {
         this.banco = banco;
     }
 
+    public Connection getConexao() {
+		return conexao;
+	}
+
     // Método para obter a conexão
     public void abrirConexao(){ 
         try {
-            Class.forName("com.mysql.jdbc.Driver");
+            Class.forName("com.mysql.cj.jdbc.Driver");
             String URL = "jdbc:mysql://" + ip + ":" + porta + "/" + banco;
             this.conexao = DriverManager.getConnection(URL, login, senha);
         } catch (ClassNotFoundException | SQLException e) {
@@ -36,7 +44,7 @@ public class ConexaoMySQL {
     // Método para fechar a conexão
     public void fecharConexao(){
         try {
-            if(this.conexao != null || !this.conexao.isClosed()){
+            if(this.conexao != null){
                 this.conexao.close();
             }
         } catch (SQLException e) {

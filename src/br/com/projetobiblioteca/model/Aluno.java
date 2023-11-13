@@ -14,17 +14,12 @@ public class Aluno extends Usuario{
 
     public Aluno(){
         super();
+        matricula = "";
+        curso = "";
     }
 
-    public Aluno(String matricula, String curso, List<Emprestimo> listEmprestimos, Campus campus) {
-        this.matricula = matricula;
-        this.curso = curso;
-        this.listEmprestimos = listEmprestimos;
-        this.campus = campus;
-    }
-
-    public Aluno(String nome, String email, String senha, String matricula, String curso, Campus campus) {
-        super(nome, email, senha);
+    public Aluno(long idUsuario, String nome, String email, String senha, String matricula, String curso, Campus campus) {
+        super(idUsuario, nome, email, senha);
         this.matricula = matricula;
         this.curso = curso;
         this.listEmprestimos = new ArrayList<Emprestimo>();
@@ -66,6 +61,9 @@ public class Aluno extends Usuario{
     @Override
     public String toString() {
         return "Aluno [matricula=" + matricula + ", curso=" + curso + ", listEmprestimos=" + listEmprestimos
-                + ", campus=" + campus + "]";
+                + ", campus=" + campus + "]" + super.toString();
+    }
+
+    public void setId(long long1) {
     }    
 }

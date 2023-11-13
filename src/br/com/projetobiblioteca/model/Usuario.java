@@ -10,7 +10,8 @@ public class Usuario {
         super();
     }
 
-    public Usuario(String nome, String email, String senha) {
+    public Usuario(long idUsuario, String nome, String email, String senha) {
+        this.idUsuario = idUsuario;
         this.nome = nome;
         this.email = email;
         this.senha = senha;
@@ -18,6 +19,10 @@ public class Usuario {
 
     public long getIdUsuario() {
         return idUsuario;
+    }
+
+    public void setIdUsuario(long id){
+        this.idUsuario = id;
     }
 
     public String getNome() {

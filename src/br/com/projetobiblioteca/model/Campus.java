@@ -3,6 +3,7 @@ package br.com.projetobiblioteca.model;
 import java.util.List;
 
 public class Campus {
+    private long id_campus;
     private String nome;
     private String endereco;
     private String telefone;
@@ -68,5 +69,13 @@ public class Campus {
     public String toString() {
         return "Campus [nome=" + nome + ", endereco=" + endereco + ", telefone=" + telefone + ", biblioteca="
                 + biblioteca + ", listAlunos=" + listAlunos + "]";
+    }
+
+    public long getId_campus() {
+        return id_campus;
+    }
+
+    public void setId_campus(long id_campus) {
+        this.id_campus = id_campus;
     }
 }

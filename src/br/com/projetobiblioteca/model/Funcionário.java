@@ -15,8 +15,8 @@ public class Funcionário extends Usuario{
         this.biblioteca = biblioteca;
     }
 
-    public Funcionário(String nome, String email, String senha, double salario, Biblioteca biblioteca) {
-        super(nome, email, senha);
+    public Funcionário(long idUsuario, String nome, String email, String senha, double salario, Biblioteca biblioteca) {
+        super(idUsuario, nome, email, senha);
         this.salario = salario;
         this.biblioteca = biblioteca;
     }

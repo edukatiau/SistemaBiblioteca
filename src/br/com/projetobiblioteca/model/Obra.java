@@ -4,7 +4,7 @@ import java.sql.Date;
 import java.util.List;
 
 public class Obra {
-    private long idLivro;
+    private long idObra;
     private String titulo;
     private String autor;
     private String edicao;
@@ -23,7 +23,7 @@ public class Obra {
 
     public Obra(long idLivro, String titulo, String autor, String edicao, Date dataLancamento, TipoObra tipoObra,
             Biblioteca biblioteca, List<Emprestimo> listEmprestimos) {
-        this.idLivro = idLivro;
+        this.idObra = idLivro;
         this.titulo = titulo;
         this.autor = autor;
         this.edicao = edicao;
@@ -34,11 +34,11 @@ public class Obra {
     }
 
     public long getIdLivro() {
-        return idLivro;
+        return idObra;
     }
 
     public void setIdLivro(long idLivro) {
-        this.idLivro = idLivro;
+        this.idObra = idLivro;
     }
 
     public String getTitulo() {
@@ -99,7 +99,7 @@ public class Obra {
 
     @Override
     public String toString() {
-        return "Obra [idLivro=" + idLivro + ", titulo=" + titulo + ", autor=" + autor + ", edicao=" + edicao
+        return "Obra [idLivro=" + idObra + ", titulo=" + titulo + ", autor=" + autor + ", edicao=" + edicao
                 + ", dataLancamento=" + dataLancamento + ", tipoObra=" + tipoObra + ", biblioteca=" + biblioteca
                 + ", listEmprestimos=" + listEmprestimos + "]";
     }
