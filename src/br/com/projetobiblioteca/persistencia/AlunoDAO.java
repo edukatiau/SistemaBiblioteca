@@ -17,7 +17,7 @@ public class AlunoDAO {
     }
 
     //metodo adicionar
-    public void adicionar(Aluno aluno) throws SQLException{
+    public Aluno adicionar(Aluno aluno) throws SQLException{
         //abrir conexao
         conexao.abrirConexao();
 
@@ -25,7 +25,7 @@ public class AlunoDAO {
         String sql = "INSERT INTO aluno VALUES (null, ?, ?, ?, ?, ?, ?, ?)";
         PreparedStatement st;
 		try {
-			st = conexao.getConexao().prepareStatement(sql);
+			st = conexao.getConexao().prepareStatement(sql, PreparedStatement.RETURN_GENERATED_KEYS);
 			st.setString(1, aluno.getNome());
 			st.setString(2, aluno.getEmail());
 			st.setString(3, aluno.getSenha());
@@ -33,13 +33,20 @@ public class AlunoDAO {
             st.setString(5, aluno.getCurso());
             st.setLong(6, 2);
             st.setLong(7, 1);
-			st.executeUpdate();
+			int linhasAfetadas = st.executeUpdate();
+			if(linhasAfetadas>0) {
+				ResultSet rs = st.getGeneratedKeys();
+				if(rs.next()) {
+					aluno.setIdUsuario(rs.getLong(1));
+				}			
+			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
 			// fechar a conexao
 			conexao.fecharConexao();
 		}
+		return aluno;
     }
 
     //metodo buscarporId
@@ -56,11 +63,11 @@ public class AlunoDAO {
 			st.setLong(1, id);
 			ResultSet rs = st.executeQuery();
 			// converter a linha inteira do rs em um usuario
-			// o rs � tudo que veio da busca no banco
+			// o rs é tudo que veio da busca no banco
 			if (rs.next()) {
 				// converter a linha em um usuario
 				u = new Aluno();
-				u.setId(rs.getLong("id_aluno"));
+				u.setIdUsuario(rs.getLong("id_aluno"));
 				u.setNome(rs.getString("nome"));
 				u.setEmail(rs.getString("email"));
 				u.setSenha(rs.getString("senha"));
@@ -90,11 +97,11 @@ public class AlunoDAO {
 			st = conexao.getConexao().prepareStatement(sql);
 			ResultSet rs = st.executeQuery();
 			// converter a linha inteira do rs em um usuario
-			// o rs � tudo que veio da busca no banco
+			// o rs é tudo que veio da busca no banco
 			while (rs.next()) {
 				// converter a linha em um usuario
 				u = new Aluno();
-				u.setId(rs.getLong("id_aluno"));
+				u.setIdUsuario(rs.getLong("id_aluno"));
 				u.setNome(rs.getString("nome"));
 				u.setEmail(rs.getString("email"));
 				u.setSenha(rs.getString("senha"));

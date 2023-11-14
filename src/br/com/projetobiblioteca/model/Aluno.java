@@ -64,6 +64,5 @@ public class Aluno extends Usuario{
                 + ", campus=" + campus + "]" + super.toString();
     }
 
-    public void setId(long long1) {
-    }    
+  
 }
