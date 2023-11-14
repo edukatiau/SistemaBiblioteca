@@ -6,6 +6,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import br.com.projetobiblioteca.model.Biblioteca;
 import br.com.projetobiblioteca.model.Campus;
 
 public class CampusDAO {
@@ -104,12 +105,12 @@ public class CampusDAO {
     }
 
     //metodo atualizar
-    public void atualizar(Campus campus) throws SQLException{
+    public void atualizar(Campus campus, Biblioteca biblioteca) throws SQLException{
         //abrir conexao
         conexao.abrirConexao();
 
         //atualizar no bd
-        String sql = "UPDATE campus SET nome=?, endereco=?, telefone=? WHERE id_campus=?";
+        String sql = "UPDATE campus SET nome=?, endereco=?, telefone=?, id_biblioteca=? WHERE id_campus=?";
         PreparedStatement st;
         try {
             st = conexao.getConexao().prepareStatement(sql);
@@ -117,6 +118,7 @@ public class CampusDAO {
             st.setString(2, campus.getEndereco());
             st.setString(3, campus.getTelefone());
             st.setLong(4, campus.getId_campus());
+            st.setLong(5, biblioteca.getId_biblioteca());
             st.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
@@ -126,5 +128,5 @@ public class CampusDAO {
         }
     }
 
-    
+
 }

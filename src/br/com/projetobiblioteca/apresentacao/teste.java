@@ -5,9 +5,10 @@ import java.util.List;
 import java.util.Scanner;
 
 import br.com.projetobiblioteca.model.Aluno;
+import br.com.projetobiblioteca.model.Biblioteca;
 import br.com.projetobiblioteca.model.Campus;
-import br.com.projetobiblioteca.model.Usuario;
 import br.com.projetobiblioteca.persistencia.AlunoDAO;
+import br.com.projetobiblioteca.persistencia.BibliotecaDAO;
 import br.com.projetobiblioteca.persistencia.CampusDAO;
 
 public class Teste {
@@ -17,7 +18,8 @@ public class Teste {
 
         //cadastrarAluno();
         //cadastrarCampus();
-        
+        //CampusDAO campusDAO = new CampusDAO();
+        //cadastrarBiblioteca(campusDAO.buscarPorId(1));
         
 
 
@@ -87,5 +89,24 @@ public class Teste {
         CampusDAO campusDAO = new CampusDAO();
         campus = campusDAO.adicionar(campus);
         System.out.println("Campus cadastrado com sucesso");
+    }
+
+    public static void cadastrarBiblioteca(Campus campus) throws SQLException{
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Insira o nome da biblioteca:");
+        String nome = sc.nextLine();
+
+        Biblioteca biblioteca = new Biblioteca(0, nome, campus);
+        BibliotecaDAO bibliotecaDAO = new BibliotecaDAO();
+        biblioteca = bibliotecaDAO.adicionar(biblioteca);
+
+        CampusDAO campusDAO = new CampusDAO();
+        campusDAO.atualizar(campus, biblioteca);
+
+        System.out.println("Biblioteca cadastrada com sucesso");
+    }
+
+    public static void cadastrarFuncionario(){
+        
     }
 }
