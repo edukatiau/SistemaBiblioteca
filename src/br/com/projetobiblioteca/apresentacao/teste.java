@@ -8,6 +8,7 @@ import br.com.projetobiblioteca.model.Aluno;
 import br.com.projetobiblioteca.model.Campus;
 import br.com.projetobiblioteca.model.Usuario;
 import br.com.projetobiblioteca.persistencia.AlunoDAO;
+import br.com.projetobiblioteca.persistencia.CampusDAO;
 
 public class Teste {
     static Scanner sc = new Scanner(System.in);
@@ -15,6 +16,9 @@ public class Teste {
     public static void main(String[] args) throws SQLException {
 
         //cadastrarAluno();
+        //cadastrarCampus();
+        
+        
 
 
         //Campus campus = new Campus("sapucaia", "sapucaia do sul", "519999999", null, null);
@@ -32,9 +36,10 @@ public class Teste {
         //alunoDAO.excluir(8);
 
         // TESTE DO BUSCAR POR ID
-        AlunoDAO uDAO = new AlunoDAO();
-        Aluno u = uDAO.buscarPorId(u.getIdUsuario());
-        System.out.println(u.toString());
+        //AlunoDAO uDAO = new AlunoDAO();
+        //Aluno u = new Aluno();
+        //uDAO.buscarPorId(u.getIdUsuario());
+        //System.out.println(u.toString());
 
         // TESTE DO BUSCAR TODOS
 		//AlunoDAO uDAO = new AlunoDAO();
@@ -54,7 +59,7 @@ public class Teste {
         System.out.println("Insira a matricula do aluno:");
         String matricula = sc.next();
         System.out.println("Insira o curso do aluno:");
-        String curso = sc.next();
+        String curso = sc.nextLine();
         
         //fazer verificação dos campus existentes 
         System.out.println("Insira o campus do aluno:");
@@ -69,4 +74,18 @@ public class Teste {
 
     }
 
+    public static void cadastrarCampus() throws SQLException{
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Insira o nome do campus:");
+        String nome = sc.nextLine();
+        System.out.println("Insira o endereço do campus:");
+        String endereco = sc.nextLine();
+        System.out.println("Insira o telefone do campus:");
+        String telefone = sc.nextLine();
+
+        Campus campus = new Campus(0, nome, endereco, telefone);
+        CampusDAO campusDAO = new CampusDAO();
+        campus = campusDAO.adicionar(campus);
+        System.out.println("Campus cadastrado com sucesso");
+    }
 }

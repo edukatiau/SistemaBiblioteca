@@ -1,5 +1,6 @@
 package br.com.projetobiblioteca.model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Campus {
@@ -15,14 +16,19 @@ public class Campus {
 
     public Campus(){
         super();
+        this.id_campus = 0;
+        this.nome = "";
+        this.endereco = "";
+        this.telefone = "";
+        this.biblioteca = new Biblioteca();
+        this.listAlunos = new ArrayList<Aluno>();
     }
 
-    public Campus(String nome, String endereco, String telefone, Biblioteca biblioteca, List<Aluno> listAlunos) {
+    public Campus(long id_campus, String nome, String endereco, String telefone) {
+        this.id_campus = id_campus;
         this.nome = nome;
         this.endereco = endereco;
         this.telefone = telefone;
-        this.biblioteca = biblioteca;
-        this.listAlunos = listAlunos;
     }
 
     public String getNome() {

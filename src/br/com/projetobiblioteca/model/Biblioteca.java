@@ -17,12 +17,9 @@ public class Biblioteca {
         super();
     }
 
-    public Biblioteca(long id_biblioteca, String nome, List<Obra> listObras, List<Funcionário> listFuncionarios,
-            Campus campus) {
+    public Biblioteca(long id_biblioteca, String nome, Campus campus) {
         this.id_biblioteca = id_biblioteca;
         this.nome = nome;
-        this.listObras = listObras;
-        this.listFuncionarios = listFuncionarios;
         this.campus = campus;
     }
 
