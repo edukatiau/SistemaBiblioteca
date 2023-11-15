@@ -7,9 +7,11 @@ import java.util.Scanner;
 import br.com.projetobiblioteca.model.Aluno;
 import br.com.projetobiblioteca.model.Biblioteca;
 import br.com.projetobiblioteca.model.Campus;
+import br.com.projetobiblioteca.model.Funcionário;
 import br.com.projetobiblioteca.persistencia.AlunoDAO;
 import br.com.projetobiblioteca.persistencia.BibliotecaDAO;
 import br.com.projetobiblioteca.persistencia.CampusDAO;
+import br.com.projetobiblioteca.persistencia.FuncionarioDAO;
 
 public class Teste {
     static Scanner sc = new Scanner(System.in);
@@ -20,7 +22,8 @@ public class Teste {
         //cadastrarCampus();
         //CampusDAO campusDAO = new CampusDAO();
         //cadastrarBiblioteca(campusDAO.buscarPorId(1));
-        
+        //BibliotecaDAO bibliotecaDAO = new BibliotecaDAO();
+        //cadastrarFuncionario(bibliotecaDAO.buscarPorId(1));
 
 
         //Campus campus = new Campus("sapucaia", "sapucaia do sul", "519999999", null, null);
@@ -106,7 +109,21 @@ public class Teste {
         System.out.println("Biblioteca cadastrada com sucesso");
     }
 
-    public static void cadastrarFuncionario(){
-        
+    public static void cadastrarFuncionario(Biblioteca biblioteca) throws SQLException{
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Insira o nome do funcionario:");
+        String nome = sc.nextLine();
+        System.out.println("Insira o email do funcionario:");
+        String email = sc.nextLine();
+        System.out.println("Insira a senha do funcionario:");
+        String senha = sc.nextLine();
+        System.out.println("Insira o salario do funcionario:");
+        double salario = sc.nextDouble();
+
+        Funcionário funcionario = new Funcionário(0, nome, email, senha, salario, biblioteca);
+        FuncionarioDAO funcionarioDAO = new FuncionarioDAO();
+        funcionario = funcionarioDAO.adicionar(funcionario);
+
+        System.out.println("Funcionario cadastrado com sucesso");
     }
 }
