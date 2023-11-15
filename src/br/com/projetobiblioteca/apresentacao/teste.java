@@ -23,8 +23,8 @@ public class Teste {
 
     public static void main(String[] args) throws SQLException {
 
-        // cadastrarAluno();
-        // cadastrarCampus();
+        //cadastrarCampus();
+        cadastrarAluno();
         // CampusDAO campusDAO = new CampusDAO();
         // cadastrarBiblioteca(campusDAO.buscarPorId(1));
         // BibliotecaDAO bibliotecaDAO = new BibliotecaDAO();
@@ -75,22 +75,30 @@ public class Teste {
 
     public static void cadastrarAluno() throws SQLException {
         System.out.println("Insira o nome do aluno:");
-        String nome = sc.next();
+        String nome = sc.nextLine();
         System.out.println("Insira o email do aluno:");
         String email = sc.next();
+        sc.nextLine(); // consume leftover newline
         System.out.println("Insira a senha do aluno:");
         String senha = sc.next();
+        sc.nextLine(); // consume leftover newline
         System.out.println("Insira a matricula do aluno:");
         String matricula = sc.next();
+        sc.nextLine(); // consume leftover newline
         System.out.println("Insira o curso do aluno:");
-        String curso = sc.nextLine();
-
+        String curso = sc.next();
+        sc.nextLine(); // consume leftover newline
+        
         // fazer verificação dos campus existentes
         System.out.println("Insira o campus do aluno:");
-        String campusName = sc.next();
+        String campusName = sc.nextLine();
         Campus campus = new Campus();
-        campus.setId_campus(0);
-
+        CampusDAO campusDAO = new CampusDAO();
+        for(Campus c:campusDAO.buscarTodos()) {
+            if(c.getNome().equals(campusName)) {
+                campus = c;
+            }
+        }
         Aluno aluno = new Aluno(0, nome, email, senha, matricula, curso, campus);
         AlunoDAO alunoDAO = new AlunoDAO();
         aluno = alunoDAO.adicionar(aluno);

@@ -22,7 +22,7 @@ public class AlunoDAO {
         conexao.abrirConexao();
 
         //inserir no bd
-        String sql = "INSERT INTO aluno VALUES (null, ?, ?, ?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO aluno VALUES (null, ?, ?, ?, ?, ?, ?)";
         PreparedStatement st;
 		try {
 			st = conexao.getConexao().prepareStatement(sql, PreparedStatement.RETURN_GENERATED_KEYS);
@@ -31,8 +31,7 @@ public class AlunoDAO {
 			st.setString(3, aluno.getSenha());
             st.setString(4, aluno.getMatricula());
             st.setString(5, aluno.getCurso());
-            st.setLong(6, 2);
-            st.setLong(7, 1);
+            st.setLong(6, aluno.getCampus().getId_campus());
 			int linhasAfetadas = st.executeUpdate();
 			if(linhasAfetadas>0) {
 				ResultSet rs = st.getGeneratedKeys();
