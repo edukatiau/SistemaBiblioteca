@@ -3,8 +3,8 @@ package br.com.projetobiblioteca.model;
 import java.util.List;
 
 public class TipoObra {
-    
-    public static String TIPO_OBRA;
+    private long id_tipoobra;
+    public String TIPO_OBRA;
 
     public final String LIVRO = "livro";
     public final String ARTIGO = "artigo";
@@ -17,16 +17,40 @@ public class TipoObra {
         super();
     }
 
-    public TipoObra(List<Obra> listObras) {
-        this.listObras = listObras;
+    public TipoObra(long id_tipoobra, String TIPO_OBRA) {
+        this.id_tipoobra = id_tipoobra;
+        switch (TIPO_OBRA) {
+            case LIVRO:
+                this.TIPO_OBRA = LIVRO;
+                break;
+            case ARTIGO:
+                this.TIPO_OBRA = ARTIGO;
+                break;
+            case REVISTA:
+                this.TIPO_OBRA = REVISTA;
+                break;
+            case OUTROS:
+                this.TIPO_OBRA = OUTROS;
+                break;
+            default:
+                break;
+        }
     }
 
-    public static String getTIPO_OBRA() {
-        return TIPO_OBRA;
+    public long getId_tipoobra() {
+        return id_tipoobra;
     }
 
-    public static void setTIPO_OBRA(String tIPO_OBRA) {
-        TIPO_OBRA = tIPO_OBRA;
+    public void setId_tipoobra(long id_tipoobra) {
+        this.id_tipoobra = id_tipoobra;
+    }
+
+    public String getTIPO_OBRA() {
+        return this.TIPO_OBRA;
+    }
+
+    public void setTIPO_OBRA(String tIPO_OBRA) {
+        this.TIPO_OBRA = tIPO_OBRA;
     }
 
     public String getLIVRO() {
@@ -55,7 +79,6 @@ public class TipoObra {
 
     @Override
     public String toString() {
-        return "TipoObra [LIVRO=" + LIVRO + ", ARTIGO=" + ARTIGO + ", REVISTA=" + REVISTA + ", OUTROS=" + OUTROS
-                + ", listObras=" + listObras + "]";
+        return "TipoObra [ TIPO_OBRA=" + TIPO_OBRA + "]";
     }
 }

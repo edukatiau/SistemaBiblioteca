@@ -21,8 +21,7 @@ public class Obra {
         super();
     }
 
-    public Obra(long idLivro, String titulo, String autor, String edicao, Date dataLancamento, TipoObra tipoObra,
-            Biblioteca biblioteca, List<Emprestimo> listEmprestimos) {
+    public Obra(long idLivro, String titulo, String autor, String edicao, Date dataLancamento, TipoObra tipoObra, Biblioteca biblioteca) {
         this.idObra = idLivro;
         this.titulo = titulo;
         this.autor = autor;
@@ -30,7 +29,6 @@ public class Obra {
         this.dataLancamento = dataLancamento;
         this.tipoObra = tipoObra;
         this.biblioteca = biblioteca;
-        this.listEmprestimos = listEmprestimos;
     }
 
     public long getIdLivro() {

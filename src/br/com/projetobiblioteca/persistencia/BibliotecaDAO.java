@@ -5,7 +5,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import br.com.projetobiblioteca.model.Biblioteca;
-import br.com.projetobiblioteca.model.Campus;
 
 public class BibliotecaDAO {
     private ConexaoMySQL conexao;
@@ -39,12 +38,12 @@ public class BibliotecaDAO {
         return biblioteca;    
     }
 
-    public Biblioteca buscarPorId(int id) {
+    public Biblioteca buscarPorId(long id) {
         Biblioteca b = null;
         // abrir conexao com bd
         this.conexao.abrirConexao();
         // inserir no banco
-        String sql = "SELECT * FROM campus WHERE id_campus=?;";
+        String sql = "SELECT * FROM campus WHERE id_biblioteca=?;";
         PreparedStatement st;
         try {
             st = conexao.getConexao().prepareStatement(sql);
