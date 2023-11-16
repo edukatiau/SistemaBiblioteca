@@ -86,7 +86,7 @@ public class ObraDAO {
 		return listaObras;
 	}
 
-    public Obra buscarPorId(int idObra) {
+    public Obra buscarPorId(long idObra) {
         Obra u = null;
 		// abrir conexao com bd
 		this.conexao.abrirConexao();
