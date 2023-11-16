@@ -123,6 +123,45 @@ public class ObraDAO {
 	}
 
     //metodo atualizar 
+    public Obra editar(Obra obra){
+        this.conexao.abrirConexao();
+
+        String sql = "UPDATE obra SET titulo=?, autor=?, edicao=?, data_lancamento=?, id_tipoobra=?, id_biblioteca=? WHERE id_obra=?";
+        PreparedStatement st;
+        try {
+            st = conexao.getConexao().prepareStatement(sql);
+            st.setString(0, obra.getTitulo());
+            st.setString(1, obra.getAutor());
+            st.setString(2, obra.getEdicao());
+            st.setDate(3, obra.getDataLancamento());
+            st.setLong(4, obra.getTipoObra().getId_tipoobra());
+            st.setLong(5, obra.getBiblioteca().getId_biblioteca());
+            st.setLong(6, obra.getIdObra());
+            st.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            // fechar a conexao
+            conexao.fecharConexao();
+        }
+        return obra;
+    }
 
     //metodo deletar
+    public void deletar(Obra obra){
+        this.conexao.abrirConexao();
+
+        String sql = "DELETE FROM obra WHERE id_obra=?";
+        PreparedStatement st;
+        try {
+            st = conexao.getConexao().prepareStatement(sql);
+            st.setLong(1, obra.getIdObra());
+            st.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            // fechar a conexao
+            conexao.fecharConexao();
+        }
+    }
 }
