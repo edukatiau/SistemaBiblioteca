@@ -31,12 +31,12 @@ public class Obra {
         this.biblioteca = biblioteca;
     }
 
-    public long getIdLivro() {
+    public long getIdObra() {
         return idObra;
     }
 
-    public void setIdLivro(long idLivro) {
-        this.idObra = idLivro;
+    public void setIdObra(long idObra) {
+        this.idObra = idObra;
     }
 
     public String getTitulo() {

@@ -6,6 +6,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import br.com.projetobiblioteca.model.Aluno;
 import br.com.projetobiblioteca.model.Obra;
 
 public class ObraDAO {
@@ -36,7 +37,7 @@ public class ObraDAO {
             if(linhasAfetadas>0) {
                 ResultSet rs = st.getGeneratedKeys();
                 if(rs.next()) {
-                    obra.setIdLivro(rs.getLong(1));
+                    obra.setIdObra(rs.getLong(1));
                 }			
             }
         } catch (SQLException e) {
@@ -65,7 +66,7 @@ public class ObraDAO {
 			while (rs.next()) {
 				// converter a linha em um usuario
 				u = new Obra();
-				u.setIdLivro(rs.getLong("id_obra"));
+				u.setIdObra(rs.getLong("id_obra"));
                 u.setTitulo(rs.getString("titulo"));
                 u.setAutor(rs.getString("autor"));
                 u.setEdicao(rs.getString("edicao"));
@@ -84,5 +85,41 @@ public class ObraDAO {
 			conexao.fecharConexao();
 		}
 		return listaObras;
+	}
+
+    public Obra buscarPorId(int idObra) {
+        Obra u = null;
+		// abrir conexao com bd
+		this.conexao.abrirConexao();
+		// inserir no banco
+		String sql = "SELECT * FROM obra WHERE id_obra=?;";
+		PreparedStatement st;
+		try {
+			st = conexao.getConexao().prepareStatement(sql);
+			st.setLong(1, idObra);
+			ResultSet rs = st.executeQuery();
+			// converter a linha inteira do rs em um usuario
+			// o rs é tudo que veio da busca no banco
+			if (rs.next()) {
+				// converter a linha em um usuario
+				u = new Obra();
+				u.setIdObra(rs.getLong("id_obra"));
+                u.setTitulo(rs.getString("titulo"));
+                u.setAutor(rs.getString("autor"));
+                u.setEdicao(rs.getString("edicao"));
+                u.setDataLancamento(rs.getDate("data_lancamento"));
+                TipoObraDAO tipoObraDAO = new TipoObraDAO();
+                u.setTipoObra(tipoObraDAO.buscarPorId(rs.getLong("id_tipoobra")));
+                BibliotecaDAO bibliotecaDAO = new BibliotecaDAO();
+                u.setBiblioteca(bibliotecaDAO.buscarPorId(rs.getLong("id_biblioteca")));
+			}
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			// fechar a conexao
+			conexao.fecharConexao();
+		}
+		return u;
 	}
 }

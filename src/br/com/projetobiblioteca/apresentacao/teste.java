@@ -8,12 +8,14 @@ import java.util.Scanner;
 import br.com.projetobiblioteca.model.Aluno;
 import br.com.projetobiblioteca.model.Biblioteca;
 import br.com.projetobiblioteca.model.Campus;
+import br.com.projetobiblioteca.model.Emprestimo;
 import br.com.projetobiblioteca.model.Funcionário;
 import br.com.projetobiblioteca.model.Obra;
 import br.com.projetobiblioteca.model.TipoObra;
 import br.com.projetobiblioteca.persistencia.AlunoDAO;
 import br.com.projetobiblioteca.persistencia.BibliotecaDAO;
 import br.com.projetobiblioteca.persistencia.CampusDAO;
+import br.com.projetobiblioteca.persistencia.EmprestimoDAO;
 import br.com.projetobiblioteca.persistencia.FuncionarioDAO;
 import br.com.projetobiblioteca.persistencia.ObraDAO;
 import br.com.projetobiblioteca.persistencia.TipoObraDAO;
@@ -24,7 +26,7 @@ public class Teste {
     public static void main(String[] args) throws SQLException {
 
         //cadastrarCampus();
-        cadastrarAluno();
+        //cadastrarAluno();
         // CampusDAO campusDAO = new CampusDAO();
         // cadastrarBiblioteca(campusDAO.buscarPorId(1));
         // BibliotecaDAO bibliotecaDAO = new BibliotecaDAO();
@@ -39,6 +41,8 @@ public class Teste {
         // for(Obra u:listaObras) {
         // System.out.println(u.toString());
         // }
+
+        emprestar();
 
         // Campus campus = new Campus("sapucaia", "sapucaia do sul", "519999999", null,
         // null);
@@ -199,5 +203,41 @@ public class Teste {
     obra = obraDAO.adicionar(obra);
     System.out.println("Obra cadastrada com sucesso");
     sc.close();
+    }
+
+    public static void emprestar(){
+        System.out.println("Insira a matricula do aluno:");
+        String matricula = sc.next();
+        System.out.println("Insira o id da obra:");
+        int idObra = sc.nextInt();
+        System.out.println("Insira a data de emprestimo:");
+        String dataEmprestimo = sc.next();
+        System.out.println("Insira a data de devolução:");
+        String dataDevolucao = sc.next();
+
+        String[] dataEmprestimoArray = dataEmprestimo.split("/");
+        int diaEmprestimo = Integer.parseInt(dataEmprestimoArray[0]);
+        int mesEmprestimo = Integer.parseInt(dataEmprestimoArray[1]);
+        int anoEmprestimo = Integer.parseInt(dataEmprestimoArray[2]);
+        Date dataEmprestimoDate = new Date(anoEmprestimo, mesEmprestimo, diaEmprestimo);
+
+        String[] dataDevolucaoArray = dataDevolucao.split("/");
+        int diaDevolucao = Integer.parseInt(dataDevolucaoArray[0]);
+        int mesDevolucao = Integer.parseInt(dataDevolucaoArray[1]);
+        int anoDevolucao = Integer.parseInt(dataDevolucaoArray[2]);
+        Date dataDevolucaoDate = new Date(anoDevolucao, mesDevolucao, diaDevolucao);
+
+        AlunoDAO alunoDAO = new AlunoDAO();
+        Aluno aluno = alunoDAO.buscarPorMatricula(matricula);
+
+        ObraDAO obraDAO = new ObraDAO();
+        Obra obra = obraDAO.buscarPorId(idObra);
+
+        Emprestimo emprestimo = new Emprestimo(0, dataEmprestimoDate, dataDevolucaoDate, "Ativo", aluno, obra);
+        EmprestimoDAO emprestimoDAO = new EmprestimoDAO();
+        emprestimoDAO.adicionar(emprestimo);
+
+
+        System.out.println("Emprestimo realizado com sucesso");
     }
 }

@@ -18,7 +18,7 @@ public class Emprestimo {
         super();
     }
 
-    public Emprestimo(long idEmprestimo, Date dataEmprestimo, Date dataDevolucao, Date dataDevolucaoEfetiva,
+    public Emprestimo(long idEmprestimo, Date dataEmprestimo, Date dataDevolucao,
             String status, Aluno aluno, Obra obras) {
         this.idEmprestimo = idEmprestimo;
         this.dataEmprestimo = dataEmprestimo;
