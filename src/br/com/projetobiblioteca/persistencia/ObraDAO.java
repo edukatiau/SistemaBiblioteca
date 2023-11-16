@@ -121,4 +121,8 @@ public class ObraDAO {
 		}
 		return u;
 	}
+
+    //metodo atualizar 
+
+    //metodo deletar
 }

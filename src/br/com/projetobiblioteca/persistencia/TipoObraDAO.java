@@ -71,6 +71,7 @@ public class TipoObraDAO {
 		return u;
 	}
 
+    // buscarPorId
     public TipoObra buscarPorId(long id) {
         TipoObra b = null;
         // abrir conexao com bd
@@ -95,4 +96,10 @@ public class TipoObraDAO {
         }
         return b;
     }
+
+    //metodo buscarTodos
+
+    //metodo atualizar
+
+    //metodo deletar
 }

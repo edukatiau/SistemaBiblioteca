@@ -38,6 +38,7 @@ public class BibliotecaDAO {
         return biblioteca;    
     }
 
+    //metodo buscarporId
     public Biblioteca buscarPorId(long id) {
         Biblioteca b = null;
         // abrir conexao com bd
@@ -62,4 +63,8 @@ public class BibliotecaDAO {
         }
         return b;
     }
+
+    //metodo atualizar
+
+    //metodo deletar
 }

@@ -160,7 +160,8 @@ public class AlunoDAO {
 		}
 	}
 
-    public Aluno buscarPorMatricula(String matricula) {
+    //metodo buscarPorMatricula
+	public Aluno buscarPorMatricula(String matricula) {
         Aluno u = null;
 		// abrir conexao com bd
 		this.conexao.abrirConexao();

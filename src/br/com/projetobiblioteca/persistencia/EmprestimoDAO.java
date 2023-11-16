@@ -45,4 +45,10 @@ public class EmprestimoDAO {
         }
         return emprestimo;
     }
+
+    //metodo buscarporId
+
+    //metodo atualizar
+
+    //metodo deletar
 }
