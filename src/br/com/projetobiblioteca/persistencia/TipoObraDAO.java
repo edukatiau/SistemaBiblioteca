@@ -3,6 +3,8 @@ package br.com.projetobiblioteca.persistencia;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 import br.com.projetobiblioteca.model.TipoObra;
 
@@ -98,8 +100,75 @@ public class TipoObraDAO {
     }
 
     //metodo buscarTodos
+    public List<TipoObra> listarTiposObras(){
+        List<TipoObra> listaTipoObra = new ArrayList<>();
+        TipoObra c = null;
+        // abrir conexao com bd
+        this.conexao.abrirConexao();
+        // inserir no banco
+        String sql = "SELECT * FROM tipoobra;";
+        PreparedStatement st;
+        try {
+            st = conexao.getConexao().prepareStatement(sql);
+            ResultSet rs = st.executeQuery();
+            while(rs.next()) {
+                c = new TipoObra();
+                c.setId_tipoobra(rs.getLong("id_tipoobra"));
+                c.setTIPO_OBRA(rs.getString("nome"));
+                listaTipoObra.add(c);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            // fechar a conexao
+            conexao.fecharConexao();
+        }
+        return listaTipoObra;
+    }
 
     //metodo atualizar
+    public TipoObra editar(TipoObra tipoobra){
+        this.conexao.abrirConexao();
+
+        //atualizar no bd
+        String sql = "UPDATE tipoobra SET nome=? WHERE id_tipoobra=?";
+        PreparedStatement st;
+        try {
+            st = conexao.getConexao().prepareStatement(sql);
+            st.setString(1, tipoobra.getTIPO_OBRA());
+            st.setLong(2, tipoobra.getId_tipoobra());
+            int linhasAfetadas = st.executeUpdate();
+            if(linhasAfetadas>0) {
+                ResultSet rs = st.getGeneratedKeys();
+                if(rs.next()) {
+                    tipoobra.setId_tipoobra(rs.getLong(1));
+                }			
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            // fechar a conexao
+            conexao.fecharConexao();
+        }
+        return tipoobra;
+    }
 
     //metodo deletar
+    public void deletar(TipoObra tipoObra){
+        //abrir conexao
+        conexao.abrirConexao();
+        //inserir no bd
+        String sql = "DELETE FROM tipoobra WHERE id_tipoobra=?";
+        PreparedStatement st;
+        try {
+            st = conexao.getConexao().prepareStatement(sql);
+            st.setLong(1, tipoObra.getId_tipoobra());
+            st.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            // fechar a conexao
+            conexao.fecharConexao();
+        }
+    }
 }
