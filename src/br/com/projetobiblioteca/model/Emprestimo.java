@@ -23,7 +23,6 @@ public class Emprestimo {
         this.idEmprestimo = idEmprestimo;
         this.dataEmprestimo = dataEmprestimo;
         this.dataDevolucao = dataDevolucao;
-        this.dataDevolucaoEfetiva = dataDevolucaoEfetiva;
         this.status = status;
         this.aluno = aluno;
         this.obras = obras;

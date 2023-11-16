@@ -6,7 +6,6 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import br.com.projetobiblioteca.model.Aluno;
 import br.com.projetobiblioteca.model.Obra;
 
 public class ObraDAO {
