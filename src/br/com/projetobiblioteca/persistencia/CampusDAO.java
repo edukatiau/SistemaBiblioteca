@@ -129,4 +129,22 @@ public class CampusDAO {
     }
 
     //metodo deletar
+    public void deletar(Campus campus) throws SQLException{
+        //abrir conexao
+        conexao.abrirConexao();
+
+        //deletar no bd
+        String sql = "DELETE FROM campus WHERE id_campus=?";
+        PreparedStatement st;
+        try {
+            st = conexao.getConexao().prepareStatement(sql);
+            st.setLong(1, campus.getId_campus());
+            st.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            // fechar a conexao
+            conexao.fecharConexao();
+        }   
+    }
 }

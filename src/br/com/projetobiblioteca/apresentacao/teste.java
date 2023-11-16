@@ -42,7 +42,7 @@ public class Teste {
         // System.out.println(u.toString());
         // }
 
-        emprestar();
+        //emprestar();
 
         // Campus campus = new Campus("sapucaia", "sapucaia do sul", "519999999", null,
         // null);
