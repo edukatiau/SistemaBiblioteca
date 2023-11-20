@@ -2,8 +2,9 @@ package br.com.projetobiblioteca.persistencia;
 
 import java.util.List;
 
+
 public interface GenericoDAO {
-    Object adicionar(Object entidade);
+    void adicionar();
     void editar(Object entidade);
     void excluir(Object entidade);
     Object buscarPorId(long id);

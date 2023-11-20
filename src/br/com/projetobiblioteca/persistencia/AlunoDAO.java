@@ -191,4 +191,40 @@ public class AlunoDAO {
 		}
 		return u;
 	}
+
+	public boolean login(String email, String senha){
+		Aluno a = null;
+		// abrir conexao com bd
+		this.conexao.abrirConexao();
+		// buscar no banco
+		String sql = "SELECT * FROM aluno WHERE email=? AND senha=?;";
+		PreparedStatement st;
+		try {
+			st = conexao.getConexao().prepareStatement(sql);
+			st.setString(1, email);
+			st.setString(2, senha);
+			ResultSet rs = st.executeQuery();
+			// converter a linha inteira do rs em um usuario
+			// o rs é tudo que veio da busca no banco
+			if (rs.next()) {
+				// converter a linha em um usuario
+				a = new Aluno();
+				a.setIdUsuario(rs.getLong("id_aluno"));
+				a.setNome(rs.getString("nome"));
+				a.setEmail(rs.getString("email"));
+				a.setSenha(rs.getString("senha"));
+				
+				if(a.getEmail().equals(email) && a.getSenha().equals(senha)){
+					return true;
+				}
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+			// TODO: handle exception
+		} finally {
+			// fechar a conexao
+			conexao.fecharConexao();
+		}
+		return false;
+	}
 }

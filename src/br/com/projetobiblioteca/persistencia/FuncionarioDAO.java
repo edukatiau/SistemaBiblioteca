@@ -8,7 +8,7 @@ import java.util.List;
 
 import br.com.projetobiblioteca.model.Funcionário;
 
-public class FuncionarioDAO {
+public class FuncionarioDAO{
     
     private ConexaoMySQL conexao;
 
@@ -155,5 +155,77 @@ public class FuncionarioDAO {
 			// fechar a conexao
 			conexao.fecharConexao();
 		}
+	}
+
+	//metodo login
+	// login
+	public boolean loginAdm(String email, String senha) {
+		Funcionário f = null;
+		// abrir conexao com bd
+		this.conexao.abrirConexao();
+		// inserir no banco
+		String sql = "SELECT * FROM funcionario WHERE email=? AND senha=?;";
+		PreparedStatement st;
+		try {
+			st = conexao.getConexao().prepareStatement(sql);
+			st.setString(1, email);
+			st.setString(2, senha);
+			ResultSet rs = st.executeQuery();
+			// converter a linha inteira do rs em um usuario
+			// o rs é tudo que veio da busca no banco
+			if (rs.next()) {
+				// converter a linha em um usuario
+				f = new Funcionário();
+				f.setIdUsuario(rs.getLong("id_funcionario"));
+				f.setNome(rs.getString("nome"));
+				f.setEmail(rs.getString("email"));
+				f.setSenha(rs.getString("senha"));
+
+				if(f.getEmail().equals("admin") && f.getSenha().equals("admin")){
+					return true;
+				}
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			// fechar a conexao
+			conexao.fecharConexao();
+		}
+		return false;
+	}
+
+	public boolean login(String email, String senha){
+		Funcionário f = null;
+		// abrir conexao com bd
+		this.conexao.abrirConexao();
+		// inserir no banco
+		String sql = "SELECT * FROM funcionario WHERE email=? AND senha=?;";
+		PreparedStatement st;
+		try {
+			st = conexao.getConexao().prepareStatement(sql);
+			st.setString(1, email);
+			st.setString(2, senha);
+			ResultSet rs = st.executeQuery();
+			// converter a linha inteira do rs em um usuario
+			// o rs é tudo que veio da busca no banco
+			if (rs.next()) {
+				// converter a linha em um usuario
+				f = new Funcionário();
+				f.setIdUsuario(rs.getLong("id_funcionario"));
+				f.setNome(rs.getString("nome"));
+				f.setEmail(rs.getString("email"));
+				f.setSenha(rs.getString("senha"));
+
+				if(f.getEmail().equals(email) && f.getSenha().equals(senha)){
+					return true;
+				}
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			// fechar a conexao
+			conexao.fecharConexao();
+		}
+		return false;
 	}
 }
