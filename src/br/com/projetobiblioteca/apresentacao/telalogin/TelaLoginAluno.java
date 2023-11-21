@@ -3,6 +3,7 @@ package br.com.projetobiblioteca.apresentacao.telalogin;
 import java.util.Scanner;
 
 import br.com.projetobiblioteca.apresentacao.TelaAluno;
+import br.com.projetobiblioteca.model.Aluno;
 import br.com.projetobiblioteca.persistencia.AlunoDAO;
 
 public class TelaLoginAluno {
@@ -19,7 +20,9 @@ public class TelaLoginAluno {
         AlunoDAO alunoDAO = new AlunoDAO();
         if(alunoDAO.login(email, senha)){
             System.out.println("Login efetuado com sucesso!");
-            TelaAluno.TelaAluno();
+            Aluno aluno = new Aluno();
+            aluno = alunoDAO.buscarPorEmail(email);
+            TelaAluno.TelaAluno(aluno);
         }
         else{
             System.out.println("Email ou senha incorretos!");

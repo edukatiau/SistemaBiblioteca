@@ -161,16 +161,16 @@ public class AlunoDAO {
 	}
 
     //metodo buscarPorMatricula
-	public Aluno buscarPorMatricula(String matricula) {
+	public Aluno buscarPorEmail(String email) {
         Aluno u = null;
 		// abrir conexao com bd
 		this.conexao.abrirConexao();
-		// inserir no banco
-		String sql = "SELECT * FROM aluno WHERE matricula=?;";
+		// busca no banco
+		String sql = "SELECT * FROM aluno WHERE email=?;";
 		PreparedStatement st;
 		try {
 			st = conexao.getConexao().prepareStatement(sql);
-			st.setString(1, matricula);
+			st.setString(1, email);
 			ResultSet rs = st.executeQuery();
 			// converter a linha inteira do rs em um usuario
 			// o rs é tudo que veio da busca no banco

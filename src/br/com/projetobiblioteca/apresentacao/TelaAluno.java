@@ -2,9 +2,11 @@ package br.com.projetobiblioteca.apresentacao;
 
 import java.util.Scanner;
 
+import br.com.projetobiblioteca.model.Aluno;
+
 public class TelaAluno {
 
-    public static void TelaAluno() {
+    public static void TelaAluno(Aluno aluno) {
         Scanner sc = new Scanner(System.in);
         System.out.println("-----MENU ALUNO-----");
         System.out.println("1 - Meu Perfil");
