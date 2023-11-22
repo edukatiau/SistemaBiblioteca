@@ -1,4 +1,4 @@
-package br.com.projetobiblioteca.apresentacao;
+package br.com.projetobiblioteca.apresentacao.telamenu;
 
 import java.util.Scanner;
 

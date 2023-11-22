@@ -1,5 +1,6 @@
 package br.com.projetobiblioteca.apresentacao;
 
+import java.sql.SQLException;
 import java.util.Scanner;
 
 import br.com.projetobiblioteca.apresentacao.telalogin.TelaLoginAdm;
@@ -9,12 +10,12 @@ import br.com.projetobiblioteca.apresentacao.telalogin.TelaLoginFunc;
 public class SistemaBiblioteca {
     static Scanner sc = new Scanner(System.in);
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws SQLException {
         System.out.println("Hello World");
         menu();
     }
 
-    public static void menu(){
+    public static void menu() throws SQLException{
         System.out.println("------------");
         System.out.println("1 - Login Administrador");
         System.out.println("2 - Login Funcionário");

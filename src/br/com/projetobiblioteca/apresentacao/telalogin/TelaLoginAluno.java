@@ -2,7 +2,7 @@ package br.com.projetobiblioteca.apresentacao.telalogin;
 
 import java.util.Scanner;
 
-import br.com.projetobiblioteca.apresentacao.TelaAluno;
+import br.com.projetobiblioteca.apresentacao.telamenu.TelaAluno;
 import br.com.projetobiblioteca.model.Aluno;
 import br.com.projetobiblioteca.persistencia.AlunoDAO;
 

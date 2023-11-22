@@ -220,7 +220,6 @@ public class AlunoDAO {
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
-			// TODO: handle exception
 		} finally {
 			// fechar a conexao
 			conexao.fecharConexao();

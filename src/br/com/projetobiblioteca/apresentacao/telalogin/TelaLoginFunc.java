@@ -2,7 +2,7 @@ package br.com.projetobiblioteca.apresentacao.telalogin;
 
 import java.util.Scanner;
 
-import br.com.projetobiblioteca.apresentacao.TelaFunc;
+import br.com.projetobiblioteca.apresentacao.telamenu.TelaFunc;
 import br.com.projetobiblioteca.persistencia.FuncionarioDAO;
 
 public class TelaLoginFunc {

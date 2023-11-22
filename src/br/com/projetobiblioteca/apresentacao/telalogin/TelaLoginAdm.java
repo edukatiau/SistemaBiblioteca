@@ -1,13 +1,14 @@
 package br.com.projetobiblioteca.apresentacao.telalogin;
 
+import java.sql.SQLException;
 import java.util.Scanner;
 
-import br.com.projetobiblioteca.apresentacao.TelaAdm;
+import br.com.projetobiblioteca.apresentacao.telamenu.TelaAdm;
 import br.com.projetobiblioteca.persistencia.FuncionarioDAO;
 
 public class TelaLoginAdm {
     
-    public static void TelaLoginAdm(){
+    public static void TelaLoginAdm() throws SQLException{
         Scanner sc = new Scanner(System.in);
 
         System.out.println("-----LOGIN ADM-----");
