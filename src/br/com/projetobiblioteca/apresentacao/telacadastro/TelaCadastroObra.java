@@ -3,6 +3,7 @@ package br.com.projetobiblioteca.apresentacao.telacadastro;
 import java.sql.SQLException;
 import java.util.Scanner;
 
+import br.com.projetobiblioteca.apresentacao.telamenu.TelaFunc;
 import br.com.projetobiblioteca.model.Funcionário;
 import br.com.projetobiblioteca.model.Obra;
 import br.com.projetobiblioteca.model.TipoObra;
@@ -38,5 +39,7 @@ public class TelaCadastroObra {
         obraDAO.adicionar(obra);
 
         System.out.println("Obra cadastrada com sucesso!");
+
+        TelaFunc.TelaFunc(funcionario);
     }
 }

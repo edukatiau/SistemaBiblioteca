@@ -77,6 +77,37 @@ public class FuncionarioDAO{
 		return f;
 	}
 
+	//metodo buscarporEmail
+    // buscarPorEmail
+	public Funcionário buscarPorEmail(String email) {
+		Funcionário f = null;
+		// abrir conexao com bd
+		this.conexao.abrirConexao();
+		// inserir no banco
+		String sql = "SELECT * FROM aluno WHERE email=?;";
+		PreparedStatement st;
+		try {
+			st = conexao.getConexao().prepareStatement(sql);
+			st.setString(1, email);
+			ResultSet rs = st.executeQuery();
+			// converter a linha inteira do rs em um usuario
+			// o rs é tudo que veio da busca no banco
+			if (rs.next()) {
+				// converter a linha em um usuario
+				f = new Funcionário();
+				f.setIdUsuario(rs.getLong("id_funcionario"));
+				f.setNome(rs.getString("nome"));
+			}
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			// fechar a conexao
+			conexao.fecharConexao();
+		}
+		return f;
+	}
+
 
     //metodo buscartodos
 	// buscarTodos
