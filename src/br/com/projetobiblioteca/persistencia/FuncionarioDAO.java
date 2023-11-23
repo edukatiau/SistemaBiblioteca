@@ -22,14 +22,13 @@ public class FuncionarioDAO{
         conexao.abrirConexao();
 
         //inserir no bd
-        String sql = "INSERT INTO funcionario VALUES (null, ?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO funcionario VALUES (null, ?, ?, ?, ?)";
         PreparedStatement st;
 		try {
 			st = conexao.getConexao().prepareStatement(sql, PreparedStatement.RETURN_GENERATED_KEYS);
 			st.setString(1, funcionario.getNome());
 			st.setString(2, funcionario.getEmail());
 			st.setString(3, funcionario.getSenha());
-            st.setString(4, String.valueOf(funcionario.getSalario()));
             st.setLong(5, funcionario.getBiblioteca().getId_biblioteca());
 			int linhasAfetadas = st.executeUpdate();
 			if(linhasAfetadas>0) {

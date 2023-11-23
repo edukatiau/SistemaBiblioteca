@@ -4,10 +4,8 @@ import java.sql.SQLException;
 import java.util.Scanner;
 
 import br.com.projetobiblioteca.model.Biblioteca;
-import br.com.projetobiblioteca.model.Campus;
 import br.com.projetobiblioteca.model.Funcionário;
 import br.com.projetobiblioteca.persistencia.BibliotecaDAO;
-import br.com.projetobiblioteca.persistencia.CampusDAO;
 import br.com.projetobiblioteca.persistencia.FuncionarioDAO;
 
 public class TelaCadastroFunc {
