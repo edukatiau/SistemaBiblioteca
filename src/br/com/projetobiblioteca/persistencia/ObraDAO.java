@@ -29,7 +29,7 @@ public class ObraDAO {
             st.setString(1, obra.getTitulo());
             st.setString(2, obra.getAutor());
             st.setString(3, obra.getEdicao());
-            st.setDate(4, obra.getDataLancamento());
+            st.setString(4, obra.getAnoLancamento());
             st.setLong(5, obra.getTipoObra().getId_tipoobra());
             st.setLong(6, obra.getBiblioteca().getId_biblioteca());
             int linhasAfetadas = st.executeUpdate();
@@ -69,7 +69,7 @@ public class ObraDAO {
                 u.setTitulo(rs.getString("titulo"));
                 u.setAutor(rs.getString("autor"));
                 u.setEdicao(rs.getString("edicao"));
-                u.setDataLancamento(rs.getDate("data_lancamento"));
+                u.setAnoLancamento(rs.getString("ano_lancamento"));
                 TipoObraDAO tipoObraDAO = new TipoObraDAO();
                 u.setTipoObra(tipoObraDAO.buscarPorId(rs.getLong("id_tipoobra")));
                 BibliotecaDAO bibliotecaDAO = new BibliotecaDAO();
@@ -106,7 +106,7 @@ public class ObraDAO {
                 u.setTitulo(rs.getString("titulo"));
                 u.setAutor(rs.getString("autor"));
                 u.setEdicao(rs.getString("edicao"));
-                u.setDataLancamento(rs.getDate("data_lancamento"));
+                u.setAnoLancamento(rs.getString("ano_lancamento"));
                 TipoObraDAO tipoObraDAO = new TipoObraDAO();
                 u.setTipoObra(tipoObraDAO.buscarPorId(rs.getLong("id_tipoobra")));
                 BibliotecaDAO bibliotecaDAO = new BibliotecaDAO();
@@ -133,7 +133,7 @@ public class ObraDAO {
             st.setString(0, obra.getTitulo());
             st.setString(1, obra.getAutor());
             st.setString(2, obra.getEdicao());
-            st.setDate(3, obra.getDataLancamento());
+            st.setString(3, obra.getAnoLancamento());
             st.setLong(4, obra.getTipoObra().getId_tipoobra());
             st.setLong(5, obra.getBiblioteca().getId_biblioteca());
             st.setLong(6, obra.getIdObra());
