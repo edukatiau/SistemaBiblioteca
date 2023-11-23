@@ -35,12 +35,23 @@ public class TelaCadastroAluno {
         for(Campus c:campusDAO.buscarTodos()) {
             if(c.getNome().equals(campusName)) {
                 campus = c;
+            } else{
+                System.out.println("Campus não encontrado");
+                break;
             }
         }
-        Aluno aluno = new Aluno(0, nome, email, senha, matricula, curso, campus);
-        AlunoDAO alunoDAO = new AlunoDAO();
-        aluno = alunoDAO.adicionar(aluno);
-        System.out.println("Aluno cadastrado com sucesso");
-    }
 
+        // fazer verificação dos alunos existentes
+        AlunoDAO alunoDAO = new AlunoDAO();
+        for(Aluno a:alunoDAO.buscarTodos()) {
+            if(a.getNome().equals(nome)) {
+                System.out.println("Aluno já cadastrado");
+                break;
+            } else {
+                Aluno aluno = new Aluno(0, nome, email, senha, matricula, curso, campus);
+                aluno = alunoDAO.adicionar(aluno);
+                System.out.println("Aluno cadastrado com sucesso");
+            }
+        }
+    }
 }

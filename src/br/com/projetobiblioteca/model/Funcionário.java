@@ -1,7 +1,6 @@
 package br.com.projetobiblioteca.model;
 
 public class Funcionário extends Usuario{
-    private double salario;
 
     //Associação 1:1 entre Funcionário e Biblioteca
     private Biblioteca biblioteca;
@@ -10,23 +9,13 @@ public class Funcionário extends Usuario{
         super();
     }
 
-    public Funcionário(double salario, Biblioteca biblioteca) {
-        this.salario = salario;
+    public Funcionário(Biblioteca biblioteca) {
         this.biblioteca = biblioteca;
     }
 
-    public Funcionário(long idUsuario, String nome, String email, String senha, double salario, Biblioteca biblioteca) {
+    public Funcionário(long idUsuario, String nome, String email, String senha, Biblioteca biblioteca) {
         super(idUsuario, nome, email, senha);
-        this.salario = salario;
         this.biblioteca = biblioteca;
-    }
-
-    public double getSalario() {
-        return salario;
-    }
-
-    public void setSalario(double salario) {
-        this.salario = salario;
     }
 
     public Biblioteca getBiblioteca() {
@@ -39,6 +28,6 @@ public class Funcionário extends Usuario{
 
     @Override
     public String toString() {
-        return "Funcionário [salario=" + salario + ", biblioteca=" + biblioteca + "]";
+        return "Funcionário [biblioteca=" + biblioteca + "]";
     }
 }
