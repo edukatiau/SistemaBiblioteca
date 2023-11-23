@@ -8,7 +8,7 @@ public class Obra {
     private String titulo;
     private String autor;
     private String edicao;
-    private Date dataLancamento;
+    private String anoLancamento;
 
     //Associação 1:N entre Obras e TipoObra
     private TipoObra tipoObra;
@@ -21,12 +21,12 @@ public class Obra {
         super();
     }
 
-    public Obra(long idLivro, String titulo, String autor, String edicao, Date dataLancamento, TipoObra tipoObra, Biblioteca biblioteca) {
+    public Obra(long idLivro, String titulo, String autor, String edicao, String anoLancamento, TipoObra tipoObra, Biblioteca biblioteca) {
         this.idObra = idLivro;
         this.titulo = titulo;
         this.autor = autor;
         this.edicao = edicao;
-        this.dataLancamento = dataLancamento;
+        this.anoLancamento = anoLancamento;
         this.tipoObra = tipoObra;
         this.biblioteca = biblioteca;
     }
@@ -63,12 +63,12 @@ public class Obra {
         this.edicao = edicao;
     }
 
-    public Date getDataLancamento() {
-        return dataLancamento;
+    public String getAnoLancamento() {
+        return anoLancamento;
     }
 
-    public void setDataLancamento(Date dataLancamento) {
-        this.dataLancamento = dataLancamento;
+    public void setAnoLancamento(String anoLancamento) {
+        this.anoLancamento = anoLancamento;
     }
 
     public TipoObra getTipoObra() {
@@ -98,7 +98,7 @@ public class Obra {
     @Override
     public String toString() {
         return "Obra [idLivro=" + idObra + ", titulo=" + titulo + ", autor=" + autor + ", edicao=" + edicao
-                + ", dataLancamento=" + dataLancamento + ", tipoObra=" + tipoObra + ", biblioteca=" + biblioteca
-                + ", listEmprestimos=" + listEmprestimos + "]";
+                + ", anoLancamento=" + anoLancamento + ", tipoObra=" + tipoObra + ", biblioteca=" + biblioteca
+                + "]";
     }
 }
