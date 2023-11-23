@@ -24,11 +24,12 @@ public class Campus {
         this.listAlunos = new ArrayList<Aluno>();
     }
 
-    public Campus(long id_campus, String nome, String endereco, String telefone) {
+    public Campus(long id_campus, String nome, String endereco, String telefone, Biblioteca biblioteca) {
         this.id_campus = id_campus;
         this.nome = nome;
         this.endereco = endereco;
         this.telefone = telefone;
+        this.biblioteca = biblioteca;
     }
 
     public String getNome() {

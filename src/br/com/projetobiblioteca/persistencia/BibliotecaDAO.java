@@ -20,15 +20,17 @@ public class BibliotecaDAO {
         //abrir conexao
         conexao.abrirConexao();
         //inserir no bd
-        String sql = "INSERT INTO biblioteca VALUES (null)";
+        String sql = "INSERT INTO biblioteca VALUES (null, ?)";
         PreparedStatement st;
         try {
             st = conexao.getConexao().prepareStatement(sql, PreparedStatement.RETURN_GENERATED_KEYS);
+            st.setString(1, biblioteca.getNome());
             int linhasAfetadas = st.executeUpdate();
             if(linhasAfetadas>0) {
                 ResultSet rs = st.getGeneratedKeys();
                 if(rs.next()) {
                     biblioteca.setId_biblioteca(rs.getLong(1));
+                    biblioteca.setNome(rs.getString("nome"));
                 }			
             }
         } catch (SQLException e) {

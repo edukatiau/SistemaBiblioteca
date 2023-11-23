@@ -23,13 +23,14 @@ public class CampusDAO {
         conexao.abrirConexao();
 
         //inserir no bd
-        String sql = "INSERT INTO campus VALUES (null, ?, ?, ?, null)";
+        String sql = "INSERT INTO campus VALUES (null, ?, ?, ?, ?)";
         PreparedStatement st;
         try {
             st = conexao.getConexao().prepareStatement(sql, PreparedStatement.RETURN_GENERATED_KEYS);
             st.setString(1, campus.getNome());
             st.setString(2, campus.getEndereco());
             st.setString(3, campus.getTelefone());
+            st.setLong(4, campus.getBiblioteca().getId_biblioteca());
             int linhasAfetadas = st.executeUpdate();
             if(linhasAfetadas>0) {
                 ResultSet rs = st.getGeneratedKeys();

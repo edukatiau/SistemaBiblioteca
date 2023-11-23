@@ -3,7 +3,9 @@ package br.com.projetobiblioteca.apresentacao.telacadastro;
 import java.sql.SQLException;
 import java.util.Scanner;
 
+import br.com.projetobiblioteca.model.Biblioteca;
 import br.com.projetobiblioteca.model.Campus;
+import br.com.projetobiblioteca.persistencia.BibliotecaDAO;
 import br.com.projetobiblioteca.persistencia.CampusDAO;
 
 public class TelaCadastroCampus {
@@ -25,12 +27,16 @@ public class TelaCadastroCampus {
                 System.out.println("Campus já cadastrado");
                 break;
             }else{
+                Biblioteca biblioteca = new Biblioteca();
+                biblioteca = new Biblioteca(0, nome);
+                BibliotecaDAO bibliotecaDAO = new BibliotecaDAO();
+                bibliotecaDAO.adicionar(biblioteca);
+                
                 Campus campus = new Campus();
-                campus = new Campus(0, nome, endereco, telefone);
+                campus = new Campus(0, nome, endereco, telefone, biblioteca);
                 campusDAO.adicionar(campus);
                 System.out.println("Campus cadastrado com sucesso");
             }
         }
     }
-
 }
