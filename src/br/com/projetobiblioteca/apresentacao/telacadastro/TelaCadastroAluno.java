@@ -3,6 +3,7 @@ package br.com.projetobiblioteca.apresentacao.telacadastro;
 import java.sql.SQLException;
 import java.util.Scanner;
 
+import br.com.projetobiblioteca.apresentacao.telamenu.TelaAdm;
 import br.com.projetobiblioteca.model.Aluno;
 import br.com.projetobiblioteca.model.Campus;
 import br.com.projetobiblioteca.persistencia.AlunoDAO;
@@ -43,15 +44,22 @@ public class TelaCadastroAluno {
 
         // fazer verificação dos alunos existentes
         AlunoDAO alunoDAO = new AlunoDAO();
-        for(Aluno a:alunoDAO.buscarTodos()) {
-            if(a.getNome().equals(nome)) {
-                System.out.println("Aluno já cadastrado");
-                break;
-            } else {
-                Aluno aluno = new Aluno(0, nome, email, senha, matricula, curso, campus);
-                aluno = alunoDAO.adicionar(aluno);
-                System.out.println("Aluno cadastrado com sucesso");
+        if(alunoDAO.buscarTodos().isEmpty()) {
+            Aluno aluno = new Aluno(0, nome, email, senha, matricula, curso, campus);
+            aluno = alunoDAO.adicionar(aluno);
+            System.out.println("Aluno cadastrado com sucesso");
+        } else {
+            for(Aluno a:alunoDAO.buscarTodos()) {
+                if(a.getNome().equals(nome)) {
+                    System.out.println("Aluno já cadastrado");
+                    break;
+                } else {
+                    Aluno aluno = new Aluno(0, nome, email, senha, matricula, curso, campus);
+                    aluno = alunoDAO.adicionar(aluno);
+                    System.out.println("Aluno cadastrado com sucesso");
+                }
             }
         }
+    TelaAdm.TelaAdm();
     }
 }

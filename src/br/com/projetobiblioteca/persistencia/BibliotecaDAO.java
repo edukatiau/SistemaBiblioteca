@@ -30,7 +30,6 @@ public class BibliotecaDAO {
                 ResultSet rs = st.getGeneratedKeys();
                 if(rs.next()) {
                     biblioteca.setId_biblioteca(rs.getLong(1));
-                    biblioteca.setNome(rs.getString("nome"));
                 }			
             }
         } catch (SQLException e) {

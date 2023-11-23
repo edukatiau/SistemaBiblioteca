@@ -29,7 +29,7 @@ public class FuncionarioDAO{
 			st.setString(1, funcionario.getNome());
 			st.setString(2, funcionario.getEmail());
 			st.setString(3, funcionario.getSenha());
-            st.setLong(5, funcionario.getBiblioteca().getId_biblioteca());
+            st.setLong(4, funcionario.getBiblioteca().getId_biblioteca());
 			int linhasAfetadas = st.executeUpdate();
 			if(linhasAfetadas>0) {
 				ResultSet rs = st.getGeneratedKeys();
