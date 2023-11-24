@@ -19,22 +19,7 @@ public class TipoObra {
 
     public TipoObra(long id_tipoobra, String TIPO_OBRA) {
         this.id_tipoobra = id_tipoobra;
-        switch (TIPO_OBRA) {
-            case LIVRO:
-                this.TIPO_OBRA = LIVRO;
-                break;
-            case ARTIGO:
-                this.TIPO_OBRA = ARTIGO;
-                break;
-            case REVISTA:
-                this.TIPO_OBRA = REVISTA;
-                break;
-            case OUTROS:
-                this.TIPO_OBRA = OUTROS;
-                break;
-            default:
-                break;
-        }
+        this.TIPO_OBRA = TIPO_OBRA;
     }
 
     public long getId_tipoobra() {
