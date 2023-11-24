@@ -97,7 +97,7 @@ public class Obra {
     @Override
     public String toString() {
         return "Obra [idLivro=" + idObra + ", titulo=" + titulo + ", autor=" + autor + ", edicao=" + edicao
-                + ", anoLancamento=" + anoLancamento + ", tipoObra=" + tipoObra + ", biblioteca=" + biblioteca
+                + ", anoLancamento=" + anoLancamento + ", tipoObra=" + tipoObra.getTIPO_OBRA() + ", biblioteca=" + biblioteca.getNome()
                 + "]";
     }
 }

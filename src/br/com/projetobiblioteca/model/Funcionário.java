@@ -33,6 +33,6 @@ public class Funcionário extends Usuario{
 
     @Override
     public String toString() {
-        return "Funcionário [biblioteca=" + biblioteca + "]";
+        return "Funcionário [biblioteca=" + biblioteca.getNome() + "]";
     }
 }

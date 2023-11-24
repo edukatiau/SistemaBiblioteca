@@ -34,10 +34,10 @@ public class TelaFunc {
                 //TelaEditarObra.TelaEditarObra(funcionario);
                 break;
             case 3:
-                //TelaListarObras.TelaListarObras(funcionario);
+                TelaListarObras.TelaListarObras(funcionario);
                 break;
             case 4:
-                //TelaRemoverObra.TelaRemoverObra(funcionario);
+                TelaRemoverObra.TelaRemoverObra(funcionario);
                 break;
             case 5:
                 //TelaCadastroAluno.TelaCadastroAluno(funcionario);
