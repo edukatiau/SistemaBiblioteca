@@ -25,20 +25,50 @@ public class TelaCadastroObra {
         System.out.print("Ano: ");
         String ano = sc.next();
 
-        System.out.println("Gênero: ");
-        String genero = sc.nextLine();
+        System.out.print("Gênero: ");
+        String genero = sc.next().toUpperCase();
+        sc.nextLine();
+
         TipoObraDAO tipoObraDAO = new TipoObraDAO();
-        TipoObra tipoObra = tipoObraDAO.buscarPorNome(genero);
-
-
+        TipoObra tipoObra = new TipoObra();
+        if(tipoObraDAO.listarTiposObras().isEmpty()) {
+            TipoObra tipoObra2 = new TipoObra(0, genero);
+            tipoObra2 = tipoObraDAO.adicionar(tipoObra2);
+            System.out.println("Gênero cadastrado com sucesso!");
+        } else {
+            for(TipoObra tipoObra3 : tipoObraDAO.listarTiposObras()) {
+                if(tipoObra.getTIPO_OBRA().equals(genero)) {
+                    tipoObra = tipoObra3;
+                    break;
+                } else {
+                    TipoObra tipoObra2 = new TipoObra(0, genero);
+                    tipoObra = tipoObraDAO.adicionar(tipoObra2);
+                    System.out.println("Gênero cadastrado com sucesso!");
+                    break;
+                }
+            }
+        }
+        //tipoObra = tipoObraDAO.buscarPorNome(genero);
+        
         Obra obra = new Obra(0, titulo, autor, edicao, ano, tipoObra, funcionario.getBiblioteca());
 
         System.out.println(obra.toString());
+        System.out.println("Confirma o cadastro? (S/N)");
+        String confirmacao = sc.next().toUpperCase();
 
-        ObraDAO obraDAO = new ObraDAO();
-        obraDAO.adicionar(obra);
+        if(confirmacao.equals("N")){
+            System.out.println("Cadastro cancelado!");
+            TelaFunc.TelaFunc(funcionario);
+        }
+        else if(!confirmacao.equals("S")){
+            System.out.println("Opção inválida!");
+            TelaFunc.TelaFunc(funcionario);
+        }else{
+            ObraDAO obraDAO = new ObraDAO();
+            obraDAO.adicionar(obra);
 
-        System.out.println("Obra cadastrada com sucesso!");
+            System.out.println("Obra cadastrada com sucesso!");
+        }
 
         TelaFunc.TelaFunc(funcionario);
     }

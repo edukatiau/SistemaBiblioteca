@@ -1,12 +1,14 @@
 package br.com.projetobiblioteca.apresentacao.telamenu;
 
+import java.sql.SQLException;
 import java.util.Scanner;
 
+import br.com.projetobiblioteca.apresentacao.SistemaBiblioteca;
 import br.com.projetobiblioteca.model.Aluno;
 
 public class TelaAluno {
 
-    public static void TelaAluno(Aluno aluno) {
+    public static void TelaAluno(Aluno aluno) throws SQLException {
         Scanner sc = new Scanner(System.in);
         System.out.println("-----MENU ALUNO-----");
         System.out.println("1 - Meu Perfil");
@@ -16,6 +18,8 @@ public class TelaAluno {
         System.out.println("0 - Sair");
         System.out.println("Escolha uma opção: ");
         int escolha = sc.nextInt();
+    
+        
+        SistemaBiblioteca.menu();
     }
-
 }

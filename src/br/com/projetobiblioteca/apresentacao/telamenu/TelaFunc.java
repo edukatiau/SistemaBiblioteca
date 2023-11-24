@@ -3,6 +3,7 @@ package br.com.projetobiblioteca.apresentacao.telamenu;
 import java.sql.SQLException;
 import java.util.Scanner;
 
+import br.com.projetobiblioteca.apresentacao.SistemaBiblioteca;
 import br.com.projetobiblioteca.apresentacao.telacadastro.TelaCadastroObra;
 import br.com.projetobiblioteca.model.Funcionário;
 
@@ -57,6 +58,8 @@ public class TelaFunc {
                 System.out.println("Opção inválida!");
                 break;
         }
+        
+        SistemaBiblioteca.menu();
     }
 
     

@@ -1,5 +1,6 @@
 package br.com.projetobiblioteca.apresentacao.telalogin;
 
+import java.sql.SQLException;
 import java.util.Scanner;
 
 import br.com.projetobiblioteca.apresentacao.telamenu.TelaAluno;
@@ -8,7 +9,7 @@ import br.com.projetobiblioteca.persistencia.AlunoDAO;
 
 public class TelaLoginAluno {
     
-    public static void TelaLoginAluno(){
+    public static void TelaLoginAluno() throws SQLException{
         Scanner sc = new Scanner(System.in);
         
         System.out.println("-----LOGIN ALUNO-----");

@@ -3,6 +3,7 @@ package br.com.projetobiblioteca.apresentacao.telamenu;
 import java.sql.SQLException;
 import java.util.Scanner;
 
+import br.com.projetobiblioteca.apresentacao.SistemaBiblioteca;
 import br.com.projetobiblioteca.apresentacao.telacadastro.TelaCadastroAluno;
 import br.com.projetobiblioteca.apresentacao.telacadastro.TelaCadastroCampus;
 import br.com.projetobiblioteca.apresentacao.telacadastro.TelaCadastroFunc;
@@ -39,6 +40,7 @@ public class TelaAdm {
                 TelaAdm();
                 break;
         }
+        SistemaBiblioteca.menu();
     }
 
 }

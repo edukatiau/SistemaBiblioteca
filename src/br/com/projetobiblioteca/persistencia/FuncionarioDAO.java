@@ -53,7 +53,7 @@ public class FuncionarioDAO{
 		// abrir conexao com bd
 		this.conexao.abrirConexao();
 		// inserir no banco
-		String sql = "SELECT * FROM aluno WHERE id_aluno=?;";
+		String sql = "SELECT * FROM funcionario WHERE id_funcionario=?;";
 		PreparedStatement st;
 		try {
 			st = conexao.getConexao().prepareStatement(sql);
@@ -66,6 +66,9 @@ public class FuncionarioDAO{
 				f = new Funcionário();
 				f.setIdUsuario(rs.getLong("id_funcionario"));
 				f.setNome(rs.getString("nome"));
+				f.setEmail(rs.getString("email"));
+				f.setSenha(rs.getString("senha"));
+				f.setBiblioteca(new BibliotecaDAO().buscarPorId(rs.getLong("id_biblioteca")));
 			}
 
 		} catch (SQLException e) {
@@ -84,7 +87,7 @@ public class FuncionarioDAO{
 		// abrir conexao com bd
 		this.conexao.abrirConexao();
 		// inserir no banco
-		String sql = "SELECT * FROM aluno WHERE email=?;";
+		String sql = "SELECT * FROM funcionario WHERE email=?;";
 		PreparedStatement st;
 		try {
 			st = conexao.getConexao().prepareStatement(sql);
@@ -97,6 +100,9 @@ public class FuncionarioDAO{
 				f = new Funcionário();
 				f.setIdUsuario(rs.getLong("id_funcionario"));
 				f.setNome(rs.getString("nome"));
+				f.setEmail(rs.getString("email"));
+				f.setSenha(rs.getString("senha"));
+				f.setBiblioteca(new BibliotecaDAO().buscarPorId(rs.getLong("id_biblioteca")));
 			}
 
 		} catch (SQLException e) {

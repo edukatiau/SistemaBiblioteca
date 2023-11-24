@@ -16,7 +16,7 @@ public class SistemaBiblioteca {
     }
 
     public static void menu() throws SQLException{
-        System.out.println("------------");
+        System.out.println("-----SISTEMA BIBLIOTECA-----");
         System.out.println("1 - Login Administrador");
         System.out.println("2 - Login Funcionário");
         System.out.println("3 - Login Aluno");
