@@ -4,7 +4,6 @@ public class Funcionário extends Usuario{
 
     //Associação 1:1 entre Funcionário e Biblioteca
     private Biblioteca biblioteca;
-    private long idBiblioteca;
 
     public Funcionário(){
         super();
@@ -25,10 +24,6 @@ public class Funcionário extends Usuario{
 
     public void setBiblioteca(Biblioteca biblioteca) {
         this.biblioteca = biblioteca;
-    }
-
-    public void setIdBiblioteca(long idBiblioteca){
-        this.biblioteca.setId_biblioteca(idBiblioteca);
     }
 
     @Override
