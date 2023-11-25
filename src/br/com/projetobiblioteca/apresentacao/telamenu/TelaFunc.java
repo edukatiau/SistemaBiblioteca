@@ -29,39 +29,45 @@ public class TelaFunc {
         switch (escolha) {
             case 1:
                 TelaCadastroObra.TelaCadastroObra(funcionario);
+                TelaFunc(funcionario);
                 break;
             case 2:
                 //TelaEditarObra.TelaEditarObra(funcionario);
+                TelaFunc(funcionario);
                 break;
             case 3:
                 TelaListarObras.TelaListarObras(funcionario);
+                TelaFunc(funcionario);
                 break;
             case 4:
                 TelaRemoverObra.TelaRemoverObra(funcionario);
+                TelaFunc(funcionario);
                 break;
             case 5:
                 //TelaCadastroAluno.TelaCadastroAluno(funcionario);
+                TelaFunc(funcionario);
                 break;
             case 6:
                 //TelaEditarAluno.TelaEditarAluno(funcionario);
+                TelaFunc(funcionario);
                 break;
             case 7:
                 //TelaListarAlunos.TelaListarAlunos(funcionario);
+                TelaFunc(funcionario);
                 break;
             case 8:
                 //TelaRemoverAluno.TelaRemoverAluno(funcionario);
+                TelaFunc(funcionario);
                 break;
             case 0:
                 System.out.println("Saindo...");
+                System.exit(0);
                 break;
             default:
                 System.out.println("Opção inválida!");
                 break;
         }
         
-        SistemaBiblioteca.menu();
+        
     }
-
-    
-
 }

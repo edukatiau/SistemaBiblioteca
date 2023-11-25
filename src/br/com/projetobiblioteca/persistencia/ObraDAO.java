@@ -69,7 +69,7 @@ public class ObraDAO {
                 u.setTitulo(rs.getString("titulo"));
                 u.setAutor(rs.getString("autor"));
                 u.setEdicao(rs.getString("edicao"));
-                u.setAnoLancamento(rs.getString("ano_lancamento"));
+                u.setAnoLancamento(rs.getString("data_lancamento"));
                 TipoObraDAO tipoObraDAO = new TipoObraDAO();
                 u.setTipoObra(tipoObraDAO.buscarPorId(rs.getLong("id_tipoobra")));
                 BibliotecaDAO bibliotecaDAO = new BibliotecaDAO();
@@ -106,7 +106,7 @@ public class ObraDAO {
                 u.setTitulo(rs.getString("titulo"));
                 u.setAutor(rs.getString("autor"));
                 u.setEdicao(rs.getString("edicao"));
-                u.setAnoLancamento(rs.getString("ano_lancamento"));
+                u.setAnoLancamento(rs.getString("data_lancamento"));
                 TipoObraDAO tipoObraDAO = new TipoObraDAO();
                 u.setTipoObra(tipoObraDAO.buscarPorId(rs.getLong("id_tipoobra")));
                 BibliotecaDAO bibliotecaDAO = new BibliotecaDAO();

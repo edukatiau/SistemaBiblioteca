@@ -66,7 +66,7 @@ public class TelaListarObras {
         }
 
         System.out.println("-----LISTAR OBRAS-----");
-        int i = 0;
+        int i = 1;
         for(Obra obra : obrasList){
             System.out.println("Obra " + i);
             System.out.println(obra.toString());

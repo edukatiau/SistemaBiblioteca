@@ -3,6 +3,7 @@ package br.com.projetobiblioteca.apresentacao.telalogin;
 import java.sql.SQLException;
 import java.util.Scanner;
 
+import br.com.projetobiblioteca.apresentacao.SistemaBiblioteca;
 import br.com.projetobiblioteca.apresentacao.telamenu.TelaAdm;
 import br.com.projetobiblioteca.persistencia.FuncionarioDAO;
 
@@ -26,6 +27,7 @@ public class TelaLoginAdm {
         }else{
             System.out.println("Email ou senha incorretos...");
             System.out.println("---------------");
+            SistemaBiblioteca.menu();
         }
         
         //sc.close();
