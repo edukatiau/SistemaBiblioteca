@@ -6,6 +6,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import br.com.projetobiblioteca.model.Aluno;
 import br.com.projetobiblioteca.model.Emprestimo;
 
 public class EmprestimoDAO {
@@ -98,7 +99,7 @@ public class EmprestimoDAO {
                 lista.add(u);
             }
         } catch (Exception e) {
-            // TODO: handle exception
+            e.printStackTrace();
         } finally {
             conexao.fecharConexao();
         }
@@ -181,5 +182,36 @@ public class EmprestimoDAO {
         }
         
         return u;
+    }
+
+    public List<Emprestimo> buscarPorAluno(Aluno aluno) {
+        List<Emprestimo> lista = new ArrayList<>();
+        Emprestimo u = null;
+        conexao.abrirConexao();
+
+        String sql = "SELECT * FROM emprestimo WHERE id_aluno=?";
+        PreparedStatement st;
+        try {
+            st = conexao.getConexao().prepareStatement(sql);
+            st.setLong(1, aluno.getIdUsuario());
+            ResultSet rs = st.executeQuery();
+            while(rs.next()){
+                u = new Emprestimo();
+                u.setIdEmprestimo(rs.getLong("id_emprestimo"));
+                u.setDataEmprestimo(rs.getDate("data_emprestimo"));
+                u.setDataDevolucao(rs.getDate("data_devolucao"));
+                u.setDataDevolucaoEfetiva(rs.getDate("data_devolucao_efetiva"));
+                u.setStatus(rs.getString("status"));
+                u.setAluno(new AlunoDAO().buscarPorId(rs.getLong("id_aluno")));
+                u.setObras(new ObraDAO().buscarPorId(rs.getLong("id_obra")));
+                lista.add(u);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            conexao.fecharConexao();
+        }
+
+        return lista;
     }
 }

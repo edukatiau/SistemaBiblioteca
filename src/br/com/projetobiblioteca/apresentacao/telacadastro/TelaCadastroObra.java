@@ -8,7 +8,6 @@ import br.com.projetobiblioteca.model.Funcionário;
 import br.com.projetobiblioteca.model.Obra;
 import br.com.projetobiblioteca.model.Genero;
 import br.com.projetobiblioteca.persistencia.ObraDAO;
-import br.com.projetobiblioteca.persistencia.GeneroDAO;
 
 public class TelaCadastroObra {
     public static void TelaCadastroObra(Funcionário funcionario) throws SQLException{

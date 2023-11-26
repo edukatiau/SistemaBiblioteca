@@ -5,8 +5,6 @@ import java.util.List;
 import java.util.Scanner;
 
 import br.com.projetobiblioteca.model.Biblioteca;
-import br.com.projetobiblioteca.model.Campus;
-import br.com.projetobiblioteca.model.Funcionário;
 import br.com.projetobiblioteca.model.Obra;
 import br.com.projetobiblioteca.persistencia.ObraDAO;
 

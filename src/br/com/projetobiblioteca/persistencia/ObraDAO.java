@@ -232,7 +232,7 @@ public class ObraDAO {
                 listaObras.add(u);
             }
         } catch (Exception e) {
-            // TODO: handle exception
+            e.printStackTrace();
         } finally {
             conexao.fecharConexao();
         }
@@ -267,7 +267,7 @@ public class ObraDAO {
                 listaObras.add(u);
             }
         } catch (Exception e) {
-            // TODO: handle exception
+            e.printStackTrace();
         } finally {
             conexao.fecharConexao();
         }
