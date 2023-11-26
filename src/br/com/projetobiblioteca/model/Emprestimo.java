@@ -1,6 +1,7 @@
 package br.com.projetobiblioteca.model;
 
 import java.sql.Date;
+import java.util.Calendar;
 
 public class Emprestimo {
     private long idEmprestimo;
@@ -19,11 +20,16 @@ public class Emprestimo {
     }
 
     public Emprestimo(long idEmprestimo, Date dataEmprestimo, Date dataDevolucao,
-            String status, Aluno aluno, Obra obras) {
+        Aluno aluno, Obra obras) {
         this.idEmprestimo = idEmprestimo;
         this.dataEmprestimo = dataEmprestimo;
-        this.dataDevolucao = dataDevolucao;
-        this.status = status;
+
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(dataEmprestimo);
+        calendar.add(Calendar.DAY_OF_MONTH, 7);
+        this.dataDevolucao = new Date(calendar.getTimeInMillis());
+
+        this.status = "ATIVO";
         this.aluno = aluno;
         this.obras = obras;
     }

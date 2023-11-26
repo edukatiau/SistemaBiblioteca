@@ -5,6 +5,7 @@ import java.util.Scanner;
 
 import br.com.projetobiblioteca.apresentacao.telacadastro.TelaCadastroAluno;
 import br.com.projetobiblioteca.apresentacao.telacadastro.TelaCadastroObra;
+import br.com.projetobiblioteca.apresentacao.telaemprestimo.TelaEmprestimo;
 import br.com.projetobiblioteca.apresentacao.telamenu.alunos.TelaEditarAlunos;
 import br.com.projetobiblioteca.apresentacao.telamenu.alunos.TelaListarAlunos;
 import br.com.projetobiblioteca.apresentacao.telamenu.alunos.TelaRemoverAluno;
@@ -26,6 +27,7 @@ public class TelaFunc {
         System.out.println("6 - Editar Aluno");
         System.out.println("7 - Listar Alunos");
         System.out.println("8 - Remover Aluno");
+        System.out.println("9 - Empréstimos");
         
         System.out.println("0 - Sair");
         System.out.print("Escolha uma opção: ");
@@ -63,6 +65,10 @@ public class TelaFunc {
                 break;
             case 8:
                 TelaRemoverAluno.TelaRemoverAluno(funcionario);
+                TelaFunc(funcionario);
+                break;
+            case 9:
+                TelaEmprestimo.TelaEmprestimo(funcionario);
                 TelaFunc(funcionario);
                 break;
             case 0:

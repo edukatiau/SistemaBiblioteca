@@ -3,6 +3,8 @@ package br.com.projetobiblioteca.persistencia;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 import br.com.projetobiblioteca.model.Emprestimo;
 
@@ -73,6 +75,37 @@ public class EmprestimoDAO {
         return u;
     }
 
+    public List<Emprestimo> buscarTodos(){
+        List<Emprestimo> lista = new ArrayList<>();
+
+        conexao.abrirConexao();
+
+        String sql = "SELECT * FROM emprestimo";
+        PreparedStatement st;
+
+        try {
+            st = conexao.getConexao().prepareStatement(sql);
+            ResultSet rs = st.executeQuery();
+            while(rs.next()){
+                Emprestimo u = new Emprestimo();
+                u.setIdEmprestimo(rs.getLong("id_emprestimo"));
+                u.setDataEmprestimo(rs.getDate("data_emprestimo"));
+                u.setDataDevolucao(rs.getDate("data_devolucao"));
+                u.setDataDevolucaoEfetiva(rs.getDate("data_devolucao_efetiva"));
+                u.setStatus(rs.getString("status"));
+                u.setAluno(new AlunoDAO().buscarPorId(rs.getLong("id_aluno")));
+                u.setObras(new ObraDAO().buscarPorId(rs.getLong("id_obra")));
+                lista.add(u);
+            }
+        } catch (Exception e) {
+            // TODO: handle exception
+        } finally {
+            conexao.fecharConexao();
+        }
+
+        return lista;
+    }
+
     //metodo atualizar
     public Emprestimo editar(Emprestimo emprestimo){
         // abrir conexao com bd
@@ -88,6 +121,7 @@ public class EmprestimoDAO {
             st.setString(4, emprestimo.getStatus());
             st.setLong(5, emprestimo.getAluno().getIdUsuario());
             st.setLong(6, emprestimo.getObras().getIdObra());
+            st.setLong(7, emprestimo.getIdEmprestimo());
 			st.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -116,5 +150,36 @@ public class EmprestimoDAO {
             // fechar a conexao
             conexao.fecharConexao();
         }
+    }
+
+    public Emprestimo buscarPorAlunoObra(long idUsuario, long idObra) {
+        Emprestimo u = null;
+        conexao.abrirConexao();
+
+        String sql = "SELECT * FROM emprestimo WHERE id_aluno=? AND id_obra=?";
+        PreparedStatement st;
+
+        try {
+            st = conexao.getConexao().prepareStatement(sql);
+            st.setLong(1, idUsuario);
+            st.setLong(2, idObra);
+            ResultSet rs = st.executeQuery();
+            if(rs.next()){
+                u = new Emprestimo();
+                u.setIdEmprestimo(rs.getLong("id_emprestimo"));
+                u.setDataEmprestimo(rs.getDate("data_emprestimo"));
+                u.setDataDevolucao(rs.getDate("data_devolucao"));
+                u.setDataDevolucaoEfetiva(rs.getDate("data_devolucao_efetiva"));
+                u.setStatus(rs.getString("status"));
+                u.setAluno(new AlunoDAO().buscarPorId(rs.getLong("id_aluno")));
+                u.setObras(new ObraDAO().buscarPorId(rs.getLong("id_obra")));
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            conexao.fecharConexao();
+        }
+        
+        return u;
     }
 }
