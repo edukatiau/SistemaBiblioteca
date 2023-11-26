@@ -28,13 +28,15 @@ public class TelaCadastroFunc {
         String biblioName = sc.nextLine().toUpperCase();
         Biblioteca biblioteca = new Biblioteca();
         BibliotecaDAO bibliotecaDAO = new BibliotecaDAO();
+        
         for(Biblioteca b:bibliotecaDAO.buscarTodos()){
             if(b.getNome().equals(biblioName)) {
                 biblioteca = b;
-            } else{
-                System.out.println("Biblioteca não encontrado");
-                break;
             }
+        }
+        if(biblioteca.getNome().equals("")) {
+            System.out.println("Biblioteca não encontrada");
+            TelaAdm.TelaAdm();
         }
 
         //fazer verificação dos funcionarios existentes

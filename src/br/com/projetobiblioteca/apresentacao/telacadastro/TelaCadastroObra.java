@@ -29,7 +29,7 @@ public class TelaCadastroObra {
         String genero = sc.next().toUpperCase();
         sc.nextLine();
 
-        TipoObra tipoObra = cadastrarGenero(genero);
+        TipoObra tipoObra = CadastroGenero.cadastrarGenero(genero);
 
         Obra obra = new Obra(0, titulo, autor, edicao, ano, tipoObra, funcionario.getBiblioteca());
 
@@ -54,32 +54,5 @@ public class TelaCadastroObra {
         TelaFunc.TelaFunc(funcionario);
     }
 
-    public static TipoObra cadastrarGenero(String genero) throws SQLException{
-        TipoObraDAO tipoObraDAO = new TipoObraDAO();
-        TipoObra tipoObra = new TipoObra();
-
-        // Verifica se o gênero já existe no banco de dados
-        // Se não existir, cadastra o gênero
-        if(tipoObraDAO.listarTiposObras().isEmpty()){
-            tipoObra.setTIPO_OBRA(genero);
-            tipoObra = tipoObraDAO.adicionar(tipoObra);
-            System.out.println("Gênero cadastrado com sucesso!");
-        }else{ // Se existir, retorna o gênero
-            for(TipoObra tipoObraAux : tipoObraDAO.listarTiposObras()){
-                if(tipoObraAux.getTIPO_OBRA().equals(genero)){
-                    tipoObra = tipoObraAux;
-                    System.out.println("Gênero encontrado!");
-                    break;
-                }
-            }
-            // Se não encontrar, cadastra o gênero
-            if(tipoObra.getTIPO_OBRA() == null){
-                tipoObra.setTIPO_OBRA(genero);
-                tipoObra = tipoObraDAO.adicionar(tipoObra);
-                System.out.println("Gênero cadastrado com sucesso!");
-            }
-        }
-
-        return tipoObra;
-    }
+    
 }

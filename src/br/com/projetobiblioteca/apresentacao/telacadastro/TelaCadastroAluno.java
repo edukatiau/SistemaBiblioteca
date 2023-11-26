@@ -6,12 +6,13 @@ import java.util.Scanner;
 import br.com.projetobiblioteca.apresentacao.telamenu.TelaAdm;
 import br.com.projetobiblioteca.model.Aluno;
 import br.com.projetobiblioteca.model.Campus;
+import br.com.projetobiblioteca.model.Funcionário;
 import br.com.projetobiblioteca.persistencia.AlunoDAO;
 import br.com.projetobiblioteca.persistencia.CampusDAO;
 
 public class TelaCadastroAluno {
 
-    public static void TelaCadastroAluno() throws SQLException {
+    public static void TelaCadastroAluno(Funcionário funcionario) throws SQLException {
         Scanner sc = new Scanner(System.in);
         System.out.println("Insira o nome do aluno:");
         String nome = sc.nextLine();
@@ -36,10 +37,11 @@ public class TelaCadastroAluno {
         for(Campus c:campusDAO.buscarTodos()) {
             if(c.getNome().equals(campusName)) {
                 campus = c;
-            } else{
-                System.out.println("Campus não encontrado");
-                break;
             }
+        }
+        if(campus.getNome().equals("")) {
+            System.out.println("Campus não encontrado");
+            TelaAdm.TelaAdm();
         }
 
         // fazer verificação dos alunos existentes

@@ -3,8 +3,14 @@ package br.com.projetobiblioteca.apresentacao.telamenu;
 import java.sql.SQLException;
 import java.util.Scanner;
 
-import br.com.projetobiblioteca.apresentacao.SistemaBiblioteca;
+import br.com.projetobiblioteca.apresentacao.telacadastro.TelaCadastroAluno;
 import br.com.projetobiblioteca.apresentacao.telacadastro.TelaCadastroObra;
+import br.com.projetobiblioteca.apresentacao.telamenu.alunos.TelaEditarAlunos;
+import br.com.projetobiblioteca.apresentacao.telamenu.alunos.TelaListarAlunos;
+import br.com.projetobiblioteca.apresentacao.telamenu.alunos.TelaRemoverAluno;
+import br.com.projetobiblioteca.apresentacao.telamenu.obras.TelaEditarObra;
+import br.com.projetobiblioteca.apresentacao.telamenu.obras.TelaListarObras;
+import br.com.projetobiblioteca.apresentacao.telamenu.obras.TelaRemoverObra;
 import br.com.projetobiblioteca.model.Funcionário;
 
 public class TelaFunc {
@@ -32,7 +38,7 @@ public class TelaFunc {
                 TelaFunc(funcionario);
                 break;
             case 2:
-                //TelaEditarObra.TelaEditarObra(funcionario);
+                TelaEditarObra.TelaEditarObra(funcionario);
                 TelaFunc(funcionario);
                 break;
             case 3:
@@ -44,19 +50,19 @@ public class TelaFunc {
                 TelaFunc(funcionario);
                 break;
             case 5:
-                //TelaCadastroAluno.TelaCadastroAluno(funcionario);
+                TelaCadastroAluno.TelaCadastroAluno(funcionario);
                 TelaFunc(funcionario);
                 break;
             case 6:
-                //TelaEditarAluno.TelaEditarAluno(funcionario);
+                TelaEditarAlunos.TelaEditarAlunos(funcionario);
                 TelaFunc(funcionario);
                 break;
             case 7:
-                //TelaListarAlunos.TelaListarAlunos(funcionario);
+                TelaListarAlunos.TelaListarAlunos(funcionario);
                 TelaFunc(funcionario);
                 break;
             case 8:
-                //TelaRemoverAluno.TelaRemoverAluno(funcionario);
+                TelaRemoverAluno.TelaRemoverAluno(funcionario);
                 TelaFunc(funcionario);
                 break;
             case 0:

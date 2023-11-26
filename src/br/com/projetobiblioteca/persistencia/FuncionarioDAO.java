@@ -123,7 +123,7 @@ public class FuncionarioDAO{
 		// abrir conexao com bd
 		this.conexao.abrirConexao();
 		// inserir no banco
-		String sql = "SELECT * FROM aluno;";
+		String sql = "SELECT * FROM funcionario;";
 		PreparedStatement st;
 		try {
 			st = conexao.getConexao().prepareStatement(sql);

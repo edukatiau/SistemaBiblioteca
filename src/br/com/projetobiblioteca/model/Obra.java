@@ -10,7 +10,7 @@ public class Obra {
     private String anoLancamento;
 
     //Associação 1:N entre Obras e TipoObra
-    private TipoObra tipoObra;
+    private TipoObra genero;
     //Associação 1:N entre Obras e Biblioteca
     private Biblioteca biblioteca;
     //Associação 1:N entre Obras e Emprestimo
@@ -26,7 +26,7 @@ public class Obra {
         this.autor = autor;
         this.edicao = edicao;
         this.anoLancamento = anoLancamento;
-        this.tipoObra = tipoObra;
+        this.genero = tipoObra;
         this.biblioteca = biblioteca;
     }
 
@@ -70,12 +70,12 @@ public class Obra {
         this.anoLancamento = anoLancamento;
     }
 
-    public TipoObra getTipoObra() {
-        return tipoObra;
+    public TipoObra getGenero() {
+        return genero;
     }
 
-    public void setTipoObra(TipoObra tipoObra) {
-        this.tipoObra = tipoObra;
+    public void setGenero(TipoObra genero) {
+        this.genero = genero;
     }
 
     public Biblioteca getBiblioteca() {
@@ -97,7 +97,7 @@ public class Obra {
     @Override
     public String toString() {
         return "Obra [idLivro=" + idObra + ", titulo=" + titulo + ", autor=" + autor + ", edicao=" + edicao
-                + ", anoLancamento=" + anoLancamento + ", tipoObra=" + tipoObra.getTIPO_OBRA() + ", biblioteca=" + biblioteca.getNome()
+                + ", anoLancamento=" + anoLancamento + ", tipoObra=" + genero.getTIPO_OBRA() + ", biblioteca=" + biblioteca.getNome()
                 + "]";
     }
 }

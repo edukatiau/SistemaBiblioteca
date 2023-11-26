@@ -15,6 +15,8 @@ public class Biblioteca {
 
     public Biblioteca(){
         super();
+        id_biblioteca = 0;
+        nome = "";
     }
 
     public Biblioteca(long id_biblioteca, String nome) {

@@ -22,7 +22,7 @@ public class TipoObraDAO {
         conexao.abrirConexao();
 
         //inserir no bd
-        String sql = "INSERT INTO tipoobra VALUES (null, ?)";
+        String sql = "INSERT INTO genero VALUES (null, ?)";
         PreparedStatement st;
         try {
             st = conexao.getConexao().prepareStatement(sql, PreparedStatement.RETURN_GENERATED_KEYS);
@@ -49,7 +49,7 @@ public class TipoObraDAO {
 		// abrir conexao com bd
 		this.conexao.abrirConexao();
 		// inserir no banco
-		String sql = "SELECT * FROM tipoobra WHERE nome=?;";
+		String sql = "SELECT * FROM genero WHERE nome=?;";
 		PreparedStatement st;
 		try {
 			st = conexao.getConexao().prepareStatement(sql);
@@ -60,7 +60,7 @@ public class TipoObraDAO {
 			if (rs.next()) {
 				// converter a linha em um usuario
 				u = new TipoObra();
-				u.setId_tipoobra(rs.getLong("id_tipoobra"));
+				u.setId_tipoobra(rs.getLong("id_genero"));
 				u.setTIPO_OBRA(rs.getString("nome"));
 			}
 
@@ -79,7 +79,7 @@ public class TipoObraDAO {
         // abrir conexao com bd
         this.conexao.abrirConexao();
         // inserir no banco
-        String sql = "SELECT * FROM tipoobra WHERE id_tipoobra=?;";
+        String sql = "SELECT * FROM genero WHERE id_genero=?;";
         PreparedStatement st;
         try {
             st = conexao.getConexao().prepareStatement(sql);
@@ -87,7 +87,7 @@ public class TipoObraDAO {
             ResultSet rs = st.executeQuery();
             if(rs.next()) {
                 b = new TipoObra();
-                b.setId_tipoobra(rs.getLong("id_tipoobra"));
+                b.setId_tipoobra(rs.getLong("id_genero"));
                 b.setTIPO_OBRA(rs.getString("nome"));
             }
         } catch (SQLException e) {
@@ -106,14 +106,14 @@ public class TipoObraDAO {
         // abrir conexao com bd
         this.conexao.abrirConexao();
         // inserir no banco
-        String sql = "SELECT * FROM tipoobra;";
+        String sql = "SELECT * FROM genero;";
         PreparedStatement st;
         try {
             st = conexao.getConexao().prepareStatement(sql);
             ResultSet rs = st.executeQuery();
             while(rs.next()) {
                 c = new TipoObra();
-                c.setId_tipoobra(rs.getLong("id_tipoobra"));
+                c.setId_tipoobra(rs.getLong("id_genero"));
                 c.setTIPO_OBRA(rs.getString("nome"));
                 listaTipoObra.add(c);
             }
@@ -131,7 +131,7 @@ public class TipoObraDAO {
         this.conexao.abrirConexao();
 
         //atualizar no bd
-        String sql = "UPDATE tipoobra SET nome=? WHERE id_tipoobra=?";
+        String sql = "UPDATE genero SET nome=? WHERE id_genero=?";
         PreparedStatement st;
         try {
             st = conexao.getConexao().prepareStatement(sql);
@@ -158,7 +158,7 @@ public class TipoObraDAO {
         //abrir conexao
         conexao.abrirConexao();
         //inserir no bd
-        String sql = "DELETE FROM tipoobra WHERE id_tipoobra=?";
+        String sql = "DELETE FROM genero WHERE id_genero=?";
         PreparedStatement st;
         try {
             st = conexao.getConexao().prepareStatement(sql);

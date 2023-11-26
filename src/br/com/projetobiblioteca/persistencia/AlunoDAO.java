@@ -226,4 +226,72 @@ public class AlunoDAO {
 		}
 		return false;
 	}
+
+    public List<Aluno> buscarPorNome(String nomeAluno) {
+        List<Aluno> listaAlunos = new ArrayList<>();
+		Aluno u = null;
+
+		// abrir conexao com bd
+		conexao.abrirConexao();
+	
+		// buscar no banco
+		String sql = "SELECT * FROM aluno WHERE nome LIKE ?;";
+		PreparedStatement st;
+
+		try {
+			st = conexao.getConexao().prepareStatement(sql);
+			st.setString(1, "%" + nomeAluno + "%"); //assim busca por qualquer aluno que tenha o nome do parametro //se quiser só os nomes que comecem, tirar o primeiro %
+			ResultSet rs = st.executeQuery();
+			// converter a linha inteira do rs em um usuario
+			// o rs é tudo que veio da busca no banco
+			while (rs.next()) {
+				// converter a linha em um usuario
+				u = new Aluno();
+				u.setIdUsuario(rs.getLong("id_aluno"));
+				u.setNome(rs.getString("nome"));
+				u.setEmail(rs.getString("email"));
+				u.setSenha(rs.getString("senha"));
+				listaAlunos.add(u);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			// fechar a conexao
+			conexao.fecharConexao();
+		}
+		
+		return listaAlunos;
+    }
+
+    public Aluno buscarPorMatricula(String matriculaAluno) {
+        Aluno u = null;
+		// abrir conexao com bd
+		conexao.abrirConexao();
+		// busca no banco
+		String sql = "SELECT * FROM aluno WHERE matricula=?;";
+		PreparedStatement st;
+		try {
+			st = conexao.getConexao().prepareStatement(sql);
+			st.setString(1, matriculaAluno);
+			ResultSet rs = st.executeQuery();
+			// converter a linha inteira do rs em um usuario
+			// o rs é tudo que veio da busca no banco
+			if (rs.next()) {
+				// converter a linha em um usuario
+				u = new Aluno();
+				u.setIdUsuario(rs.getLong("id_aluno"));
+				u.setNome(rs.getString("nome"));
+				u.setEmail(rs.getString("email"));
+				u.setSenha(rs.getString("senha"));
+			}
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			// fechar a conexao
+			conexao.fecharConexao();
+		}
+		
+		return u;
+    }
 }
