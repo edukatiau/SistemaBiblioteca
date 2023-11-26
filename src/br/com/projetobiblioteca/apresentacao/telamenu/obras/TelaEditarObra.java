@@ -6,7 +6,7 @@ import java.util.Scanner;
 import br.com.projetobiblioteca.apresentacao.telacadastro.CadastroGenero;
 import br.com.projetobiblioteca.model.Funcionário;
 import br.com.projetobiblioteca.model.Obra;
-import br.com.projetobiblioteca.model.TipoObra;
+import br.com.projetobiblioteca.model.Genero;
 import br.com.projetobiblioteca.persistencia.ObraDAO;
 
 public class TelaEditarObra {
@@ -70,8 +70,8 @@ public class TelaEditarObra {
         String genero = sc.next().toUpperCase();
         sc.nextLine();
 
-        TipoObra tipoObra = CadastroGenero.cadastrarGenero(genero);
-        obra.setGenero(tipoObra);
+        Genero Genero = CadastroGenero.cadastrarGenero(genero);
+        obra.setGenero(Genero);
 
         ObraDAO obraDAO = new ObraDAO();
         obraDAO.editar(obra);

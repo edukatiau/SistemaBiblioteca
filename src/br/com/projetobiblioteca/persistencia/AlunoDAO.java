@@ -181,6 +181,9 @@ public class AlunoDAO {
 				u.setNome(rs.getString("nome"));
 				u.setEmail(rs.getString("email"));
 				u.setSenha(rs.getString("senha"));
+				u.setCampus(new CampusDAO().buscarPorId(rs.getLong("id_campus")));
+				u.setCurso(rs.getString("curso"));
+				u.setMatricula(rs.getString("matricula"));
 			}
 
 		} catch (SQLException e) {

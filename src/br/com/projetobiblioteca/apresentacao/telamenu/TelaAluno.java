@@ -4,6 +4,8 @@ import java.sql.SQLException;
 import java.util.Scanner;
 
 import br.com.projetobiblioteca.apresentacao.SistemaBiblioteca;
+import br.com.projetobiblioteca.apresentacao.telamenu.alunos.TelaAlunoPerfil;
+import br.com.projetobiblioteca.apresentacao.telamenu.obras.TelaListarObras;
 import br.com.projetobiblioteca.model.Aluno;
 
 public class TelaAluno {
@@ -19,7 +21,43 @@ public class TelaAluno {
         System.out.println("Escolha uma opção: ");
         int escolha = sc.nextInt();
     
+        switch (escolha) {
+            case 1:
+                TelaAlunoPerfil.meuPerfil(aluno);
+                break;
+            case 2:
+                TelaListarObras.TelaListarObras(aluno.getCampus().getBiblioteca());
+                break;
+            case 3:
+                listarMeusEmprestimos();
+                break;
+            case 4:
+                listarMeusAtrasos();
+                break;
+            case 0:
+                System.out.println("Saindo...");
+                break;
+            default:
+                System.out.println("Opção inválida!");
+                break;
+        }
         
         SistemaBiblioteca.menu();
+    }
+    
+    private static void meuPerfil() {
+        // TODO: Implementar lógica para exibir o perfil do aluno
+    }
+    
+    private static void listarObrasDisponiveis() {
+        // TODO: Implementar lógica para listar as obras disponíveis
+    }
+    
+    private static void listarMeusEmprestimos() {
+        // TODO: Implementar lógica para listar os empréstimos do aluno
+    }
+    
+    private static void listarMeusAtrasos() {
+        // TODO: Implementar lógica para listar os atrasos do aluno
     }
 }

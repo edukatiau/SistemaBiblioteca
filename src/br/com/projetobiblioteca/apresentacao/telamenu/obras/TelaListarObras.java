@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
+import br.com.projetobiblioteca.model.Biblioteca;
+import br.com.projetobiblioteca.model.Campus;
 import br.com.projetobiblioteca.model.Funcionário;
 import br.com.projetobiblioteca.model.Obra;
 import br.com.projetobiblioteca.persistencia.ObraDAO;
@@ -11,7 +13,7 @@ import br.com.projetobiblioteca.persistencia.ObraDAO;
 public class TelaListarObras {
     static Scanner sc = new Scanner(System.in);
 
-    public static void TelaListarObras(Funcionário funcionario) {
+    public static void TelaListarObras(Biblioteca biblioteca) {
         System.out.println("-----LISTAR OBRAS-----");
         System.out.println("1 - Listar todas as obras");
         System.out.println("2 - Listar obras por gênero");

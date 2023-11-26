@@ -44,7 +44,7 @@ public class TelaFunc {
                 TelaFunc(funcionario);
                 break;
             case 3:
-                TelaListarObras.TelaListarObras(funcionario);
+                TelaListarObras.TelaListarObras(funcionario.getBiblioteca());
                 TelaFunc(funcionario);
                 break;
             case 4:

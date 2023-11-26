@@ -6,18 +6,18 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import br.com.projetobiblioteca.model.TipoObra;
+import br.com.projetobiblioteca.model.Genero;
 
-public class TipoObraDAO {
+public class GeneroDAO {
     
     private ConexaoMySQL conexao;
 
-    public TipoObraDAO(){
+    public GeneroDAO(){
         this.conexao = new ConexaoMySQL(BdConfigs.IP, BdConfigs.PORTA, BdConfigs.USER, BdConfigs.PASSWORD, BdConfigs.BD_NAME);
     }
 
     //metodo adicionar
-    public TipoObra adicionar(TipoObra tipoobra) throws SQLException{
+    public Genero adicionar(Genero Genero) throws SQLException{
         //abrir conexao
         conexao.abrirConexao();
 
@@ -26,12 +26,12 @@ public class TipoObraDAO {
         PreparedStatement st;
         try {
             st = conexao.getConexao().prepareStatement(sql, PreparedStatement.RETURN_GENERATED_KEYS);
-            st.setString(1, tipoobra.getTIPO_OBRA());
+            st.setString(1, Genero.getGenero());
             int linhasAfetadas = st.executeUpdate();
             if(linhasAfetadas>0) {
                 ResultSet rs = st.getGeneratedKeys();
                 if(rs.next()) {
-                    tipoobra.setId_tipoobra(rs.getLong(1));
+                    Genero.setId_Genero(rs.getLong(1));
                 }			
             }
         } catch (SQLException e) {
@@ -40,12 +40,12 @@ public class TipoObraDAO {
             // fechar a conexao
             conexao.fecharConexao();
         }
-        return tipoobra;
+        return Genero;
     }
 
     //buscarporNome
-    public TipoObra buscarPorNome(String nomeTipoObra) {
-		TipoObra u = null;
+    public Genero buscarPorNome(String nomeGenero) {
+		Genero u = null;
 		// abrir conexao com bd
 		this.conexao.abrirConexao();
 		// inserir no banco
@@ -53,15 +53,15 @@ public class TipoObraDAO {
 		PreparedStatement st;
 		try {
 			st = conexao.getConexao().prepareStatement(sql);
-			st.setString(1, nomeTipoObra);
+			st.setString(1, nomeGenero);
 			ResultSet rs = st.executeQuery();
 			// converter a linha inteira do rs em um usuario
 			// o rs é tudo que veio da busca no banco
 			if (rs.next()) {
 				// converter a linha em um usuario
-				u = new TipoObra();
-				u.setId_tipoobra(rs.getLong("id_genero"));
-				u.setTIPO_OBRA(rs.getString("nome"));
+				u = new Genero();
+				u.setId_Genero(rs.getLong("id_genero"));
+				u.setGenero(rs.getString("nome"));
 			}
 
 		} catch (SQLException e) {
@@ -74,8 +74,8 @@ public class TipoObraDAO {
 	}
 
     // buscarPorId
-    public TipoObra buscarPorId(long id) {
-        TipoObra b = null;
+    public Genero buscarPorId(long id) {
+        Genero b = null;
         // abrir conexao com bd
         this.conexao.abrirConexao();
         // inserir no banco
@@ -86,9 +86,9 @@ public class TipoObraDAO {
             st.setLong(1, id);
             ResultSet rs = st.executeQuery();
             if(rs.next()) {
-                b = new TipoObra();
-                b.setId_tipoobra(rs.getLong("id_genero"));
-                b.setTIPO_OBRA(rs.getString("nome"));
+                b = new Genero();
+                b.setId_Genero(rs.getLong("id_genero"));
+                b.setGenero(rs.getString("nome"));
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -100,9 +100,9 @@ public class TipoObraDAO {
     }
 
     //metodo buscarTodos
-    public List<TipoObra> listarTiposObras(){
-        List<TipoObra> listaTipoObra = new ArrayList<>();
-        TipoObra c = null;
+    public List<Genero> listarTiposObras(){
+        List<Genero> listaGenero = new ArrayList<>();
+        Genero c = null;
         // abrir conexao com bd
         this.conexao.abrirConexao();
         // inserir no banco
@@ -112,10 +112,10 @@ public class TipoObraDAO {
             st = conexao.getConexao().prepareStatement(sql);
             ResultSet rs = st.executeQuery();
             while(rs.next()) {
-                c = new TipoObra();
-                c.setId_tipoobra(rs.getLong("id_genero"));
-                c.setTIPO_OBRA(rs.getString("nome"));
-                listaTipoObra.add(c);
+                c = new Genero();
+                c.setId_Genero(rs.getLong("id_genero"));
+                c.setGenero(rs.getString("nome"));
+                listaGenero.add(c);
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -123,11 +123,11 @@ public class TipoObraDAO {
             // fechar a conexao
             conexao.fecharConexao();
         }
-        return listaTipoObra;
+        return listaGenero;
     }
 
     //metodo atualizar
-    public TipoObra editar(TipoObra tipoobra){
+    public Genero editar(Genero Genero){
         this.conexao.abrirConexao();
 
         //atualizar no bd
@@ -135,13 +135,13 @@ public class TipoObraDAO {
         PreparedStatement st;
         try {
             st = conexao.getConexao().prepareStatement(sql);
-            st.setString(1, tipoobra.getTIPO_OBRA());
-            st.setLong(2, tipoobra.getId_tipoobra());
+            st.setString(1, Genero.getGenero());
+            st.setLong(2, Genero.getId_Genero());
             int linhasAfetadas = st.executeUpdate();
             if(linhasAfetadas>0) {
                 ResultSet rs = st.getGeneratedKeys();
                 if(rs.next()) {
-                    tipoobra.setId_tipoobra(rs.getLong(1));
+                    Genero.setId_Genero(rs.getLong(1));
                 }			
             }
         } catch (SQLException e) {
@@ -150,11 +150,11 @@ public class TipoObraDAO {
             // fechar a conexao
             conexao.fecharConexao();
         }
-        return tipoobra;
+        return Genero;
     }
 
     //metodo deletar
-    public void deletar(TipoObra tipoObra){
+    public void deletar(Genero Genero){
         //abrir conexao
         conexao.abrirConexao();
         //inserir no bd
@@ -162,7 +162,7 @@ public class TipoObraDAO {
         PreparedStatement st;
         try {
             st = conexao.getConexao().prepareStatement(sql);
-            st.setLong(1, tipoObra.getId_tipoobra());
+            st.setLong(1, Genero.getId_Genero());
             st.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();

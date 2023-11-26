@@ -6,9 +6,9 @@ import java.util.Scanner;
 import br.com.projetobiblioteca.apresentacao.telamenu.TelaFunc;
 import br.com.projetobiblioteca.model.Funcionário;
 import br.com.projetobiblioteca.model.Obra;
-import br.com.projetobiblioteca.model.TipoObra;
+import br.com.projetobiblioteca.model.Genero;
 import br.com.projetobiblioteca.persistencia.ObraDAO;
-import br.com.projetobiblioteca.persistencia.TipoObraDAO;
+import br.com.projetobiblioteca.persistencia.GeneroDAO;
 
 public class TelaCadastroObra {
     public static void TelaCadastroObra(Funcionário funcionario) throws SQLException{
@@ -29,9 +29,9 @@ public class TelaCadastroObra {
         String genero = sc.next().toUpperCase();
         sc.nextLine();
 
-        TipoObra tipoObra = CadastroGenero.cadastrarGenero(genero);
+        Genero Genero = CadastroGenero.cadastrarGenero(genero);
 
-        Obra obra = new Obra(0, titulo, autor, edicao, ano, tipoObra, funcionario.getBiblioteca());
+        Obra obra = new Obra(0, titulo, autor, edicao, ano, Genero, funcionario.getBiblioteca());
 
         System.out.println(obra.toString());
         System.out.println("Confirma o cadastro? (S/N)");

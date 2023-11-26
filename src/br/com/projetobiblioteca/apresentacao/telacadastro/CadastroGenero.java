@@ -2,40 +2,39 @@ package br.com.projetobiblioteca.apresentacao.telacadastro;
 
 import java.sql.SQLException;
 
-import br.com.projetobiblioteca.model.TipoObra;
-import br.com.projetobiblioteca.persistencia.TipoObraDAO;
+import br.com.projetobiblioteca.model.Genero;
+import br.com.projetobiblioteca.persistencia.GeneroDAO;
 
 public class CadastroGenero {
     public static void CadastroGenero() {
-        throw new UnsupportedOperationException("Not supported yet.");
     }
 
-    public static TipoObra cadastrarGenero(String genero) throws SQLException{
-        TipoObraDAO tipoObraDAO = new TipoObraDAO();
-        TipoObra tipoObra = new TipoObra();
+    public static Genero cadastrarGenero(String genero) throws SQLException{
+        GeneroDAO GeneroDAO = new GeneroDAO();
+        Genero Genero = new Genero();
 
         // Verifica se o gênero já existe no banco de dados
         // Se não existir, cadastra o gênero
-        if(tipoObraDAO.listarTiposObras().isEmpty()){
-            tipoObra.setTIPO_OBRA(genero);
-            tipoObra = tipoObraDAO.adicionar(tipoObra);
+        if(GeneroDAO.listarTiposObras().isEmpty()){
+            Genero.setGenero(genero);
+            Genero = GeneroDAO.adicionar(Genero);
             System.out.println("Gênero cadastrado com sucesso!");
         }else{ // Se existir, retorna o gênero
-            for(TipoObra tipoObraAux : tipoObraDAO.listarTiposObras()){
-                if(tipoObraAux.getTIPO_OBRA().equals(genero)){
-                    tipoObra = tipoObraAux;
+            for(Genero GeneroAux : GeneroDAO.listarTiposObras()){
+                if(GeneroAux.getGenero().equals(genero)){
+                    Genero = GeneroAux;
                     System.out.println("Gênero encontrado!");
                     break;
                 }
             }
             // Se não encontrar, cadastra o gênero
-            if(tipoObra.getTIPO_OBRA() == null){
-                tipoObra.setTIPO_OBRA(genero);
-                tipoObra = tipoObraDAO.adicionar(tipoObra);
+            if(Genero.getGenero() == null){
+                Genero.setGenero(genero);
+                Genero = GeneroDAO.adicionar(Genero);
                 System.out.println("Gênero cadastrado com sucesso!");
             }
         }
 
-        return tipoObra;
+        return Genero;
     }
 }
