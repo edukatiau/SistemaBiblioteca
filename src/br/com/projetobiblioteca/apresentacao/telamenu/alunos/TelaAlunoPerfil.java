@@ -47,7 +47,7 @@ public class TelaAlunoPerfil {
                 break;
             case 0:
                 // Voltar
-                TelaAluno.TelaAluno(aluno);
+                TelaAluno.menuAluno(aluno);
                 break;
             default:
                 System.out.println("Opção inválida!");

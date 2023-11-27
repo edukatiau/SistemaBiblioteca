@@ -8,7 +8,10 @@ import br.com.projetobiblioteca.persistencia.ObraDAO;
 
 public class TelaRemoverObra {
 
-    public static void TelaRemoverObra(Funcionário funcionario) {
+    public TelaRemoverObra() {
+    }
+
+    public static void removerObra(Funcionário funcionario) {
         Scanner sc = new Scanner(System.in);
         System.out.println("-----REMOVER OBRA-----");
         System.out.println("Id da obra: ");

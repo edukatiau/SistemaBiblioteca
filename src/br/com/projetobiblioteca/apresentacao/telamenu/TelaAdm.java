@@ -9,7 +9,10 @@ import br.com.projetobiblioteca.apresentacao.telacadastro.TelaCadastroFunc;
 
 public class TelaAdm {
 
-    public static void TelaAdm() throws SQLException {
+    public TelaAdm() {
+    }
+
+    public static void menuAdm() throws SQLException {
         Scanner sc = new Scanner(System.in);
         System.out.println("-----MENU ADM-----");
         System.out.println("1 - Cadastrar Funcionário");
@@ -22,17 +25,17 @@ public class TelaAdm {
 
         switch (escolha) {
             case 1:
-                TelaCadastroFunc.TelaCadastroFunc();
+                TelaCadastroFunc.cadastrarFuncionario();
                 break;
             case 3:
-                TelaCadastroCampus.TelaCadastroCampus();
+                TelaCadastroCampus.cadastrarCampus();
                 break;
             case 0:
                 System.out.println("Saindo...");
                 break;
             default:
                 System.out.println("Opção inválida...");
-                TelaAdm();
+                menuAdm();
                 break;
         }
         SistemaBiblioteca.menu();

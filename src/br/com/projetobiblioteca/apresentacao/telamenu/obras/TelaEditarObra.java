@@ -12,7 +12,10 @@ import br.com.projetobiblioteca.persistencia.ObraDAO;
 public class TelaEditarObra {
     static Scanner sc = new Scanner(System.in);
 
-    public static void TelaEditarObra(Funcionário funcionario) throws SQLException {
+    public TelaEditarObra() {
+    }
+
+    public static void editarObra(Funcionário funcionario) throws SQLException {
 
         System.out.println("-----EDITAR OBRA-----");
         System.out.println("Id da obra: ");

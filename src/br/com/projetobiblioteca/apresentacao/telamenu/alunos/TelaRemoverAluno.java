@@ -8,7 +8,10 @@ import br.com.projetobiblioteca.persistencia.AlunoDAO;
 
 public class TelaRemoverAluno {
 
-    public static void TelaRemoverAluno(Funcionário funcionario) {
+    public TelaRemoverAluno() {
+    }
+
+    public static void removerAluno(Funcionário funcionario) {
         Scanner sc = new Scanner(System.in);
         System.err.println("------REMOVER ALUNO-----");
         System.out.println("Matricula do aluno: ");

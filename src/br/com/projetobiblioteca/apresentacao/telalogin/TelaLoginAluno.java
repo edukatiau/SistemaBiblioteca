@@ -10,7 +10,10 @@ import br.com.projetobiblioteca.persistencia.AlunoDAO;
 
 public class TelaLoginAluno {
     
-    public static void TelaLoginAluno() throws SQLException{
+    public TelaLoginAluno() {
+    }
+
+    public static void loginAluno() throws SQLException{
         Scanner sc = new Scanner(System.in);
         
         System.out.println("-----LOGIN ALUNO-----");
@@ -24,7 +27,7 @@ public class TelaLoginAluno {
             System.out.println("Login efetuado com sucesso!");
             Aluno aluno = new Aluno();
             aluno = alunoDAO.buscarPorEmail(email);
-            TelaAluno.TelaAluno(aluno);
+            TelaAluno.menuAluno(aluno);
         }
         else{
             System.out.println("Email ou senha incorretos!");

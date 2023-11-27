@@ -18,7 +18,10 @@ import java.util.List;
 public class TelaEmprestimo {
     static Scanner sc = new Scanner(System.in);
 
-    public static void TelaEmprestimo(Funcionário funcionario) {
+    public TelaEmprestimo() {
+    }
+
+    public static void telaEmprestimo(Funcionário funcionario) {
 
         System.out.println("-----EMPRÉSTIMOS-----");
         System.out.println("1 - Emprestar Obra");
@@ -65,7 +68,7 @@ public class TelaEmprestimo {
         
         if (aluno == null || aluno.getNome().equals("")) {
             System.out.println("Aluno não encontrado");
-            TelaEmprestimo.TelaEmprestimo(funcionario);
+            TelaEmprestimo.telaEmprestimo(funcionario);
         }
 
         System.err.println(aluno.toString());
@@ -74,7 +77,7 @@ public class TelaEmprestimo {
         sc.nextLine();
         if(confirmacao.equals("N")){
             System.out.println("Cancelado");
-            TelaEmprestimo.TelaEmprestimo(funcionario);
+            TelaEmprestimo.telaEmprestimo(funcionario);
         }
         
         System.out.println("Insira o id da obra:");
@@ -87,7 +90,7 @@ public class TelaEmprestimo {
 
         if (obra == null || obra.getTitulo().equals("")) {
             System.out.println("Obra não encontrada");
-            TelaEmprestimo.TelaEmprestimo(funcionario);
+            TelaEmprestimo.telaEmprestimo(funcionario);
         }
 
         System.err.println(obra.toString());
@@ -96,7 +99,7 @@ public class TelaEmprestimo {
         sc.nextLine();
         if(confirmacao.equals("N")){
             System.out.println("Cancelado");
-            TelaEmprestimo.TelaEmprestimo(funcionario);
+            TelaEmprestimo.telaEmprestimo(funcionario);
         }
 
         Calendar calender1 = Calendar.getInstance();
@@ -111,7 +114,7 @@ public class TelaEmprestimo {
         System.out.println("Obra emprestada com sucesso");
             // Use the 'emprestimo' object as needed
 
-        TelaEmprestimo.TelaEmprestimo(funcionario);
+        TelaEmprestimo.telaEmprestimo(funcionario);
     }
     
     private static void devolverObra(Funcionário funcionario) {
@@ -126,7 +129,7 @@ public class TelaEmprestimo {
 
         if (aluno == null || aluno.getNome().equals("")) {
             System.out.println("Aluno não encontrado");
-            TelaEmprestimo.TelaEmprestimo(funcionario);
+            TelaEmprestimo.telaEmprestimo(funcionario);
         }
 
         System.out.println(aluno.toString());
@@ -136,7 +139,7 @@ public class TelaEmprestimo {
 
         if (confirmacao.equals("N")) {
             System.out.println("Cancelado");
-            TelaEmprestimo.TelaEmprestimo(funcionario);
+            TelaEmprestimo.telaEmprestimo(funcionario);
         }
 
         System.out.println("Insira o id da obra:");
@@ -149,7 +152,7 @@ public class TelaEmprestimo {
 
         if (obra == null || obra.getTitulo().equals("")) {
             System.out.println("Obra não encontrada");
-            TelaEmprestimo.TelaEmprestimo(funcionario);
+            TelaEmprestimo.telaEmprestimo(funcionario);
         }
 
         System.out.println(obra.toString());
@@ -159,7 +162,7 @@ public class TelaEmprestimo {
 
         if (confirmacao.equals("N")) {
             System.out.println("Cancelado");
-            TelaEmprestimo.TelaEmprestimo(funcionario);
+            TelaEmprestimo.telaEmprestimo(funcionario);
         }
 
         Emprestimo emprestimo = new Emprestimo();
@@ -168,7 +171,7 @@ public class TelaEmprestimo {
 
         if (emprestimo == null || emprestimo.getAluno().getNome().equals("")) {
             System.out.println("Empréstimo não encontrado");
-            TelaEmprestimo.TelaEmprestimo(funcionario);
+            TelaEmprestimo.telaEmprestimo(funcionario);
         }
 
         System.out.println(emprestimo.toString());
@@ -178,7 +181,7 @@ public class TelaEmprestimo {
 
         if (confirmacao.equals("N")) {
             System.out.println("Cancelado");
-            TelaEmprestimo.TelaEmprestimo(funcionario);
+            TelaEmprestimo.telaEmprestimo(funcionario);
         }
 
         Calendar calender1 = Calendar.getInstance();
@@ -206,7 +209,7 @@ public class TelaEmprestimo {
             i++;
         }
 
-        TelaEmprestimo(funcionario);
+        telaEmprestimo(funcionario);
 
     }
 
@@ -228,7 +231,7 @@ public class TelaEmprestimo {
             }
         }
 
-        TelaEmprestimo(funcionario);
+        telaEmprestimo(funcionario);
     }
 
     private static void atualizarEmprestimosAtrasados(){

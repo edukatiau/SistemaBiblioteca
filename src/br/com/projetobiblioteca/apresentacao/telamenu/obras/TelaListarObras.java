@@ -11,7 +11,10 @@ import br.com.projetobiblioteca.persistencia.ObraDAO;
 public class TelaListarObras {
     static Scanner sc = new Scanner(System.in);
 
-    public static void TelaListarObras(Biblioteca biblioteca) {
+    public TelaListarObras() {
+    }
+
+    public static void listarObras(Biblioteca biblioteca) {
         System.out.println("-----LISTAR OBRAS-----");
         System.out.println("1 - Listar todas as obras");
         System.out.println("2 - Listar obras por gênero");

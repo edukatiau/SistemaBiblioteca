@@ -11,7 +11,10 @@ import br.com.projetobiblioteca.persistencia.CampusDAO;
 
 public class TelaCadastroCampus {
 
-    public static void TelaCadastroCampus() throws SQLException {
+    public TelaCadastroCampus() {  
+    }
+
+    public static void cadastrarCampus() throws SQLException {
         Scanner sc = new Scanner(System.in);
         
         System.out.println("Insira o nome do campus:");
@@ -51,6 +54,6 @@ public class TelaCadastroCampus {
                 }
             }
         }
-    TelaAdm.TelaAdm();
+    TelaAdm.menuAdm();
     }
 }

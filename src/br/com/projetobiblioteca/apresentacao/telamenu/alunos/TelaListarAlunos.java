@@ -11,7 +11,10 @@ import br.com.projetobiblioteca.persistencia.AlunoDAO;
 public class TelaListarAlunos {
     static Scanner sc = new Scanner(System.in);
     
-    public static void TelaListarAlunos(Funcionário funcionario){
+    public TelaListarAlunos() {
+    }
+
+    public static void listarAlunos(Funcionário funcionario){
         System.out.println("-----LISTAR ALUNOS-----");
         System.out.println("1 - Listar todos os alunos");
         System.out.println("2 - Listar alunos por nome");

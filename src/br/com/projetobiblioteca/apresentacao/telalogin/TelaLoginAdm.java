@@ -9,7 +9,10 @@ import br.com.projetobiblioteca.persistencia.FuncionarioDAO;
 
 public class TelaLoginAdm {
     
-    public static void TelaLoginAdm() throws SQLException{
+    public TelaLoginAdm() {
+    }
+
+    public static void loginAdm() throws SQLException{
         Scanner sc = new Scanner(System.in);
 
         System.out.println("-----LOGIN ADM-----");
@@ -23,7 +26,7 @@ public class TelaLoginAdm {
         FuncionarioDAO funcionarioDAO = new FuncionarioDAO();
         if(funcionarioDAO.loginAdm(email, senha)){
             System.out.println("Login efetuado com sucesso!");
-            TelaAdm.TelaAdm();
+            TelaAdm.menuAdm();
         }else{
             System.out.println("Email ou senha incorretos...");
             System.out.println("---------------");

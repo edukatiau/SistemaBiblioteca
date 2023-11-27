@@ -6,7 +6,7 @@ import br.com.projetobiblioteca.model.Genero;
 import br.com.projetobiblioteca.persistencia.GeneroDAO;
 
 public class CadastroGenero {
-    public static void CadastroGenero() {
+    public CadastroGenero() {
     }
 
     public static Genero cadastrarGenero(String genero) throws SQLException{

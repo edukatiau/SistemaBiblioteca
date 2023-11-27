@@ -16,7 +16,10 @@ import br.com.projetobiblioteca.model.Funcionário;
 
 public class TelaFunc {
 
-    public static void TelaFunc(Funcionário funcionario) throws SQLException {
+    public TelaFunc() {
+    }
+
+    public static void menuFunc(Funcionário funcionario) throws SQLException {
         Scanner sc = new Scanner(System.in);
         System.out.println("-----MENU FUNC-----");
         System.out.println("1 - Cadastrar Obra");
@@ -36,40 +39,40 @@ public class TelaFunc {
 
         switch (escolha) {
             case 1:
-                TelaCadastroObra.TelaCadastroObra(funcionario);
-                TelaFunc(funcionario);
+                TelaCadastroObra.cadastrarObra(funcionario);
+                menuFunc(funcionario);
                 break;
             case 2:
-                TelaEditarObra.TelaEditarObra(funcionario);
-                TelaFunc(funcionario);
+                TelaEditarObra.editarObra(funcionario);
+                menuFunc(funcionario);
                 break;
             case 3:
-                TelaListarObras.TelaListarObras(funcionario.getBiblioteca());
-                TelaFunc(funcionario);
+                TelaListarObras.listarObras(funcionario.getBiblioteca());
+                menuFunc(funcionario);
                 break;
             case 4:
-                TelaRemoverObra.TelaRemoverObra(funcionario);
-                TelaFunc(funcionario);
+                TelaRemoverObra.removerObra(funcionario);
+                menuFunc(funcionario);
                 break;
             case 5:
-                TelaCadastroAluno.TelaCadastroAluno(funcionario);
-                TelaFunc(funcionario);
+                TelaCadastroAluno.cadastrarAluno(funcionario);
+                menuFunc(funcionario);
                 break;
             case 6:
                 TelaEditarAlunos.TelaEditarAlunos(funcionario);
-                TelaFunc(funcionario);
+                menuFunc(funcionario);
                 break;
             case 7:
-                TelaListarAlunos.TelaListarAlunos(funcionario);
-                TelaFunc(funcionario);
+                TelaListarAlunos.listarAlunos(funcionario);
+                menuFunc(funcionario);
                 break;
             case 8:
-                TelaRemoverAluno.TelaRemoverAluno(funcionario);
-                TelaFunc(funcionario);
+                TelaRemoverAluno.removerAluno(funcionario);
+                menuFunc(funcionario);
                 break;
             case 9:
-                TelaEmprestimo.TelaEmprestimo(funcionario);
-                TelaFunc(funcionario);
+                TelaEmprestimo.telaEmprestimo(funcionario);
+                menuFunc(funcionario);
                 break;
             case 0:
                 System.out.println("Saindo...");

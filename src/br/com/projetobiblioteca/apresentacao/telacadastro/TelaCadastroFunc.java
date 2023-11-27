@@ -11,7 +11,10 @@ import br.com.projetobiblioteca.persistencia.FuncionarioDAO;
 
 public class TelaCadastroFunc {
 
-    public static void TelaCadastroFunc() throws SQLException {
+    public TelaCadastroFunc() {
+    }
+
+    public static void cadastrarFuncionario() throws SQLException{
         Scanner sc = new Scanner(System.in);
 
         System.out.print("Insira o nome do funcionario: ");
@@ -36,7 +39,7 @@ public class TelaCadastroFunc {
         }
         if(biblioteca.getNome().equals("")) {
             System.out.println("Biblioteca não encontrada");
-            TelaAdm.TelaAdm();
+            TelaAdm.menuAdm();
         }
 
         //fazer verificação dos funcionarios existentes
@@ -57,6 +60,6 @@ public class TelaCadastroFunc {
                 }
             }
         } 
-    TelaAdm.TelaAdm();
+    TelaAdm.menuAdm();
     }
 }

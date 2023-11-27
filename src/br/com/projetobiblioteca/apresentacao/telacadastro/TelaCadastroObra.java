@@ -10,7 +10,10 @@ import br.com.projetobiblioteca.model.Genero;
 import br.com.projetobiblioteca.persistencia.ObraDAO;
 
 public class TelaCadastroObra {
-    public static void TelaCadastroObra(Funcionário funcionario) throws SQLException{
+    public TelaCadastroObra() {
+    }
+
+    public static void cadastrarObra(Funcionário funcionario) throws SQLException{
         Scanner sc = new Scanner(System.in);
         System.out.println("-----CADASTRO OBRA-----");
         System.out.print("Título: ");
@@ -38,11 +41,11 @@ public class TelaCadastroObra {
 
         if(confirmacao.equals("N")){
             System.out.println("Cadastro cancelado!");
-            TelaFunc.TelaFunc(funcionario);
+            TelaFunc.menuFunc(funcionario);
         }
         else if(!confirmacao.equals("S")){
             System.out.println("Opção inválida!");
-            TelaFunc.TelaFunc(funcionario);
+            TelaFunc.menuFunc(funcionario);
         }else{
             ObraDAO obraDAO = new ObraDAO();
             obraDAO.adicionar(obra);
@@ -50,7 +53,7 @@ public class TelaCadastroObra {
             System.out.println("Obra cadastrada com sucesso!");
         }
 
-        TelaFunc.TelaFunc(funcionario);
+        TelaFunc.menuFunc(funcionario);
     }
 
     

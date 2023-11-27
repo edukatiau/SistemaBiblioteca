@@ -10,7 +10,10 @@ import br.com.projetobiblioteca.model.Aluno;
 
 public class TelaAluno {
 
-    public static void TelaAluno(Aluno aluno) throws SQLException {
+    public TelaAluno() {
+    }
+    
+    public static void menuAluno(Aluno aluno) throws SQLException {
         Scanner sc = new Scanner(System.in);
         System.out.println("-----MENU ALUNO-----");
         System.out.println("1 - Meu Perfil");
@@ -26,7 +29,7 @@ public class TelaAluno {
                 TelaAlunoPerfil.meuPerfil(aluno);
                 break;
             case 2:
-                TelaListarObras.TelaListarObras(aluno.getCampus().getBiblioteca());
+                TelaListarObras.listarObras(aluno.getCampus().getBiblioteca());
                 break;
             case 3:
                 TelaAlunoEmprestimos.listarMeusEmprestimos(aluno);
@@ -42,7 +45,7 @@ public class TelaAluno {
                 break;
         }
         
-        TelaAluno(aluno);
+        menuAluno(aluno);
     }
     
 }

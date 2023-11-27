@@ -12,7 +12,10 @@ import br.com.projetobiblioteca.persistencia.CampusDAO;
 
 public class TelaCadastroAluno {
 
-    public static void TelaCadastroAluno(Funcionário funcionario) throws SQLException {
+    public TelaCadastroAluno()  {
+    }
+
+    public static void cadastrarAluno(Funcionário funcionario) throws SQLException{
         Scanner sc = new Scanner(System.in);
         System.out.println("Insira o nome do aluno:");
         String nome = sc.nextLine();
@@ -41,7 +44,7 @@ public class TelaCadastroAluno {
         }
         if(campus.getNome().equals("")) {
             System.out.println("Campus não encontrado");
-            TelaAdm.TelaAdm();
+            TelaAdm.menuAdm();
         }
 
         // fazer verificação dos alunos existentes
@@ -62,6 +65,6 @@ public class TelaCadastroAluno {
                 }
             }
         }
-    TelaAdm.TelaAdm();
+    TelaAdm.menuAdm();
     }
 }

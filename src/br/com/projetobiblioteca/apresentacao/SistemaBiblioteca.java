@@ -28,13 +28,13 @@ public class SistemaBiblioteca {
 
         switch (escolha) {
             case 1:
-                TelaLoginAdm.TelaLoginAdm();
+                TelaLoginAdm.loginAdm();
                 break;
             case 2:
-                TelaLoginFunc.TelaLoginFunc();
+                TelaLoginFunc.loginFunc();
                 break;
             case 3:
-                TelaLoginAluno.TelaLoginAluno();
+                TelaLoginAluno.loginAluno();
                 break;
             case 0:
                 System.out.println("Saindo...");
