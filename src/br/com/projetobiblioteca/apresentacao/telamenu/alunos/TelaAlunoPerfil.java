@@ -13,22 +13,19 @@ public class TelaAlunoPerfil {
     public static void meuPerfil(Aluno aluno) throws SQLException {
         System.out.println("-----MEU PERFIL-----");
         System.out.println("Seja Bem-Vindo " + aluno.getNome() + "!" + "\nCurso: " + aluno.getCurso() + "\nMatrícula: " + aluno.getMatricula() + "\nEmail: " + aluno.getEmail());
-        System.out.println("1 - Editar Nome");
-        System.out.println("2 - Editar Matrícula");
-        System.out.println("3 - Editar Curso");
-        System.out.println("4 - Editar Email");
-        System.out.println("5 - Editar Senha");
+        System.out.println("1 - Editar Email");
+        System.out.println("2 - Editar Senha");
         System.out.println("0 - Voltar");
         System.out.print("Escolha uma opção: ");
         int escolha = sc.nextInt();
         System.out.println("-------------------");
 
         switch (escolha) {
-            case 4:
+            case 1:
                 editarEmail(aluno);
                 meuPerfil(aluno);
                 break;
-            case 5:
+            case 2:
                 editarSenha(aluno);
                 meuPerfil(aluno);
                 break;
