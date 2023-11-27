@@ -64,9 +64,15 @@ public class Biblioteca {
         this.campus = campus;
     }
 
+    /*
     @Override
     public String toString() {
         return "Biblioteca [id_biblioteca=" + id_biblioteca + ", nome=" + nome + ", listObras=" + listObras
                 + ", listFuncionarios=" + listFuncionarios + ", campus=" + campus + "]";
+    }*/
+
+    @Override
+    public String toString(){
+        return "Biblioteca [Id= " + id_biblioteca +", Nome=" + nome + ", Campus=" + campus.getNome() + "]";
     }
 }

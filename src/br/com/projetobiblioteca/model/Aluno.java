@@ -58,11 +58,18 @@ public class Aluno extends Usuario{
         this.campus = campus;
     }
 
-    @Override
+  /*   @Override
     public String toString() {
         return "Aluno [matricula=" + matricula + ", curso=" + curso + ", listEmprestimos=" + listEmprestimos
                 + ", campus=" + campus + "]" + super.toString();
     }
+    */
+
+    @Override
+    public String toString(){
+        return "Aluno [Id= " + getIdUsuario() +", Nome=" + getNome() + ", Email=" + getEmail() + ", Senha=" + getSenha() + ", Matricula=" + matricula + ", Curso=" + curso + ", Campus=" + campus.getNome() + "]";
+    }
+
 
   
 }

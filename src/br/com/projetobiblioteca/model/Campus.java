@@ -72,17 +72,22 @@ public class Campus {
         this.listAlunos = listAlunos;
     }
 
-    @Override
-    public String toString() {
-        return "Campus [nome=" + nome + ", endereco=" + endereco + ", telefone=" + telefone + ", biblioteca="
-                + biblioteca + ", listAlunos=" + listAlunos + "]";
-    }
-
     public long getId_campus() {
         return id_campus;
     }
 
     public void setId_campus(long id_campus) {
         this.id_campus = id_campus;
+    }
+    /*
+    @Override
+    public String toString() {
+        return "Campus [nome=" + nome + ", endereco=" + endereco + ", telefone=" + telefone + ", biblioteca="
+                + biblioteca + ", listAlunos=" + listAlunos + "]";
+    }*/
+
+    @Override
+    public String toString(){
+        return "Campus [Id= " + getId_campus() +", Nome=" + getNome() + ", Endereço=" + getEndereco() + ", Telefone=" + getTelefone() + ", Biblioteca=" + biblioteca.getNome() + "]";
     }
 }

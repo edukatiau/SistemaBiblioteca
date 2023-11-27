@@ -6,6 +6,7 @@ public class Genero {
     private long id_Genero;
     public String Genero;
 
+    //Relação 1:N entre Genero e Obra
     private List<Obra> listObras;
 
     public Genero() {

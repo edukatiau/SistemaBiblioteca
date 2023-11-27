@@ -25,9 +25,14 @@ public class Funcionário extends Usuario{
     public void setBiblioteca(Biblioteca biblioteca) {
         this.biblioteca = biblioteca;
     }
-
+    /*
     @Override
     public String toString() {
         return "Funcionário [biblioteca=" + biblioteca.getNome() + "]";
+    }*/
+
+    @Override
+    public String toString() {
+        return "Funcionário [Id= " + getIdUsuario() + ", Nome= " + getNome() + ", Email= " + getEmail() + ", Biblioteca=" + biblioteca.getNome() + "]";
     }
 }

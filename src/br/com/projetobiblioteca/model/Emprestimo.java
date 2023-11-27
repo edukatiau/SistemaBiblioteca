@@ -89,11 +89,19 @@ public class Emprestimo {
     public void setObras(Obra obras) {
         this.obras = obras;
     }
-
+    /*
     @Override
     public String toString() {
         return "Emprestimo [idEmprestimo=" + idEmprestimo + ", dataEmprestimo=" + dataEmprestimo + ", dataDevolucao="
                 + dataDevolucao + ", dataDevolucaoEfetiva=" + dataDevolucaoEfetiva + ", status=" + status + ", aluno="
                 + aluno + ", obras=" + obras + "]";
+    }
+    */
+
+    @Override
+    public String toString() {
+        return "Emprestimo [idEmprestimo=" + idEmprestimo + ", dataEmprestimo=" + dataEmprestimo + ", dataDevolucao="
+                + dataDevolucao + ", dataDevolucaoEfetiva=" + dataDevolucaoEfetiva + ", status=" + status + ", aluno="
+                + aluno.getNome() + ", obras=" + obras.getTitulo() + "]";
     }
 }
