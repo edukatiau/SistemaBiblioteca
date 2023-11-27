@@ -4,6 +4,7 @@ import java.sql.SQLException;
 import java.util.Scanner;
 
 import br.com.projetobiblioteca.apresentacao.telacadastro.CadastroGenero;
+import br.com.projetobiblioteca.apresentacao.telamenu.TelaFunc;
 import br.com.projetobiblioteca.model.Funcionário;
 import br.com.projetobiblioteca.model.Obra;
 import br.com.projetobiblioteca.model.Genero;
@@ -30,10 +31,9 @@ public class TelaEditarObra {
             System.out.println(obra.toString());
             System.out.println("1 - Editar Título");
             System.out.println("2 - Editar Autor");
-            //System.out.println("3 - Editar Editora");
-            System.out.println("4 - Editar Edição");
-            System.out.println("5 - Editar Ano");
-            System.out.println("6 - Editar Gênero");
+            System.out.println("3 - Editar Edição");
+            System.out.println("4 - Editar Ano");
+            System.out.println("5 - Editar Gênero");
             System.out.println("0 - Voltar");
             System.out.print("Escolha uma opção: ");
             int escolha = sc.nextInt();
@@ -47,22 +47,20 @@ public class TelaEditarObra {
                     editarAutor(obra);
                     break;
                 case 3:
-                    //editarEditora(obra);
-                    break;
-                case 4:
                     editarEdicao(obra);
                     break;
-                case 5:
+                case 4:
                     editarAno(obra);
                     break;
-                case 6:
+                case 5:
                     editarGenero(obra);
                     break;
                 case 0:
-                    // Voltar
+                    TelaFunc.menuFunc(funcionario);
                     break;
                 default:
                     System.out.println("Opção inválida!");
+                    TelaFunc.menuFunc(funcionario);
                     break;
             }
         }
@@ -103,13 +101,6 @@ public class TelaEditarObra {
 
         System.out.println("Ano editado com sucesso!");
     }
-    /*
-    private static void editarEditora(Obra obra) {
-        System.out.println("Nova Editora: ");
-        String editora = sc.nextLine();
-        obra.setEditora(editora);
-    }
-    */
 
     private static void editarAutor(Obra obra) {
         System.out.println("Novo Autor: ");

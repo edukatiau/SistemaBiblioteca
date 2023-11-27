@@ -8,12 +8,12 @@ import br.com.projetobiblioteca.apresentacao.telamenu.TelaFunc;
 import br.com.projetobiblioteca.persistencia.FuncionarioDAO;
 
 public class TelaLoginFunc {
+    static Scanner sc = new Scanner(System.in);
     
     public TelaLoginFunc() {
     }
 
     public static void loginFunc() throws SQLException{
-        Scanner sc = new Scanner(System.in);
 
         System.out.println("-----LOGIN FUNC-----");
         System.out.print("Email: ");

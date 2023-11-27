@@ -11,60 +11,64 @@ import br.com.projetobiblioteca.persistencia.AlunoDAO;
 import br.com.projetobiblioteca.persistencia.CampusDAO;
 
 public class TelaCadastroAluno {
+    static Scanner sc = new Scanner(System.in);
 
     public TelaCadastroAluno()  {
     }
 
-    public static void cadastrarAluno(Funcionário funcionario) throws SQLException{
-        Scanner sc = new Scanner(System.in);
-        System.out.println("Insira o nome do aluno:");
+    public static void cadastrarAluno(Funcionário funcionario) throws SQLException {
+    
+        System.out.print("Insira o nome do aluno: ");
         String nome = sc.nextLine();
-        System.out.println("Insira o email do aluno:");
-        String email = sc.next();
-        sc.nextLine();
-        System.out.println("Insira a senha do aluno:");
-        String senha = sc.next();
-        sc.nextLine();
-        System.out.println("Insira a matricula do aluno:");
-        String matricula = sc.next();
-        sc.nextLine();
-        System.out.println("Insira o curso do aluno:");
-        String curso = sc.next();
-        sc.nextLine();
-        
-        // fazer verificação dos campus existentes
-        System.out.println("Insira o campus do aluno:");
+        System.out.print("Insira o email do aluno: ");
+        String email = sc.nextLine();
+        System.out.print("Insira a senha do aluno: ");
+        String senha = sc.nextLine();
+        System.out.print("Insira a matricula do aluno: ");
+        String matricula = sc.nextLine();
+        System.out.print("Insira o curso do aluno: ");
+        String curso = sc.nextLine();
+    
+        // Fazer verificação dos campus existentes
+        System.out.print("Insira o campus do aluno: ");
         String campusName = sc.nextLine().toUpperCase();
-        Campus campus = new Campus();
-        CampusDAO campusDAO = new CampusDAO();
-        for(Campus c:campusDAO.buscarTodos()) {
-            if(c.getNome().equals(campusName)) {
-                campus = c;
-            }
-        }
-        if(campus.getNome().equals("")) {
+        Campus campus = buscarCampusPorNome(campusName);
+        if (campus == null) {
             System.out.println("Campus não encontrado");
             TelaAdm.menuAdm();
         }
-
-        // fazer verificação dos alunos existentes
+    
+        // Fazer verificação dos alunos existentes
         AlunoDAO alunoDAO = new AlunoDAO();
-        if(alunoDAO.buscarTodos().isEmpty()) {
+        boolean alunoExistente = false;
+    
+        for (Aluno a : alunoDAO.buscarTodos()) {
+            if (a.getMatricula().equals(matricula)) {
+                System.out.println("Aluno já cadastrado");
+                alunoExistente = true;
+                break;
+            }
+        }
+    
+        if (!alunoExistente) {
             Aluno aluno = new Aluno(0, nome, email, senha, matricula, curso, campus);
             aluno = alunoDAO.adicionar(aluno);
             System.out.println("Aluno cadastrado com sucesso");
-        } else {
-            for(Aluno a:alunoDAO.buscarTodos()) {
-                if(a.getNome().equals(nome)) {
-                    System.out.println("Aluno já cadastrado");
-                    break;
-                } else {
-                    Aluno aluno = new Aluno(0, nome, email, senha, matricula, curso, campus);
-                    aluno = alunoDAO.adicionar(aluno);
-                    System.out.println("Aluno cadastrado com sucesso");
-                }
+        }
+    
+        TelaAdm.menuAdm();
+    }
+    
+    private static Campus buscarCampusPorNome(String nome) throws SQLException {
+        CampusDAO campusDAO = new CampusDAO();
+    
+        for (Campus c : campusDAO.buscarTodos()) {
+            if (c.getNome().equals(nome)) {
+                return c;
             }
         }
-    TelaAdm.menuAdm();
+    
+        return null;
     }
+    
 }

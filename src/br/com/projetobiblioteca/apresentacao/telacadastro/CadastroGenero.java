@@ -9,32 +9,24 @@ public class CadastroGenero {
     public CadastroGenero() {
     }
 
-    public static Genero cadastrarGenero(String genero) throws SQLException{
-        GeneroDAO GeneroDAO = new GeneroDAO();
-        Genero Genero = new Genero();
-
-        // Verifica se o gênero já existe no banco de dados
-        // Se não existir, cadastra o gênero
-        if(GeneroDAO.listarTiposObras().isEmpty()){
-            Genero.setGenero(genero);
-            Genero = GeneroDAO.adicionar(Genero);
-            System.out.println("Gênero cadastrado com sucesso!");
-        }else{ // Se existir, retorna o gênero
-            for(Genero GeneroAux : GeneroDAO.listarTiposObras()){
-                if(GeneroAux.getGenero().equals(genero)){
-                    Genero = GeneroAux;
-                    System.out.println("Gênero encontrado!");
-                    break;
-                }
-            }
-            // Se não encontrar, cadastra o gênero
-            if(Genero.getGenero() == null){
-                Genero.setGenero(genero);
-                Genero = GeneroDAO.adicionar(Genero);
-                System.out.println("Gênero cadastrado com sucesso!");
+    public static Genero cadastrarGenero(String genero) throws SQLException {
+        GeneroDAO generoDAO = new GeneroDAO();
+    
+        // Busca o gênero no banco de dados
+        for (Genero generoAux : generoDAO.listarTiposObras()) {
+            if (generoAux.getGenero().equals(genero)) {
+                System.out.println("Gênero encontrado!");
+                return generoAux;
             }
         }
-
-        return Genero;
+    
+        // Se não encontrar, cadastra o gênero
+        Genero novoGenero = new Genero();
+        novoGenero.setGenero(genero);
+        generoDAO.adicionar(novoGenero);
+        System.out.println("Gênero cadastrado com sucesso!");
+    
+        return novoGenero;
     }
+    
 }

@@ -166,8 +166,6 @@ public class ObraDAO {
         }
     }
 
-    //arrumar
-    //só adiciona 1 obra do bd na lista
     public List<Obra> buscarPorGenero(String genero) {
         List<Obra> listaObras = new ArrayList<>();
         
@@ -185,7 +183,7 @@ public class ObraDAO {
             } else {
                 st.setLong(1, Genero.getId_Genero());
                 ResultSet rs = st.executeQuery();
-                if (rs.next()) {
+                while (rs.next()) {
                     Obra u = new Obra();
                     u.setIdObra(rs.getLong("id_obra"));
                     u.setTitulo(rs.getString("titulo"));

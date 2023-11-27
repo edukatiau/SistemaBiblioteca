@@ -70,6 +70,9 @@ public class AlunoDAO {
 				u.setNome(rs.getString("nome"));
 				u.setEmail(rs.getString("email"));
 				u.setSenha(rs.getString("senha"));
+				u.setCampus(new CampusDAO().buscarPorId(rs.getLong("id_campus")));
+				u.setCurso(rs.getString("curso"));
+				u.setMatricula(rs.getString("matricula"));
 			}
 
 		} catch (SQLException e) {
@@ -104,6 +107,9 @@ public class AlunoDAO {
 				u.setNome(rs.getString("nome"));
 				u.setEmail(rs.getString("email"));
 				u.setSenha(rs.getString("senha"));
+				u.setCampus(new CampusDAO().buscarPorId(rs.getLong("id_campus")));
+				u.setCurso(rs.getString("curso"));
+				u.setMatricula(rs.getString("matricula"));
 				listaAlunos.add(u);
 			}
 
@@ -254,6 +260,9 @@ public class AlunoDAO {
 				u.setNome(rs.getString("nome"));
 				u.setEmail(rs.getString("email"));
 				u.setSenha(rs.getString("senha"));
+				u.setCampus(new CampusDAO().buscarPorId(rs.getLong("id_campus")));
+				u.setCurso(rs.getString("curso"));
+				u.setMatricula(rs.getString("matricula"));
 				listaAlunos.add(u);
 			}
 		} catch (SQLException e) {
@@ -286,6 +295,9 @@ public class AlunoDAO {
 				u.setNome(rs.getString("nome"));
 				u.setEmail(rs.getString("email"));
 				u.setSenha(rs.getString("senha"));
+				u.setCampus(new CampusDAO().buscarPorId(rs.getLong("id_campus")));
+				u.setCurso(rs.getString("curso"));
+				u.setMatricula(rs.getString("matricula"));
 			}
 
 		} catch (SQLException e) {
@@ -296,5 +308,38 @@ public class AlunoDAO {
 		}
 		
 		return u;
+    }
+
+    public List<Aluno> buscarPorCurso(String cursoAluno) {
+        List<Aluno> listaAlunos = new ArrayList<>();
+		Aluno u = null;
+
+		conexao.abrirConexao();
+
+		String sql = "SELECT * FROM aluno WHERE curso LIKE ?;";
+		PreparedStatement st;
+
+		try {
+			st = conexao.getConexao().prepareStatement(sql);
+			st.setString(1, cursoAluno + "%");
+			ResultSet rs = st.executeQuery();
+			while (rs.next()) {
+				u = new Aluno();
+				u.setIdUsuario(rs.getLong("id_aluno"));
+				u.setNome(rs.getString("nome"));
+				u.setEmail(rs.getString("email"));
+				u.setSenha(rs.getString("senha"));
+				u.setCampus(new CampusDAO().buscarPorId(rs.getLong("id_campus")));
+				u.setCurso(rs.getString("curso"));
+				u.setMatricula(rs.getString("matricula"));
+				listaAlunos.add(u);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			conexao.fecharConexao();
+		}
+
+		return listaAlunos;
     }
 }

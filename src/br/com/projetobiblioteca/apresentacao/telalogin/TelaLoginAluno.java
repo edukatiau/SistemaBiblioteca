@@ -9,12 +9,12 @@ import br.com.projetobiblioteca.model.Aluno;
 import br.com.projetobiblioteca.persistencia.AlunoDAO;
 
 public class TelaLoginAluno {
+    static Scanner sc = new Scanner(System.in);
     
     public TelaLoginAluno() {
     }
 
     public static void loginAluno() throws SQLException{
-        Scanner sc = new Scanner(System.in);
         
         System.out.println("-----LOGIN ALUNO-----");
         System.out.print("Email: ");

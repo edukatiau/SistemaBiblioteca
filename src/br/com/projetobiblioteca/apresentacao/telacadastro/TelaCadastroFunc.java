@@ -10,12 +10,12 @@ import br.com.projetobiblioteca.persistencia.BibliotecaDAO;
 import br.com.projetobiblioteca.persistencia.FuncionarioDAO;
 
 public class TelaCadastroFunc {
+    static Scanner sc = new Scanner(System.in);
 
     public TelaCadastroFunc() {
     }
 
     public static void cadastrarFuncionario() throws SQLException{
-        Scanner sc = new Scanner(System.in);
 
         System.out.print("Insira o nome do funcionario: ");
         String nome = sc.nextLine();
@@ -27,7 +27,7 @@ public class TelaCadastroFunc {
         sc.nextLine();
 
         // fazer verificação das bibliotecas existentes
-        System.out.print("Insira a biblioteca do funcionario: ");
+        System.out.print("Insira o nome da biblioteca do funcionario: ");
         String biblioName = sc.nextLine().toUpperCase();
         Biblioteca biblioteca = new Biblioteca();
         BibliotecaDAO bibliotecaDAO = new BibliotecaDAO();
@@ -42,24 +42,26 @@ public class TelaCadastroFunc {
             TelaAdm.menuAdm();
         }
 
-        //fazer verificação dos funcionarios existentes
+        // fazer verificação dos funcionários existentes
         FuncionarioDAO funcionarioDAO = new FuncionarioDAO();
-        if(funcionarioDAO.buscarTodos().isEmpty()) {
+        
+        // Verificar se o e-mail já existe na lista de funcionários
+        boolean funcionarioExistente = false;
+        for (Funcionário f : funcionarioDAO.buscarTodos()) {
+            if (f.getEmail().equals(email)) {
+                System.out.println("Funcionário já cadastrado");
+                funcionarioExistente = true;
+                break;
+            }
+        }
+
+        // Se o funcionário não existe, adicioná-lo
+        if (!funcionarioExistente) {
             Funcionário funcionario = new Funcionário(0, nome, email, senha, biblioteca);
             funcionario = funcionarioDAO.adicionar(funcionario);
-            System.out.println("Funcionario cadastrado com sucesso");
-        } else {
-            for(Funcionário f:funcionarioDAO.buscarTodos()) {
-                if(f.getNome().equals(nome)) {
-                    System.out.println("Funcionario já cadastrado");
-                    break;
-                } else {
-                    Funcionário funcionario = new Funcionário(0, nome, email, senha, biblioteca);
-                    funcionario = funcionarioDAO.adicionar(funcionario);
-                    System.out.println("Funcionario cadastrado com sucesso");
-                }
-            }
-        } 
+            System.out.println("Funcionário cadastrado com sucesso");
+        }
+
     TelaAdm.menuAdm();
     }
 }

@@ -15,12 +15,12 @@ import br.com.projetobiblioteca.apresentacao.telamenu.obras.TelaRemoverObra;
 import br.com.projetobiblioteca.model.Funcionário;
 
 public class TelaFunc {
+    static Scanner sc = new Scanner(System.in);
 
     public TelaFunc() {
     }
 
     public static void menuFunc(Funcionário funcionario) throws SQLException {
-        Scanner sc = new Scanner(System.in);
         System.out.println("-----MENU FUNC-----");
         System.out.println("1 - Cadastrar Obra");
         System.out.println("2 - Editar Obra");
@@ -59,7 +59,7 @@ public class TelaFunc {
                 menuFunc(funcionario);
                 break;
             case 6:
-                TelaEditarAlunos.TelaEditarAlunos(funcionario);
+                TelaEditarAlunos.editarAlunos(funcionario);
                 menuFunc(funcionario);
                 break;
             case 7:

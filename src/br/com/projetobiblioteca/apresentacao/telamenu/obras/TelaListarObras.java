@@ -52,7 +52,6 @@ public class TelaListarObras {
     }
 
     private static void listarTodasAsObras() {
-        // Implementação para listar todas as obras
         List<Obra> obrasList = new ArrayList<>();
         ObraDAO obraDAO = new ObraDAO();
 
@@ -64,7 +63,7 @@ public class TelaListarObras {
         int i = 1;
         for(Obra obra : obrasList){
             System.out.println("Obra " + i);
-            System.out.println(obra.toString());
+            System.out.println(obra.toString() + "\n");
             i++;
         }
         System.out.println("-------------------");
@@ -88,7 +87,7 @@ public class TelaListarObras {
         int i = 1;
         for(Obra obra : obrasList){
             System.out.println("Obra " + i);
-            System.out.println(obra.toString());
+            System.out.println(obra.toString() + "\n");
             i++;
         }
         System.out.println("-------------------");
@@ -96,7 +95,6 @@ public class TelaListarObras {
     }
 
     private static void listarObrasPorTitulo() {
-        // Implementação para listar obras por título
         List<Obra> obrasList = new ArrayList<>();
         ObraDAO obraDAO = new ObraDAO();
 
@@ -113,7 +111,7 @@ public class TelaListarObras {
         int i = 1;
         for(Obra obra : obrasList){
             System.out.println("Obra " + i);
-            System.out.println(obra.toString());
+            System.out.println(obra.toString() + "\n");
             i++;
         }
 
@@ -140,7 +138,7 @@ public class TelaListarObras {
         int i = 1;
         for(Obra obra : obrasList){
             System.out.println("Obra " + i);
-            System.out.println(obra.toString());
+            System.out.println(obra.toString() + "\n");
             i++;
         }
 
@@ -167,7 +165,7 @@ public class TelaListarObras {
         int i = 1;
         for(Obra obra : obrasList){
             System.out.println("Obra " + i);
-            System.out.println(obra.toString());
+            System.out.println(obra.toString() + "\n");
             i++;
         }
 

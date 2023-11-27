@@ -7,12 +7,12 @@ import br.com.projetobiblioteca.model.Funcionário;
 import br.com.projetobiblioteca.persistencia.AlunoDAO;
 
 public class TelaRemoverAluno {
+    static Scanner sc = new Scanner(System.in);
 
     public TelaRemoverAluno() {
     }
 
     public static void removerAluno(Funcionário funcionario) {
-        Scanner sc = new Scanner(System.in);
         System.err.println("------REMOVER ALUNO-----");
         System.out.println("Matricula do aluno: ");
         String matriculaAluno = sc.next();
@@ -27,10 +27,8 @@ public class TelaRemoverAluno {
             System.out.println("Confirma a remoção? (S/N)");
             String confirmacao = sc.next().toUpperCase();
 
-            if (confirmacao.equals("N")) {
+            if (!confirmacao.equals("S")) {
                 System.out.println("Remoção cancelada!");
-            } else if (!confirmacao.equals("S")) {
-                System.out.println("Opção inválida!");
             } else {
                 alunoDAO.excluir(aluno.getIdUsuario());
                 System.out.println("Aluno removido com sucesso!");

@@ -9,12 +9,12 @@ import br.com.projetobiblioteca.apresentacao.telamenu.obras.TelaListarObras;
 import br.com.projetobiblioteca.model.Aluno;
 
 public class TelaAluno {
+    static Scanner sc = new Scanner(System.in);
 
     public TelaAluno() {
     }
     
     public static void menuAluno(Aluno aluno) throws SQLException {
-        Scanner sc = new Scanner(System.in);
         System.out.println("-----MENU ALUNO-----");
         System.out.println("1 - Meu Perfil");
         System.out.println("2 - Listar Obras Disponíveis");

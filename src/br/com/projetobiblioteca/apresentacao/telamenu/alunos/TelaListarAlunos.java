@@ -18,6 +18,7 @@ public class TelaListarAlunos {
         System.out.println("-----LISTAR ALUNOS-----");
         System.out.println("1 - Listar todos os alunos");
         System.out.println("2 - Listar alunos por nome");
+        System.out.println("3 - Listar alunos por curso");
         System.out.println("0 - Voltar");
         System.out.print("Escolha uma opção: ");
         int escolha = sc.nextInt();
@@ -30,6 +31,9 @@ public class TelaListarAlunos {
             case 2:
                 listarAlunosPorNome();
                 break;
+            case 3:
+                listarAlunosPorCurso();
+                break;
             case 0:
                 // Voltar
                 break;
@@ -37,6 +41,28 @@ public class TelaListarAlunos {
                 System.out.println("Opção inválida!");
                 break;
         }
+    }
+
+    private static void listarAlunosPorCurso() {
+        List<Aluno> alunosList = new ArrayList<>();
+        AlunoDAO alunoDAO = new AlunoDAO();
+
+        System.out.println("-----LISTAR ALUNOS-----");
+        System.out.println("Curso do aluno: ");
+        String cursoAluno = sc.next();
+
+        for(Aluno aluno : alunoDAO.buscarPorCurso(cursoAluno)){
+            alunosList.add(aluno);
+        }
+
+        int i = 1;
+        for(Aluno aluno : alunosList){
+            System.out.println("Aluno " + i);
+            System.out.println(aluno.toString() + "\n");
+            i++;
+        }
+
+        System.out.println("-------------------");
     }
 
     private static void listarAlunosPorNome() {
@@ -51,11 +77,10 @@ public class TelaListarAlunos {
             alunosList.add(aluno);
         }
 
-        System.out.println("-----LISTAR ALUNOS-----");
         int i = 1;
         for(Aluno aluno : alunosList){
             System.out.println("Aluno " + i);
-            System.out.println(aluno.toString());
+            System.out.println(aluno.toString() + "\n");
             i++;
         }
 
@@ -75,10 +100,11 @@ public class TelaListarAlunos {
         int i = 1;
         for(Aluno aluno : alunosList){
             System.out.println("Aluno " + i);
-            System.out.println(aluno.toString());
+            System.out.println(aluno.toString() + "\n");
             i++;
         }
 
         System.out.println("-------------------");
     }
+
 }

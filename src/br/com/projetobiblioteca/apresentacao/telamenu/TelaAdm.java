@@ -8,15 +8,15 @@ import br.com.projetobiblioteca.apresentacao.telacadastro.TelaCadastroCampus;
 import br.com.projetobiblioteca.apresentacao.telacadastro.TelaCadastroFunc;
 
 public class TelaAdm {
+    static Scanner sc = new Scanner(System.in);
 
     public TelaAdm() {
     }
 
     public static void menuAdm() throws SQLException {
-        Scanner sc = new Scanner(System.in);
         System.out.println("-----MENU ADM-----");
         System.out.println("1 - Cadastrar Funcionário");
-        System.out.println("3 - Cadastrar Campus");
+        System.out.println("2 - Cadastrar Campus");
         System.out.println("0 - Sair");
         System.out.print("Escolha uma opção: ");
         int escolha = sc.nextInt();
@@ -27,7 +27,7 @@ public class TelaAdm {
             case 1:
                 TelaCadastroFunc.cadastrarFuncionario();
                 break;
-            case 3:
+            case 2:
                 TelaCadastroCampus.cadastrarCampus();
                 break;
             case 0:

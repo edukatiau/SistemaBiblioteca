@@ -8,20 +8,18 @@ import br.com.projetobiblioteca.apresentacao.telamenu.TelaAdm;
 import br.com.projetobiblioteca.persistencia.FuncionarioDAO;
 
 public class TelaLoginAdm {
+    static Scanner sc = new Scanner(System.in);
     
     public TelaLoginAdm() {
     }
 
     public static void loginAdm() throws SQLException{
-        Scanner sc = new Scanner(System.in);
 
         System.out.println("-----LOGIN ADM-----");
         System.out.print("Email: ");
         String email = sc.next();
-        //sc.nextLine();
         System.out.print("Senha: ");
         String senha = sc.next();
-        //sc.nextLine();
 
         FuncionarioDAO funcionarioDAO = new FuncionarioDAO();
         if(funcionarioDAO.loginAdm(email, senha)){
@@ -33,6 +31,5 @@ public class TelaLoginAdm {
             SistemaBiblioteca.menu();
         }
         
-        //sc.close();
     }
 }

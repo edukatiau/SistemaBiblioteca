@@ -24,7 +24,6 @@ public class SistemaBiblioteca {
         System.out.print("Escolha uma opção: ");
         int escolha = sc.nextInt();
         System.out.println("------------");
-        //sc.close();
 
         switch (escolha) {
             case 1:
