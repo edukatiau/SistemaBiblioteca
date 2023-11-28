@@ -29,6 +29,7 @@ public class Obra {
         this.anoLancamento = anoLancamento;
         this.genero = Genero;
         this.biblioteca = biblioteca;
+        this.obraEmprestada = false;
     }
 
     public long getIdObra() {
