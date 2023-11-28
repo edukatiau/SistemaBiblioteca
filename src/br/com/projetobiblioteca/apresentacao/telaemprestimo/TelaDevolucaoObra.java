@@ -73,6 +73,7 @@ public class TelaDevolucaoObra {
         Date dataDevolucaoEfetiva = new Date(calender1.getTimeInMillis()); //Pega a data atual
         emprestimo.setDataDevolucaoEfetiva(dataDevolucaoEfetiva);
         emprestimo.setStatus("DEVOLVIDO");
+        obra.setObraEmprestada(false);
         emprestimoDAO.editar(emprestimo);
 
         System.out.println("Obra devolvida com sucesso");        
