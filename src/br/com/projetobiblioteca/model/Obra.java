@@ -8,6 +8,7 @@ public class Obra {
     private String autor;
     private String edicao;
     private String anoLancamento;
+    private boolean obraEmprestada;
 
     //Associação 1:N entre Obras e Genero
     private Genero genero;
