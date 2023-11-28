@@ -20,7 +20,7 @@ public class Obra {
     public Obra(){
         super();
     }
-
+    
     public Obra(long idLivro, String titulo, String autor, String edicao, String anoLancamento, Genero Genero, Biblioteca biblioteca) {
         this.idObra = idLivro;
         this.titulo = titulo;
@@ -79,6 +79,14 @@ public class Obra {
         this.genero = genero;
     }
 
+    public boolean getObraEmprestada(){
+        return obraEmprestada;
+    }
+
+    public void setObraEmprestada(boolean value){
+        this.obraEmprestada = value;
+    }
+    
     public Biblioteca getBiblioteca() {
         return biblioteca;
     }
