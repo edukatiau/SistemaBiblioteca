@@ -32,6 +32,7 @@ public class Emprestimo {
         this.status = "ATIVO";
         this.aluno = aluno;
         this.obras = obras;
+        this.obras.setObraEmprestada = true;
     }
 
     public long getIdEmprestimo() {
