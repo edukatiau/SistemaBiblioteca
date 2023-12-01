@@ -18,6 +18,8 @@ public class TelaListarEmprestimos {
         List<Emprestimo> emprestimos = new ArrayList<>();
         EmprestimoDAO emprestimoDAO = new EmprestimoDAO();
 
+        atualizarEmprestimosAtrasados();
+
         emprestimos = emprestimoDAO.buscarTodos();
 
         int i = 1;
