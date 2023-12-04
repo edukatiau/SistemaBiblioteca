@@ -76,7 +76,7 @@ public class TelaListarObras {
         
         System.out.println("-----LISTAR OBRAS POR GÊNERO-----");
         System.out.print("Digite o gênero: ");
-        String genero = sc.next().toUpperCase();
+        String genero = sc.nextLine().toUpperCase();
         System.out.println("-------------------");
 
         for(Obra obra : obraDAO.buscarPorGenero(genero)){
@@ -100,7 +100,7 @@ public class TelaListarObras {
 
         System.out.println("-----LISTAR OBRAS POR TÍTULO-----");
         System.out.print("Digite o título: ");
-        String titulo = sc.next().toUpperCase();
+        String titulo = sc.nextLine().toUpperCase();
         System.out.println("-------------------");
 
         for(Obra obra : obraDAO.buscarPorTitulo(titulo)){
@@ -127,7 +127,7 @@ public class TelaListarObras {
         System.out.println("-----LISTAR OBRAS POR AUTOR-----");
 
         System.out.print("Digite o autor: ");
-        String autor = sc.next().toUpperCase();
+        String autor = sc.nextLine().toUpperCase();
         System.out.println("-------------------");
 
         for(Obra obra : obraDAO.buscarPorAutor(autor)){
