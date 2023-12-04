@@ -8,6 +8,7 @@ public class Obra {
     private String autor;
     private String edicao;
     private String anoLancamento;
+    private boolean obraEmprestada;
 
     //Associação 1:N entre Obras e Genero
     private Genero genero;
@@ -19,7 +20,7 @@ public class Obra {
     public Obra(){
         super();
     }
-
+    
     public Obra(long idLivro, String titulo, String autor, String edicao, String anoLancamento, Genero Genero, Biblioteca biblioteca) {
         this.idObra = idLivro;
         this.titulo = titulo;
@@ -28,6 +29,7 @@ public class Obra {
         this.anoLancamento = anoLancamento;
         this.genero = Genero;
         this.biblioteca = biblioteca;
+        this.obraEmprestada = false;
     }
 
     public long getIdObra() {
@@ -78,6 +80,14 @@ public class Obra {
         this.genero = genero;
     }
 
+    public boolean getObraEmprestada(){
+        return obraEmprestada;
+    }
+
+    public void setObraEmprestada(boolean value){
+        this.obraEmprestada = value;
+    }
+    
     public Biblioteca getBiblioteca() {
         return biblioteca;
     }

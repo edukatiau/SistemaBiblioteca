@@ -41,6 +41,10 @@ public class TelaEmprestarObra {
             System.out.println("Obra não encontrada");
             TelaEmprestimo.telaEmprestimo(funcionario);
         }
+        if (obra.getObraEmprestada()){
+            System.out.println("Obra não disponível para empréstimo");
+            TelaEmprestimo.telaEmprestimo(funcionario);
+        }
 
         System.err.println(obra.toString());
         System.out.println("Confirmar obra? (S/N)");
