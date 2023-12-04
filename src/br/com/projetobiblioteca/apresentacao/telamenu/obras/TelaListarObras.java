@@ -76,6 +76,7 @@ public class TelaListarObras {
         
         System.out.println("-----LISTAR OBRAS POR GÊNERO-----");
         System.out.print("Digite o gênero: ");
+        sc.nextLine();
         String genero = sc.nextLine().toUpperCase();
         System.out.println("-------------------");
 
@@ -100,6 +101,7 @@ public class TelaListarObras {
 
         System.out.println("-----LISTAR OBRAS POR TÍTULO-----");
         System.out.print("Digite o título: ");
+        sc.nextLine();
         String titulo = sc.nextLine().toUpperCase();
         System.out.println("-------------------");
 
@@ -127,6 +129,7 @@ public class TelaListarObras {
         System.out.println("-----LISTAR OBRAS POR AUTOR-----");
 
         System.out.print("Digite o autor: ");
+        sc.nextLine();
         String autor = sc.nextLine().toUpperCase();
         System.out.println("-------------------");
 
@@ -154,6 +157,7 @@ public class TelaListarObras {
         System.out.println("-----LISTAR OBRAS POR ANO-----");
     
         System.out.print("Digite o ano: ");
+        sc.nextLine();
         String ano = sc.next().toUpperCase();
         System.out.println("-------------------");
     
