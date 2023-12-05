@@ -15,7 +15,7 @@ public class TelaCadastroFunc {
     public TelaCadastroFunc() {
     }
 
-    public static void cadastrarFuncionario() throws SQLException{
+    public static void cadastrarFuncionario() throws SQLException, InterruptedException{
 
         System.out.print("Insira o nome do funcionario: ");
         String nome = sc.nextLine();

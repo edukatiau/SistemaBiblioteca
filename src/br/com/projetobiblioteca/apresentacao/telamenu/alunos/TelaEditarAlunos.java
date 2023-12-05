@@ -11,7 +11,7 @@ import br.com.projetobiblioteca.persistencia.AlunoDAO;
 public class TelaEditarAlunos {
     static Scanner sc = new Scanner(System.in);
     
-    public static void editarAlunos(Funcionário funcionario) throws SQLException {
+    public static void editarAlunos(Funcionário funcionario) throws SQLException, InterruptedException {
         System.out.println("-----EDITAR ALUNOS-----");
     
         System.out.print("Matrícula do aluno: ");
@@ -37,7 +37,7 @@ public class TelaEditarAlunos {
         }
     }
     
-    private static void exibirOpcoesEdicao(Aluno aluno, Funcionário funcionario) throws SQLException {    
+    private static void exibirOpcoesEdicao(Aluno aluno, Funcionário funcionario) throws SQLException, InterruptedException {    
         System.out.println("1 - Editar Nome");
         System.out.println("2 - Editar Curso");
         System.out.println("3 - Editar Matrícula");

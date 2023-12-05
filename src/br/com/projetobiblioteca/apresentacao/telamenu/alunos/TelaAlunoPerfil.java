@@ -10,7 +10,7 @@ import br.com.projetobiblioteca.persistencia.AlunoDAO;
 public class TelaAlunoPerfil {
     static Scanner sc = new Scanner(System.in);
 
-    public static void meuPerfil(Aluno aluno) throws SQLException {
+    public static void meuPerfil(Aluno aluno) throws SQLException, InterruptedException {
         System.out.println("-----MEU PERFIL-----");
         System.out.println("Seja Bem-Vindo " + aluno.getNome() + "!" + "\nCurso: " + aluno.getCurso() + "\nMatrícula: " + aluno.getMatricula() + "\nEmail: " + aluno.getEmail());
         System.out.println("1 - Editar Email");

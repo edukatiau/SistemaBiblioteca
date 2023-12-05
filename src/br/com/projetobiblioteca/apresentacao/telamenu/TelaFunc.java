@@ -3,6 +3,7 @@ package br.com.projetobiblioteca.apresentacao.telamenu;
 import java.sql.SQLException;
 import java.util.Scanner;
 
+import br.com.projetobiblioteca.apresentacao.SistemaBiblioteca;
 import br.com.projetobiblioteca.apresentacao.telacadastro.TelaCadastroAluno;
 import br.com.projetobiblioteca.apresentacao.telacadastro.TelaCadastroObra;
 import br.com.projetobiblioteca.apresentacao.telaemprestimo.TelaEmprestimo;
@@ -13,6 +14,7 @@ import br.com.projetobiblioteca.apresentacao.telamenu.obras.TelaEditarObra;
 import br.com.projetobiblioteca.apresentacao.telamenu.obras.TelaListarObras;
 import br.com.projetobiblioteca.apresentacao.telamenu.obras.TelaRemoverObra;
 import br.com.projetobiblioteca.model.Funcionário;
+import br.com.projetobiblioteca.utils.Colors;
 
 public class TelaFunc {
     static Scanner sc = new Scanner(System.in);
@@ -20,8 +22,8 @@ public class TelaFunc {
     public TelaFunc() {
     }
 
-    public static void menuFunc(Funcionário funcionario) throws SQLException {
-        System.out.println("-----MENU FUNC-----");
+    public static void menuFunc(Funcionário funcionario) throws SQLException, InterruptedException {
+        System.out.println(Colors.ANSI_BLUE + "-----MENU FUNC-----" + Colors.ANSI_RESET);
         System.out.println("1 - Cadastrar Obra");
         System.out.println("2 - Editar Obra");
         System.out.println("3 - Listar Obras");
@@ -35,7 +37,7 @@ public class TelaFunc {
         System.out.println("0 - Sair");
         System.out.print("Escolha uma opção: ");
         int escolha = sc.nextInt();
-        System.out.println("-------------------");
+        System.out.println(Colors.ANSI_BLUE + "-------------------" + Colors.ANSI_RESET);
 
         switch (escolha) {
             case 1:
@@ -76,13 +78,12 @@ public class TelaFunc {
                 break;
             case 0:
                 System.out.println("Saindo...");
-                System.exit(0);
                 break;
             default:
                 System.out.println("Opção inválida!");
                 break;
         }
-        
+        SistemaBiblioteca.menu();
         
     }
 }

@@ -15,7 +15,7 @@ public class TelaCadastroObra {
     public TelaCadastroObra() {
     }
 
-    public static void cadastrarObra(Funcionário funcionario) throws SQLException{
+    public static void cadastrarObra(Funcionário funcionario) throws SQLException, InterruptedException{
         System.out.println("-----CADASTRO OBRA-----");
         System.out.print("Título: ");
         String titulo = sc.nextLine();

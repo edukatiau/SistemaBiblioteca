@@ -16,7 +16,7 @@ public class TelaEditarObra {
     public TelaEditarObra() {
     }
 
-    public static void editarObra(Funcionário funcionario) throws SQLException {
+    public static void editarObra(Funcionário funcionario) throws SQLException, InterruptedException {
 
         System.out.println("-----EDITAR OBRA-----");
         System.out.println("Id da obra: ");

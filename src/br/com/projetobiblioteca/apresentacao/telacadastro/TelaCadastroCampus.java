@@ -15,7 +15,7 @@ public class TelaCadastroCampus {
     public TelaCadastroCampus() {  
     }
 
-    public static void cadastrarCampus() throws SQLException {
+    public static void cadastrarCampus() throws SQLException, InterruptedException {
     
         System.out.println("Insira o nome do campus:");
         String nome = sc.nextLine().toUpperCase();

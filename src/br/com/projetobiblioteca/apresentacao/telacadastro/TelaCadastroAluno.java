@@ -56,7 +56,6 @@ public class TelaCadastroAluno {
             System.out.println("Aluno cadastrado com sucesso");
         }
     
-        TelaAdm.menuAdm();
     }
     
     private static Campus buscarCampusPorNome(String nome) throws SQLException {

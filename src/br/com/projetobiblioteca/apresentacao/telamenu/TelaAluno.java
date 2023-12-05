@@ -8,6 +8,7 @@ import br.com.projetobiblioteca.apresentacao.telamenu.alunos.TelaAlunoEmprestimo
 import br.com.projetobiblioteca.apresentacao.telamenu.alunos.TelaAlunoPerfil;
 import br.com.projetobiblioteca.apresentacao.telamenu.obras.TelaListarObras;
 import br.com.projetobiblioteca.model.Aluno;
+import br.com.projetobiblioteca.utils.Colors;
 
 public class TelaAluno {
     static Scanner sc = new Scanner(System.in);
@@ -15,8 +16,8 @@ public class TelaAluno {
     public TelaAluno() {
     }
     
-    public static void menuAluno(Aluno aluno) throws SQLException {
-        System.out.println("-----MENU ALUNO-----");
+    public static void menuAluno(Aluno aluno) throws SQLException, InterruptedException {
+        System.out.println(Colors.ANSI_BLUE + "-----MENU ALUNO-----" + Colors.ANSI_RESET);
         System.out.println("1 - Meu Perfil");
         System.out.println("2 - Listar Obras Disponíveis");
         System.out.println("3 - Listar Meus Emprestimos");
@@ -24,6 +25,7 @@ public class TelaAluno {
         System.out.println("0 - Sair");
         System.out.print("Escolha uma opção: ");
         int escolha = sc.nextInt();
+        System.out.println(Colors.ANSI_BLUE + "-------------------" + Colors.ANSI_RESET);
     
         switch (escolha) {
             case 1:
