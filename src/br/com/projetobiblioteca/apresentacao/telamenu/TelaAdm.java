@@ -22,14 +22,15 @@ public class TelaAdm {
         System.out.print("Escolha uma opção: ");
         int escolha = sc.nextInt();
         System.out.println(Colors.ANSI_BLUE + "-----------------" + Colors.ANSI_RESET);
-        //sc.close();
 
         switch (escolha) {
             case 1:
                 TelaCadastroFunc.cadastrarFuncionario();
+                TelaAdm.menuAdm();
                 break;
             case 2:
                 TelaCadastroCampus.cadastrarCampus();
+                TelaAdm.menuAdm();
                 break;
             case 0:
                 System.out.println("Saindo...");

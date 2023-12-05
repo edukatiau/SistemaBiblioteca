@@ -5,18 +5,19 @@ import java.util.List;
 import br.com.projetobiblioteca.model.Aluno;
 import br.com.projetobiblioteca.model.Emprestimo;
 import br.com.projetobiblioteca.persistencia.EmprestimoDAO;
+import br.com.projetobiblioteca.utils.Colors;
 
 public class TelaAlunoEmprestimos {
 
     public static void listarMeusEmprestimos(Aluno aluno) {
-        System.out.println("-----MEUS EMPRESTIMOS-----");
+        System.out.println(Colors.ANSI_BLUE + "-----MEUS EMPRESTIMOS-----" + Colors.ANSI_RESET);
         
         List<Emprestimo> emprestimos = null;
         EmprestimoDAO emprestimoDAO = new EmprestimoDAO();
 
         emprestimos = emprestimoDAO.buscarPorAluno(aluno);
 
-        if (emprestimos != null) {
+        if (!emprestimos.isEmpty()) {
             int i = 1;
             for (Emprestimo emprestimo : emprestimos) {
                 System.out.println("Emprestimo " + i + ":");
@@ -24,20 +25,21 @@ public class TelaAlunoEmprestimos {
                 i++;
             }
         } else {
-            System.out.println("Nenhum emprestimo encontrado!");
+            System.out.println(Colors.ANSI_RED + "Nenhum emprestimo encontrado!" + Colors.ANSI_RESET);
         }
+        System.out.println(Colors.ANSI_BLUE + "---------------------" + Colors.ANSI_RESET);
         
     }
 
     public static void listarMeusAtrasos(Aluno aluno) {
-        System.out.println("-----MEUS ATRASOS-----");
+        System.out.println(Colors.ANSI_BLUE + "-----MEUS ATRASOS-----" + Colors.ANSI_RESET);
         
         List<Emprestimo> emprestimos = null;
         EmprestimoDAO emprestimoDAO = new EmprestimoDAO();
 
         emprestimos = emprestimoDAO.buscarPorAluno(aluno);
 
-        if (emprestimos != null) {
+        if (!emprestimos.isEmpty()) {
             for (Emprestimo emprestimo : emprestimos) {
                 int i = 1;
                 if (emprestimo.getStatus().equals("ATRASADO")) {
@@ -47,8 +49,9 @@ public class TelaAlunoEmprestimos {
                 }
             }
         } else {
-            System.out.println("Nenhum emprestimo encontrado!");
+            System.out.println(Colors.ANSI_RED + "Nenhum emprestimo encontrado!" + Colors.ANSI_RESET);
         }
+        System.out.println(Colors.ANSI_BLUE + "---------------------" + Colors.ANSI_RESET);
     }
 
 }

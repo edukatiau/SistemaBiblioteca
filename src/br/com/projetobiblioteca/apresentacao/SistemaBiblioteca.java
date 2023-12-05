@@ -36,15 +36,19 @@ public class SistemaBiblioteca {
         switch (escolha) {
             case 1:
                 TelaLoginAdm.loginAdm();
+                SistemaBiblioteca.menu();
                 break;
             case 2:
                 TelaLoginFunc.loginFunc();
+                SistemaBiblioteca.menu();
                 break;
             case 3:
                 TelaLoginAluno.loginAluno();
+                SistemaBiblioteca.menu();
                 break;
             case 0:
                 System.out.println("Saindo...");
+                System.exit(0);
                 break;
             default:
                 System.out.println("Opção inválida...");

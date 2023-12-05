@@ -8,6 +8,7 @@ import br.com.projetobiblioteca.model.Biblioteca;
 import br.com.projetobiblioteca.model.Funcionário;
 import br.com.projetobiblioteca.persistencia.BibliotecaDAO;
 import br.com.projetobiblioteca.persistencia.FuncionarioDAO;
+import br.com.projetobiblioteca.utils.Colors;
 
 public class TelaCadastroFunc {
     static Scanner sc = new Scanner(System.in);
@@ -16,15 +17,13 @@ public class TelaCadastroFunc {
     }
 
     public static void cadastrarFuncionario() throws SQLException, InterruptedException{
-
+        System.out.println(Colors.ANSI_BLUE + "-----CADASTRO FUNCIONARIO-----" + Colors.ANSI_RESET);
         System.out.print("Insira o nome do funcionario: ");
         String nome = sc.nextLine();
         System.out.print("Insira o email do funcionario: ");
         String email = sc.next();
-        sc.nextLine();
         System.out.print("Insira a senha do funcionario: ");
         String senha = sc.next();
-        sc.nextLine();
 
         // fazer verificação das bibliotecas existentes
         System.out.print("Insira o nome da biblioteca do funcionario: ");
@@ -38,8 +37,9 @@ public class TelaCadastroFunc {
             }
         }
         if(biblioteca.getNome().equals("")) {
-            System.out.println("Biblioteca não encontrada");
-            TelaAdm.menuAdm();
+            System.out.println(Colors.ANSI_RED + "Biblioteca não encontrada!" + Colors.ANSI_RESET);
+            System.out.println(Colors.ANSI_BLUE + "-------------------" + Colors.ANSI_RESET);
+            return;
         }
 
         // fazer verificação dos funcionários existentes
@@ -49,9 +49,10 @@ public class TelaCadastroFunc {
         boolean funcionarioExistente = false;
         for (Funcionário f : funcionarioDAO.buscarTodos()) {
             if (f.getEmail().equals(email)) {
-                System.out.println("Funcionário já cadastrado");
+                System.out.println(Colors.ANSI_RED + "Funcionário já cadastrado!" + Colors.ANSI_RESET);
+                System.out.println(Colors.ANSI_BLUE + "-------------------" + Colors.ANSI_RESET);
                 funcionarioExistente = true;
-                break;
+                return;
             }
         }
 
@@ -59,7 +60,8 @@ public class TelaCadastroFunc {
         if (!funcionarioExistente) {
             Funcionário funcionario = new Funcionário(0, nome, email, senha, biblioteca);
             funcionario = funcionarioDAO.adicionar(funcionario);
-            System.out.println("Funcionário cadastrado com sucesso");
+            System.out.println(Colors.ANSI_GREEN + "Funcionário cadastrado com sucesso!" + Colors.ANSI_RESET);
+            System.out.println(Colors.ANSI_BLUE + "-------------------" + Colors.ANSI_RESET);
         }
 
     TelaAdm.menuAdm();

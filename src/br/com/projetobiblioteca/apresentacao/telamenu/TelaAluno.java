@@ -3,7 +3,6 @@ package br.com.projetobiblioteca.apresentacao.telamenu;
 import java.sql.SQLException;
 import java.util.Scanner;
 
-import br.com.projetobiblioteca.apresentacao.SistemaBiblioteca;
 import br.com.projetobiblioteca.apresentacao.telamenu.alunos.TelaAlunoEmprestimos;
 import br.com.projetobiblioteca.apresentacao.telamenu.alunos.TelaAlunoPerfil;
 import br.com.projetobiblioteca.apresentacao.telamenu.obras.TelaListarObras;
@@ -42,13 +41,13 @@ public class TelaAluno {
                 break;
             case 0:
                 System.out.println("Saindo...");
-                break;
+                return;
             default:
                 System.out.println("Opção inválida!");
                 break;
         }
         
-        SistemaBiblioteca.menu();
+        TelaAluno.menuAluno(aluno);
     }
     
 }

@@ -3,7 +3,6 @@ package br.com.projetobiblioteca.apresentacao.telalogin;
 import java.sql.SQLException;
 import java.util.Scanner;
 
-import br.com.projetobiblioteca.apresentacao.SistemaBiblioteca;
 import br.com.projetobiblioteca.apresentacao.telamenu.TelaAdm;
 import br.com.projetobiblioteca.persistencia.FuncionarioDAO;
 import br.com.projetobiblioteca.utils.Colors;
@@ -42,7 +41,7 @@ public class TelaLoginAdm {
             System.out.println(Colors.ANSI_RED + "\nEmail ou senha incorretos..." + Colors.ANSI_RESET);
             System.out.println(Colors.ANSI_BLUE + "-------------------" + Colors.ANSI_RESET);
             Thread.sleep(1000);
-            SistemaBiblioteca.menu();
+            return;
         }
         
     }

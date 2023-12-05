@@ -3,22 +3,22 @@ package br.com.projetobiblioteca.apresentacao.telamenu.alunos;
 import java.sql.SQLException;
 import java.util.Scanner;
 
-import br.com.projetobiblioteca.apresentacao.telamenu.TelaAluno;
 import br.com.projetobiblioteca.model.Aluno;
 import br.com.projetobiblioteca.persistencia.AlunoDAO;
+import br.com.projetobiblioteca.utils.Colors;
 
 public class TelaAlunoPerfil {
     static Scanner sc = new Scanner(System.in);
 
     public static void meuPerfil(Aluno aluno) throws SQLException, InterruptedException {
-        System.out.println("-----MEU PERFIL-----");
-        System.out.println("Seja Bem-Vindo " + aluno.getNome() + "!" + "\nCurso: " + aluno.getCurso() + "\nMatrícula: " + aluno.getMatricula() + "\nEmail: " + aluno.getEmail());
+        System.out.println(Colors.ANSI_BLUE + "-----MEU PERFIL-----" + Colors.ANSI_RESET);
+        System.out.println(Colors.ANSI_GREEN + "Seja Bem-Vindo, " + aluno.getNome() + "!" + "\nCurso: " + aluno.getCurso() + "\nMatrícula: " + aluno.getMatricula() + "\nEmail: " + aluno.getEmail() + Colors.ANSI_RESET);
         System.out.println("1 - Editar Email");
         System.out.println("2 - Editar Senha");
         System.out.println("0 - Voltar");
         System.out.print("Escolha uma opção: ");
         int escolha = sc.nextInt();
-        System.out.println("-------------------");
+        System.out.println(Colors.ANSI_BLUE + "--------------------" + Colors.ANSI_RESET);
 
         switch (escolha) {
             case 1:
@@ -31,10 +31,10 @@ public class TelaAlunoPerfil {
                 break;
             case 0:
                 // Voltar
-                TelaAluno.menuAluno(aluno);
-                break;
+                return;
             default:
                 System.out.println("Opção inválida!");
+                meuPerfil(aluno);
                 break;
         }
     }
@@ -52,10 +52,11 @@ public class TelaAlunoPerfil {
             AlunoDAO alunoDAO = new AlunoDAO();
             alunoDAO.editar(aluno);
 
-            System.out.println("Email alterado com sucesso!");
+            System.out.println(Colors.ANSI_GREEN + "Email alterado com sucesso!" + Colors.ANSI_RESET);
         } else {
-            System.out.println("Email não alterado!");
+            System.out.println(Colors.ANSI_RED + "Email não alterado!" + Colors.ANSI_RESET);
         }
+        System.out.println(Colors.ANSI_BLUE + "--------------------" + Colors.ANSI_RESET);
     }
 
     private static void editarSenha(Aluno aluno) {
@@ -71,9 +72,10 @@ public class TelaAlunoPerfil {
             AlunoDAO alunoDAO = new AlunoDAO();
             alunoDAO.editar(aluno);
 
-            System.out.println("Senha alterada com sucesso!");
+            System.out.println(Colors.ANSI_GREEN + "Senha alterada com sucesso!" + Colors.ANSI_RESET);
         } else {
-            System.out.println("Senha não alterada!");
+            System.out.println(Colors.ANSI_RED + "Senha não alterada!" + Colors.ANSI_RESET);
         }
+        System.out.println(Colors.ANSI_BLUE + "--------------------" + Colors.ANSI_RESET);
     }
 }
