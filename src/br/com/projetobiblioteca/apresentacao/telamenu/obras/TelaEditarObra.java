@@ -41,7 +41,7 @@ public class TelaEditarObra {
 
             switch (escolha) {
                 case 1:
-                    editarTitutlo(obra);
+                    editarTitulo(obra);
                     break;
                 case 2:
                     editarAutor(obra);
@@ -67,9 +67,9 @@ public class TelaEditarObra {
     }
 
     private static void editarGenero(Obra obra) throws SQLException {
-        System.out.println("Novo Gênero: ");
-        String genero = sc.next().toUpperCase();
+        System.out.print("Novo Gênero: ");
         sc.nextLine();
+        String genero = sc.nextLine().toUpperCase();
 
         Genero Genero = CadastroGenero.cadastrarGenero(genero);
         obra.setGenero(Genero);
@@ -82,6 +82,7 @@ public class TelaEditarObra {
 
     private static void editarEdicao(Obra obra) {
         System.out.println("Nova Edição: ");
+        sc.nextLine();
         String edicao = sc.nextLine();
         obra.setEdicao(edicao);
 
@@ -93,6 +94,7 @@ public class TelaEditarObra {
 
     private static void editarAno(Obra obra) {
         System.out.println("Novo Ano: ");
+        sc.nextLine();
         String ano = sc.nextLine();
         obra.setAnoLancamento(ano);
 
@@ -103,7 +105,8 @@ public class TelaEditarObra {
     }
 
     private static void editarAutor(Obra obra) {
-        System.out.println("Novo Autor: ");
+        System.out.print("Novo Autor: ");
+        sc.nextLine();
         String autor = sc.nextLine();
         obra.setAutor(autor);
 
@@ -113,7 +116,7 @@ public class TelaEditarObra {
         System.out.println("Autor editado com sucesso!");
     }
 
-    public static void editarTitutlo(Obra obra) {
+    public static void editarTitulo(Obra obra) {
         System.out.println("Novo Título: ");
         sc.nextLine();
         String titulo = sc.nextLine();

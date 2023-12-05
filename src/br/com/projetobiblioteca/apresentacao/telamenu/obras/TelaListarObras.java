@@ -20,7 +20,7 @@ public class TelaListarObras {
         System.out.println("2 - Listar obras por gênero");
         System.out.println("3 - Listar obras por título");
         System.out.println("4 - Listar obras por autor");
-        System.out.println("6 - Listar obras por ano");
+        System.out.println("5 - Listar obras por ano");
         System.out.println("0 - Voltar");
         System.out.print("Escolha uma opção: ");
         int escolha = sc.nextInt();
@@ -39,7 +39,7 @@ public class TelaListarObras {
             case 4:
                 listarObrasPorAutor();
                 break;
-            case 6:
+            case 5:
                 listarObrasPorAno();
                 break;
             case 0:

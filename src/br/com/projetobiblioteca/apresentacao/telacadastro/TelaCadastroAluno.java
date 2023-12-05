@@ -35,7 +35,7 @@ public class TelaCadastroAluno {
         Campus campus = buscarCampusPorNome(campusName);
         if (campus == null) {
             System.out.println("Campus não encontrado");
-            TelaAdm.menuAdm();
+            //TelaAdm.menuAdm();
         }
     
         // Fazer verificação dos alunos existentes

@@ -40,7 +40,8 @@ public class TelaAlunoPerfil {
     }
 
     private static void editarEmail(Aluno aluno) {
-        System.out.println("Insira o novo email: ");
+        System.out.print("Insira o novo email: ");
+        sc.nextLine();
         String email = sc.nextLine();
 
         System.out.println("Trocar " + aluno.getEmail() + " por " + email + "? (S/N)");
@@ -58,7 +59,8 @@ public class TelaAlunoPerfil {
     }
 
     private static void editarSenha(Aluno aluno) {
-        System.out.println("Insira a nova senha: ");
+        System.out.print("Insira a nova senha: ");
+        sc.nextLine();
         String senha = sc.nextLine();
 
         System.out.println("Trocar " + aluno.getSenha() + " por " + senha + "? (S/N)");

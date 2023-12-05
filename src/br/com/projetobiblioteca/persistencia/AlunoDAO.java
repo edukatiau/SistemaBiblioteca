@@ -129,14 +129,16 @@ public class AlunoDAO {
 		// abrir conexao com bd
 		this.conexao.abrirConexao();
 		// inserir no banco
-		String sql = "UPDATE aluno SET nome=?, email=?, senha=? WHERE id_aluno=?;";
+		String sql = "UPDATE aluno SET nome=?, email=?, senha=?, matricula=?, curso=? WHERE id_aluno=?;";
 		PreparedStatement st;
 		try {
 			st = conexao.getConexao().prepareStatement(sql);
 			st.setString(1, aluno.getNome());
 			st.setString(2, aluno.getEmail());
 			st.setString(3, aluno.getSenha());
-			st.setLong(4, aluno.getIdUsuario());
+			st.setString(4, aluno.getMatricula());
+			st.setString(5, aluno.getCurso());
+			st.setLong(6, aluno.getIdUsuario());
 			st.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();

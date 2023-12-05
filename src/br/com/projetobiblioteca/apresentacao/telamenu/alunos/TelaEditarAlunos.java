@@ -14,7 +14,8 @@ public class TelaEditarAlunos {
     public static void editarAlunos(Funcionário funcionario) throws SQLException {
         System.out.println("-----EDITAR ALUNOS-----");
     
-        System.out.println("Matrícula do aluno: ");
+        System.out.print("Matrícula do aluno: ");
+        //sc.nextLine();
         String matricula = sc.nextLine();
     
         AlunoDAO alunoDAO = new AlunoDAO();
@@ -42,6 +43,7 @@ public class TelaEditarAlunos {
         System.out.println("3 - Editar Matrícula");
         System.out.println("0 - Sair");
         System.out.print("Escolha uma opção: ");
+        //sc.nextLine();
         int escolha = sc.nextInt();
         System.out.println("-------------------");
     
@@ -68,6 +70,7 @@ public class TelaEditarAlunos {
     
     private static void editarNome(Aluno aluno) {
         System.out.println("Insira o novo nome: ");
+        sc.nextLine();
         String nome = sc.nextLine();
 
         System.out.println("Trocar " + aluno.getNome() + " por " + nome + "? (S/N)");
@@ -86,7 +89,8 @@ public class TelaEditarAlunos {
     }
     
     private static void editarCurso(Aluno aluno) {
-        System.out.println("Insira o novo curso: ");
+        System.out.print("Insira o novo curso: ");
+        sc.nextLine();
         String curso = sc.nextLine();
 
         System.out.println("Trocar " + aluno.getCurso() + " por " + curso + "? (S/N)");
@@ -104,10 +108,12 @@ public class TelaEditarAlunos {
     }
     
     private static void editarMatricula(Aluno aluno) {
-        System.out.println("Insira a nova matrícula: ");
+        System.out.print("Insira a nova matrícula: ");
+        sc.nextLine();
         String matricula = sc.nextLine();
 
         System.out.println("Trocar " + aluno.getMatricula() + " por " + matricula + "? (S/N)");
+        //sc.nextLine();
         String confirmacao = sc.next().toUpperCase();
 
         if (confirmacao.equals("S")){
