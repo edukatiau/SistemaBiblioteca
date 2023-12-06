@@ -3,6 +3,7 @@ package br.com.projetobiblioteca.apresentacao.telaemprestimo;
 import java.util.Scanner;
 
 import br.com.projetobiblioteca.model.Funcionário;
+import br.com.projetobiblioteca.utils.Colors;
 
 
 public class TelaEmprestimo {
@@ -11,9 +12,9 @@ public class TelaEmprestimo {
     public TelaEmprestimo() {
     }
 
-    public static void telaEmprestimo(Funcionário funcionario) {
+    public static void telaEmprestimo(Funcionário funcionario) throws InterruptedException {
 
-        System.out.println("-----EMPRÉSTIMOS-----");
+        System.out.println(Colors.ANSI_BLUE + "-----EMPRÉSTIMOS-----" + Colors.ANSI_RESET);
         System.out.println("1 - Emprestar Obra");
         System.out.println("2 - Devolver Obra");
         System.out.println("3 - Listar Empréstimos");
@@ -22,7 +23,7 @@ public class TelaEmprestimo {
         System.out.print("Escolha uma opção: ");
 
         int escolha = sc.nextInt();
-        System.out.println("-------------------");
+        System.out.println(Colors.ANSI_BLUE + "-------------------" + Colors.ANSI_RESET);
 
         switch (escolha) {
             case 1:
@@ -39,10 +40,11 @@ public class TelaEmprestimo {
                 break;
             case 0:
                 System.out.println("Saindo...");
-                break;
+                return;
             default:
                 System.out.println("Opção inválida!");
                 break;
         }
+        TelaEmprestimo.telaEmprestimo(funcionario);
     }
 }

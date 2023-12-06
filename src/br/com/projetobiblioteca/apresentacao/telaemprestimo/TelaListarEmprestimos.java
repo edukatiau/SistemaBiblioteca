@@ -8,13 +8,14 @@ import java.util.List;
 import br.com.projetobiblioteca.model.Emprestimo;
 import br.com.projetobiblioteca.model.Funcionário;
 import br.com.projetobiblioteca.persistencia.EmprestimoDAO;
+import br.com.projetobiblioteca.utils.Colors;
 
 public class TelaListarEmprestimos {
     public TelaListarEmprestimos() {
     }
 
-    public static void listarEmprestimos(Funcionário funcionario) {
-        System.out.println("-----LISTA EMPRESTIMOS-----");
+    public static void listarEmprestimos(Funcionário funcionario) throws InterruptedException {
+        System.out.println(Colors.ANSI_BLUE + "-----LISTA EMPRESTIMOS-----" + Colors.ANSI_RESET);
         List<Emprestimo> emprestimos = new ArrayList<>();
         EmprestimoDAO emprestimoDAO = new EmprestimoDAO();
 
@@ -27,14 +28,13 @@ public class TelaListarEmprestimos {
             System.out.println("Emprestimo " + i);
             System.out.println(emprestimo.toString());
             i++;
+            Thread.sleep(500);
         }
-
-        TelaEmprestimo.telaEmprestimo(funcionario);
 
     }
 
-    public static void listarEmprestimosAtrasados(Funcionário funcionario) {
-        System.out.println("-----LISTA EMPRESTIMOS ATRASADOS-----");
+    public static void listarEmprestimosAtrasados(Funcionário funcionario) throws InterruptedException {
+        System.out.println(Colors.ANSI_BLUE + "-----LISTA EMPRESTIMOS ATRASADOS-----" + Colors.ANSI_RESET);
         List<Emprestimo> emprestimos = new ArrayList<>();
         EmprestimoDAO emprestimoDAO = new EmprestimoDAO();
 
@@ -48,10 +48,9 @@ public class TelaListarEmprestimos {
                 System.out.println("Emprestimo " + i);
                 System.out.println(emprestimo.toString());
                 i++;
+                Thread.sleep(500);
             }
         }
-
-        TelaEmprestimo.telaEmprestimo(funcionario);
     }
 
     private static void atualizarEmprestimosAtrasados(){

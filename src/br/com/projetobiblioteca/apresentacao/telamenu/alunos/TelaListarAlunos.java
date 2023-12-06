@@ -7,6 +7,7 @@ import java.util.Scanner;
 import br.com.projetobiblioteca.model.Aluno;
 import br.com.projetobiblioteca.model.Funcionário;
 import br.com.projetobiblioteca.persistencia.AlunoDAO;
+import br.com.projetobiblioteca.utils.Colors;
 
 public class TelaListarAlunos {
     static Scanner sc = new Scanner(System.in);
@@ -14,15 +15,15 @@ public class TelaListarAlunos {
     public TelaListarAlunos() {
     }
 
-    public static void listarAlunos(Funcionário funcionario){
-        System.out.println("-----LISTAR ALUNOS-----");
+    public static void listarAlunos(Funcionário funcionario) throws InterruptedException{
+        System.out.println(Colors.ANSI_BLUE + "-----LISTAR ALUNOS-----" + Colors.ANSI_RESET);
         System.out.println("1 - Listar todos os alunos");
         System.out.println("2 - Listar alunos por nome");
         System.out.println("3 - Listar alunos por curso");
         System.out.println("0 - Voltar");
         System.out.print("Escolha uma opção: ");
         int escolha = sc.nextInt();
-        System.out.println("-------------------");
+        System.out.println(Colors.ANSI_BLUE + "-------------------" + Colors.ANSI_RESET);
 
         switch (escolha) {
             case 1:
@@ -36,18 +37,19 @@ public class TelaListarAlunos {
                 break;
             case 0:
                 // Voltar
-                break;
+                return;
             default:
                 System.out.println("Opção inválida!");
                 break;
         }
+        TelaListarAlunos.listarAlunos(funcionario);
     }
 
-    private static void listarAlunosPorCurso() {
+    private static void listarAlunosPorCurso() throws InterruptedException {
         List<Aluno> alunosList = new ArrayList<>();
         AlunoDAO alunoDAO = new AlunoDAO();
 
-        System.out.println("-----LISTAR ALUNOS-----");
+        System.out.println(Colors.ANSI_BLUE + "-----LISTAR ALUNOS-----" + Colors.ANSI_RESET);
         System.out.println("Curso do aluno: ");
         String cursoAluno = sc.next();
 
@@ -60,17 +62,18 @@ public class TelaListarAlunos {
             System.out.println("Aluno " + i);
             System.out.println(aluno.toString() + "\n");
             i++;
+            Thread.sleep(500);
         }
 
-        System.out.println("-------------------");
+        System.out.println(Colors.ANSI_BLUE + "-------------------" + Colors.ANSI_RESET);
     }
 
-    private static void listarAlunosPorNome() {
+    private static void listarAlunosPorNome() throws InterruptedException {
         List<Aluno> alunosList = new ArrayList<>();
         AlunoDAO alunoDAO = new AlunoDAO();
 
-        System.out.println("-----LISTAR ALUNOS-----");
-        System.out.println("Nome do aluno: ");
+        System.out.println(Colors.ANSI_BLUE + "-----LISTAR ALUNOS-----" + Colors.ANSI_RESET);
+        System.out.print("Nome do aluno: ");
         String nomeAluno = sc.next();
 
         for(Aluno aluno : alunoDAO.buscarPorNome(nomeAluno)){
@@ -82,13 +85,14 @@ public class TelaListarAlunos {
             System.out.println("Aluno " + i);
             System.out.println(aluno.toString() + "\n");
             i++;
+            Thread.sleep(500);
         }
 
-        System.out.println("-------------------");
+        System.out.println(Colors.ANSI_BLUE + "-------------------" + Colors.ANSI_RESET);
 
     }
 
-    private static void listarTodosOsAlunos() {
+    private static void listarTodosOsAlunos() throws InterruptedException {
         List<Aluno> alunosList = new ArrayList<>();
         AlunoDAO alunoDAO = new AlunoDAO();
 
@@ -96,15 +100,16 @@ public class TelaListarAlunos {
             alunosList.add(aluno);
         }
 
-        System.out.println("-----LISTAR ALUNOS-----");
+        System.out.println(Colors.ANSI_BLUE + "-----LISTAR ALUNOS-----" + Colors.ANSI_RESET);
         int i = 1;
         for(Aluno aluno : alunosList){
             System.out.println("Aluno " + i);
             System.out.println(aluno.toString() + "\n");
             i++;
+            Thread.sleep(500);
         }
 
-        System.out.println("-------------------");
+        System.out.println(Colors.ANSI_BLUE + "-------------------" + Colors.ANSI_RESET);
     }
 
 }

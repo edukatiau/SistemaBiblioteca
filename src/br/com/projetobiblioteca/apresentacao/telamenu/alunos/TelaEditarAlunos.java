@@ -7,22 +7,22 @@ import br.com.projetobiblioteca.apresentacao.telamenu.TelaFunc;
 import br.com.projetobiblioteca.model.Aluno;
 import br.com.projetobiblioteca.model.Funcionário;
 import br.com.projetobiblioteca.persistencia.AlunoDAO;
+import br.com.projetobiblioteca.utils.Colors;
 
 public class TelaEditarAlunos {
     static Scanner sc = new Scanner(System.in);
     
     public static void editarAlunos(Funcionário funcionario) throws SQLException, InterruptedException {
-        System.out.println("-----EDITAR ALUNOS-----");
+        System.out.println(Colors.ANSI_BLUE + "-----EDITAR ALUNOS-----" + Colors.ANSI_RESET);
     
         System.out.print("Matrícula do aluno: ");
-        //sc.nextLine();
         String matricula = sc.nextLine();
     
         AlunoDAO alunoDAO = new AlunoDAO();
         Aluno aluno = alunoDAO.buscarPorMatricula(matricula);
     
         if (aluno == null) {
-            System.out.println("Aluno não encontrado!");
+            System.out.println(Colors.ANSI_RED + "Aluno não encontrado!" + Colors.ANSI_RESET);
             return;
         }
     
@@ -33,7 +33,8 @@ public class TelaEditarAlunos {
         if (confirmacao.equalsIgnoreCase("S")) {
             exibirOpcoesEdicao(aluno, funcionario);
         } else {
-            System.out.println("Cancelada a operação!");
+            System.out.println(Colors.ANSI_RED + "Cancelada a operação!" + Colors.ANSI_RESET);
+            System.out.println(Colors.ANSI_BLUE + "-------------------" + Colors.ANSI_RESET);
         }
     }
     
@@ -45,7 +46,7 @@ public class TelaEditarAlunos {
         System.out.print("Escolha uma opção: ");
         //sc.nextLine();
         int escolha = sc.nextInt();
-        System.out.println("-------------------");
+        System.out.println(Colors.ANSI_BLUE + "-------------------" + Colors.ANSI_RESET);
     
         switch (escolha) {
             case 1:
@@ -58,14 +59,14 @@ public class TelaEditarAlunos {
                 editarMatricula(aluno);
                 break;
             case 0:
-                // Sair
+                TelaFunc.menuFunc(funcionario);
                 break;
             default:
                 System.out.println("Opção inválida!");
                 break;
         }
     
-        TelaFunc.menuFunc(funcionario);
+        TelaEditarAlunos.exibirOpcoesEdicao(aluno, funcionario);;
     }
     
     private static void editarNome(Aluno aluno) {
@@ -81,10 +82,11 @@ public class TelaEditarAlunos {
             AlunoDAO alunoDAO = new AlunoDAO();
             alunoDAO.editar(aluno);
 
-            System.out.println("Nome alterado com sucesso!");
+            System.out.println(Colors.ANSI_GREEN + "Nome alterado com sucesso!" + Colors.ANSI_RESET);
         } else {
-            System.out.println("Nome não alterado!");
+            System.out.println(Colors.ANSI_RED + "Nome não alterado!" + Colors.ANSI_RESET);
         }
+        System.out.println(Colors.ANSI_BLUE + "-------------------" + Colors.ANSI_RESET);
 
     }
     
@@ -101,10 +103,11 @@ public class TelaEditarAlunos {
             AlunoDAO alunoDAO = new AlunoDAO();
             alunoDAO.editar(aluno);
 
-            System.out.println("Curso alterado com sucesso!");
+            System.out.println(Colors.ANSI_GREEN + "Curso alterado com sucesso!" + Colors.ANSI_RESET);
         } else {
-            System.out.println("Curso não alterado!");
+            System.out.println(Colors.ANSI_RED + "Curso não alterado!" + Colors.ANSI_RESET);
         }
+        System.out.println(Colors.ANSI_BLUE + "-------------------" + Colors.ANSI_RESET);
     }
     
     private static void editarMatricula(Aluno aluno) {
@@ -121,9 +124,10 @@ public class TelaEditarAlunos {
             AlunoDAO alunoDAO = new AlunoDAO();
             alunoDAO.editar(aluno);
 
-            System.out.println("Matrícula alterada com sucesso!");
+            System.out.println(Colors.ANSI_GREEN + "Matrícula alterada com sucesso!" + Colors.ANSI_RESET);
         } else {
-            System.out.println("Matrícula não alterada!");
+            System.out.println(Colors.ANSI_RED + "Matrícula não alterada!" + Colors.ANSI_RESET);
         }
+        System.out.println(Colors.ANSI_BLUE + "-------------------" + Colors.ANSI_RESET);
     }
 }

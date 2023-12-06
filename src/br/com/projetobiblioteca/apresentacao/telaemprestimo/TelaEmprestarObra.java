@@ -11,6 +11,7 @@ import br.com.projetobiblioteca.model.Obra;
 import br.com.projetobiblioteca.persistencia.AlunoDAO;
 import br.com.projetobiblioteca.persistencia.EmprestimoDAO;
 import br.com.projetobiblioteca.persistencia.ObraDAO;
+import br.com.projetobiblioteca.utils.Colors;
 
 public class TelaEmprestarObra {
     static Scanner sc = new Scanner(System.in);
@@ -19,12 +20,12 @@ public class TelaEmprestarObra {
     }
 
     public static void emprestarObra(Funcionário funcionario) {
-        System.out.println("------EMPRESTAR OBRA-----");
+        System.out.println(Colors.ANSI_BLUE + "------EMPRESTAR OBRA-----" + Colors.ANSI_RESET);
                 
         Aluno aluno = buscarAluno();
         if (aluno == null) {
-            System.out.println("Aluno não encontrado");
-            TelaEmprestimo.telaEmprestimo(funcionario);
+            System.out.println(Colors.ANSI_RED + "Aluno não encontrado" + Colors.ANSI_RESET);
+            return;
         }
 
         System.err.println(aluno.toString());
@@ -32,18 +33,18 @@ public class TelaEmprestarObra {
         String confirmacao = sc.next().toUpperCase();
         sc.nextLine();
         if(!confirmacao.equals("S")){
-            System.out.println("Cancelado");
-            TelaEmprestimo.telaEmprestimo(funcionario);
+            System.out.println(Colors.ANSI_RED + "Cancelado" + Colors.ANSI_RESET);
+            return;
         }
         
         Obra obra = buscarObra();
         if (obra == null) {
-            System.out.println("Obra não encontrada");
-            TelaEmprestimo.telaEmprestimo(funcionario);
+            System.out.println(Colors.ANSI_RED + "Obra não encontrada" + Colors.ANSI_RESET);
+            return;
         }
         if (obra.getObraEmprestada()){
-            System.out.println("Obra não disponível para empréstimo");
-            TelaEmprestimo.telaEmprestimo(funcionario);
+            System.out.println(Colors.ANSI_RED+"Obra não disponível para empréstimo"+Colors.ANSI_RESET);
+            return;
         }
 
         System.err.println(obra.toString());
@@ -51,8 +52,8 @@ public class TelaEmprestarObra {
         confirmacao = sc.next().toUpperCase();
         sc.nextLine();
         if(!confirmacao.equals("S")){
-            System.out.println("Cancelado");
-            TelaEmprestimo.telaEmprestimo(funcionario);
+            System.out.println(Colors.ANSI_RED + "Cancelado" + Colors.ANSI_RESET);
+            return;
         }
 
         
@@ -66,9 +67,8 @@ public class TelaEmprestarObra {
         EmprestimoDAO emprestimoDAO = new EmprestimoDAO();
         emprestimo = emprestimoDAO.adicionar(emprestimo);
 
-        System.out.println("Obra emprestada com sucesso");
-
-        TelaEmprestimo.telaEmprestimo(funcionario);
+        System.out.println(Colors.ANSI_GREEN + "Obra emprestada com sucesso!" + Colors.ANSI_RESET);
+        System.out.println(Colors.ANSI_BLUE + "-------------------" + Colors.ANSI_RESET);
     }
 
     private static Aluno buscarAluno() {

@@ -9,6 +9,7 @@ import br.com.projetobiblioteca.model.Funcionário;
 import br.com.projetobiblioteca.model.Obra;
 import br.com.projetobiblioteca.model.Genero;
 import br.com.projetobiblioteca.persistencia.ObraDAO;
+import br.com.projetobiblioteca.utils.Colors;
 
 public class TelaEditarObra {
     static Scanner sc = new Scanner(System.in);
@@ -18,15 +19,17 @@ public class TelaEditarObra {
 
     public static void editarObra(Funcionário funcionario) throws SQLException, InterruptedException {
 
-        System.out.println("-----EDITAR OBRA-----");
-        System.out.println("Id da obra: ");
+        System.out.println(Colors.ANSI_BLUE + "-----EDITAR OBRA-----" + Colors.ANSI_RESET);
+        System.out.print("Id da obra: ");
         long idObra = sc.nextLong();
 
         ObraDAO obraDAO = new ObraDAO();
         Obra obra = obraDAO.buscarPorId(idObra);
         
         if (obra == null) {
-            System.out.println("Obra não encontrada!");
+            System.out.println(Colors.ANSI_RED + "Obra não encontrada!" + Colors.ANSI_RESET);
+            System.out.println(Colors.ANSI_BLUE + "-------------------" + Colors.ANSI_RESET);
+            return;
         } else {
             System.out.println(obra.toString());
             System.out.println("1 - Editar Título");
@@ -37,7 +40,7 @@ public class TelaEditarObra {
             System.out.println("0 - Voltar");
             System.out.print("Escolha uma opção: ");
             int escolha = sc.nextInt();
-            System.out.println("-------------------");
+            System.out.println(Colors.ANSI_BLUE + "-------------------" + Colors.ANSI_RESET);
 
             switch (escolha) {
                 case 1:
@@ -56,13 +59,12 @@ public class TelaEditarObra {
                     editarGenero(obra);
                     break;
                 case 0:
-                    TelaFunc.menuFunc(funcionario);
-                    break;
+                    return;
                 default:
                     System.out.println("Opção inválida!");
-                    TelaFunc.menuFunc(funcionario);
                     break;
-            }
+                }
+            TelaFunc.menuFunc(funcionario);
         }
     }
 
@@ -77,7 +79,7 @@ public class TelaEditarObra {
         ObraDAO obraDAO = new ObraDAO();
         obraDAO.editar(obra);
 
-        System.out.println("Gênero editado com sucesso!");
+        System.out.println(Colors.ANSI_GREEN + "Gênero editado com sucesso!" + Colors.ANSI_RESET);
     }
 
     private static void editarEdicao(Obra obra) {
@@ -89,7 +91,7 @@ public class TelaEditarObra {
         ObraDAO obraDAO = new ObraDAO();
         obraDAO.editar(obra);
 
-        System.out.println("Edição editada com sucesso!");
+        System.out.println(Colors.ANSI_GREEN + "Edição editada com sucesso!" + Colors.ANSI_RESET);
     }
 
     private static void editarAno(Obra obra) {
@@ -101,7 +103,7 @@ public class TelaEditarObra {
         ObraDAO obraDAO = new ObraDAO();
         obraDAO.editar(obra);
 
-        System.out.println("Ano editado com sucesso!");
+        System.out.println(Colors.ANSI_GREEN + "Ano editado com sucesso!" + Colors.ANSI_RESET);
     }
 
     private static void editarAutor(Obra obra) {
@@ -113,7 +115,7 @@ public class TelaEditarObra {
         ObraDAO obraDAO = new ObraDAO();
         obraDAO.editar(obra);
 
-        System.out.println("Autor editado com sucesso!");
+        System.out.println(Colors.ANSI_GREEN + "Autor editado com sucesso!" + Colors.ANSI_RESET);
     }
 
     public static void editarTitulo(Obra obra) {
@@ -125,7 +127,7 @@ public class TelaEditarObra {
         ObraDAO obraDAO = new ObraDAO();
         obraDAO.editar(obra);
 
-        System.out.println("Título editado com sucesso!");
+        System.out.println(Colors.ANSI_GREEN + "Título editado com sucesso!" + Colors.ANSI_RESET);
     }
 
 }
