@@ -53,7 +53,7 @@ public class TelaListarEmprestimos {
         }
     }
 
-    private static void atualizarEmprestimosAtrasados(){
+    public static void atualizarEmprestimosAtrasados(){
         List<Emprestimo> emprestimos = new ArrayList<>();
         EmprestimoDAO emprestimoDAO = new EmprestimoDAO();
 

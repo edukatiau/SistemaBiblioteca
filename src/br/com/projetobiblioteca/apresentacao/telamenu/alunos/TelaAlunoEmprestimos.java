@@ -2,6 +2,7 @@ package br.com.projetobiblioteca.apresentacao.telamenu.alunos;
 
 import java.util.List;
 
+import br.com.projetobiblioteca.apresentacao.telaemprestimo.TelaListarEmprestimos;
 import br.com.projetobiblioteca.model.Aluno;
 import br.com.projetobiblioteca.model.Emprestimo;
 import br.com.projetobiblioteca.persistencia.EmprestimoDAO;
@@ -14,6 +15,8 @@ public class TelaAlunoEmprestimos {
         
         List<Emprestimo> emprestimos = null;
         EmprestimoDAO emprestimoDAO = new EmprestimoDAO();
+
+        TelaListarEmprestimos.atualizarEmprestimosAtrasados();
 
         emprestimos = emprestimoDAO.buscarPorAluno(aluno);
 
