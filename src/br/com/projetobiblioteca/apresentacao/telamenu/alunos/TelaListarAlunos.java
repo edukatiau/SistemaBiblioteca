@@ -22,7 +22,14 @@ public class TelaListarAlunos {
         System.out.println("3 - Listar alunos por curso");
         System.out.println("0 - Voltar");
         System.out.print("Escolha uma opção: ");
-        int escolha = sc.nextInt();
+        int escolha = 0;
+        if (sc.hasNextInt()) {
+            escolha = sc.nextInt();
+        } else {
+            System.out.println(Colors.ANSI_RED + "Entrada inválida. Tente novamente...\n" + Colors.ANSI_RESET);
+            sc.next(); // Discard the invalid input
+            listarAlunos(funcionario);
+        }
         System.out.println(Colors.ANSI_BLUE + "-------------------" + Colors.ANSI_RESET);
 
         switch (escolha) {

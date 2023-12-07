@@ -23,7 +23,14 @@ public class TelaAluno {
         System.out.println("4 - Listar Meus Atrasos");
         System.out.println("0 - Sair");
         System.out.print("Escolha uma opção: ");
-        int escolha = sc.nextInt();
+        int escolha = 0;
+        if (sc.hasNextInt()) {
+            escolha = sc.nextInt();
+        } else {
+            System.out.println(Colors.ANSI_RED + "Entrada inválida. Tente novamente...\n" + Colors.ANSI_RESET);
+            sc.next(); // Discard the invalid input
+            menuAluno(aluno);
+        }
         System.out.println(Colors.ANSI_BLUE + "-------------------" + Colors.ANSI_RESET);
     
         switch (escolha) {

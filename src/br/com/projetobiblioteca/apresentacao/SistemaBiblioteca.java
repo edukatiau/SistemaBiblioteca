@@ -30,7 +30,14 @@ public class SistemaBiblioteca {
         System.out.println("3 - Login Aluno");
         System.out.println("0 - Sair");
         System.out.print("Escolha uma opção: ");
-        int escolha = sc.nextInt();
+        int escolha = 0;
+        if (sc.hasNextInt()) {
+            escolha = sc.nextInt();
+        } else {
+            System.out.println(Colors.ANSI_RED + "Entrada inválida. Tente novamente...\n" + Colors.ANSI_RESET);
+            sc.next(); // Discard the invalid input
+            menu();
+        }
         System.out.println(Colors.ANSI_BLUE + "----------------------------" + Colors.ANSI_RESET);
 
         switch (escolha) {

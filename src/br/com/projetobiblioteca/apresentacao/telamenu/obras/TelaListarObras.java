@@ -24,7 +24,14 @@ public class TelaListarObras {
         System.out.println("5 - Listar obras por ano");
         System.out.println("0 - Voltar");
         System.out.print("Escolha uma opção: ");
-        int escolha = sc.nextInt();
+        int escolha = 0;
+        if (sc.hasNextInt()) {
+            escolha = sc.nextInt();
+        } else {
+            System.out.println(Colors.ANSI_RED + "Entrada inválida. Tente novamente...\n" + Colors.ANSI_RESET);
+            sc.next(); // Discard the invalid input
+            listarObras(biblioteca);
+        }
         System.out.println(Colors.ANSI_BLUE + "---------------------" + Colors.ANSI_RESET);
 
         switch (escolha) {
