@@ -4,9 +4,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-import br.com.projetobiblioteca.model.Campus;
+import br.com.projetobiblioteca.model.Biblioteca;
 import br.com.projetobiblioteca.model.Funcionário;
-import br.com.projetobiblioteca.persistencia.CampusDAO;
+import br.com.projetobiblioteca.persistencia.BibliotecaDAO;
 import br.com.projetobiblioteca.persistencia.FuncionarioDAO;
 import br.com.projetobiblioteca.utils.Colors;
 
@@ -38,7 +38,7 @@ public class TelaListarFuncionarios {
                 break;
             case 2:
                 // Listar por campus
-                listarFuncionariosCampus();
+                listarFuncionariosBiblioteca();
                 break;
             case 0:
                 // Voltar
@@ -70,24 +70,24 @@ public class TelaListarFuncionarios {
 
     }
 
-    public static void listarFuncionariosCampus() throws InterruptedException{
+    public static void listarFuncionariosBiblioteca() throws InterruptedException{
         List<Funcionário> funcionarioList = new ArrayList<>();
         FuncionarioDAO funcionarioDAO = new FuncionarioDAO();
         
-        System.out.println(Colors.ANSI_BLUE + "-----LISTAR FUNCIONÁRIO POR CAMPUS----- " + Colors.ANSI_RESET);
-        System.out.print("Digite o campus: ");
+        System.out.println(Colors.ANSI_BLUE + "-----LISTAR FUNCIONÁRIO POR BIBLIOTECA----- " + Colors.ANSI_RESET);
+        System.out.print("Digite a biblioteca: ");
         sc.nextLine();
-        String campus = sc.nextLine().toUpperCase();
+        String biblioteca = sc.nextLine().toUpperCase();
         System.out.println("");
 
-        CampusDAO campusDAO = new CampusDAO();
-        Campus campusObj = campusDAO.buscarPorNome(campus);
+        BibliotecaDAO bibliotecaDAO = new BibliotecaDAO();
+        Biblioteca bibliotecaObj = bibliotecaDAO.buscarPorNome(biblioteca);
 
-        for(Funcionário funcionário : funcionarioDAO.buscarPorCampus(campusObj.getId_campus())){
+        for(Funcionário funcionário : funcionarioDAO.buscarPorBiblioteca(bibliotecaObj.getId_biblioteca())){
             funcionarioList.add(funcionário);
         }
 
-        System.out.println(Colors.ANSI_BLUE + "-----FUNCIONÁRIOS DO CAMPUS " + campus.toUpperCase() + "-----" + Colors.ANSI_RESET);
+        System.out.println(Colors.ANSI_BLUE + "-----FUNCIONÁRIOS DA BIBLIOTECA " + biblioteca.toUpperCase() + "-----" + Colors.ANSI_RESET);
         int i = 1;
         for(Funcionário funcionário : funcionarioList){
             System.out.println("Funcionário " + i);

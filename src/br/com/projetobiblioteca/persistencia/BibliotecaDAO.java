@@ -47,7 +47,7 @@ public class BibliotecaDAO {
         // abrir conexao com bd
         this.conexao.abrirConexao();
         // inserir no banco
-        String sql = "SELECT * FROM campus WHERE id_biblioteca=?;";
+        String sql = "SELECT * FROM biblioteca WHERE id_biblioteca=?;";
         PreparedStatement st;
         try {
             st = conexao.getConexao().prepareStatement(sql);
@@ -136,16 +136,17 @@ public class BibliotecaDAO {
         }
     }
 
-    public Biblioteca buscarPorCampus(long id_campus) {
+    //buscar por nome
+    public Biblioteca buscarPorNome(String nome) {
         Biblioteca b = null;
         // abrir conexao com bd
         this.conexao.abrirConexao();
         // inserir no banco
-        String sql = "SELECT * FROM campus WHERE id_campus=?;";
+        String sql = "SELECT * FROM biblioteca WHERE nome=?;";
         PreparedStatement st;
         try {
             st = conexao.getConexao().prepareStatement(sql);
-            st.setLong(1, id_campus);
+            st.setString(1, nome);
             ResultSet rs = st.executeQuery();
             if(rs.next()) {
                 b = new Biblioteca();
