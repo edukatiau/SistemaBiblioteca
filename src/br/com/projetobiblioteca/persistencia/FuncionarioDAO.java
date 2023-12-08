@@ -6,7 +6,10 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import br.com.projetobiblioteca.model.Biblioteca;
+import br.com.projetobiblioteca.model.Campus;
 import br.com.projetobiblioteca.model.Funcionário;
+
 
 public class FuncionarioDAO{
     
@@ -137,6 +140,7 @@ public class FuncionarioDAO{
 				u.setNome(rs.getString("nome"));
 				u.setEmail(rs.getString("email"));
 				u.setSenha(rs.getString("senha"));
+				u.setBiblioteca(new BibliotecaDAO().buscarPorId(rs.getLong("id_biblioteca")));
 				listaFuncionarios.add(u);
 			}
 
@@ -264,4 +268,41 @@ public class FuncionarioDAO{
 		}
 		return false;
 	}
+
+    public List<Funcionário> buscarPorCampus(long id_campus) {
+        List<Funcionário> funcionariosList = new ArrayList<>();
+        
+        conexao.abrirConexao();
+        
+        String sql = "SELECT * FROM funcionario WHERE id_biblioteca=?;";
+        PreparedStatement st;
+        
+        try {
+            st = conexao.getConexao().prepareStatement(sql);
+            CampusDAO campusDAO = new CampusDAO();
+			Campus campus = campusDAO.buscarPorId(id_campus);
+			
+            if(campus == null){
+                System.out.println("Biblioteca não encontrada!");
+            } else {
+                st.setLong(1, campus.getId_campus());
+                ResultSet rs = st.executeQuery();
+                while (rs.next()) {
+                    Funcionário funcionario = new Funcionário();
+					funcionario.setIdUsuario(rs.getLong("id_funcionario"));
+					funcionario.setNome(rs.getString("nome"));
+					funcionario.setEmail(rs.getString("email"));
+					funcionario.setSenha(rs.getString("senha"));
+					funcionario.setBiblioteca(new BibliotecaDAO().buscarPorId(rs.getLong("id_biblioteca")));
+					funcionariosList.add(funcionario);
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }finally {
+            conexao.fecharConexao();
+        }
+
+        return funcionariosList;
+    }
 }

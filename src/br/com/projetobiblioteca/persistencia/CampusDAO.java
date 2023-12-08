@@ -130,7 +130,7 @@ public class CampusDAO {
     }
 
     //metodo deletar
-    public void deletar(Campus campus) throws SQLException{
+    public void deletar(long id) throws SQLException{
         //abrir conexao
         conexao.abrirConexao();
 
@@ -139,7 +139,7 @@ public class CampusDAO {
         PreparedStatement st;
         try {
             st = conexao.getConexao().prepareStatement(sql);
-            st.setLong(1, campus.getId_campus());
+            st.setLong(1, id);
             st.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
@@ -147,5 +147,34 @@ public class CampusDAO {
             // fechar a conexao
             conexao.fecharConexao();
         }   
+    }
+
+    public Campus buscarPorNome(String nome) {
+        Campus c = null;
+        // abrir conexao com bd
+        conexao.abrirConexao();
+        // buscar no banco
+        String sql = "SELECT * FROM campus WHERE nome=?;";
+        PreparedStatement st;
+        try {
+            st = conexao.getConexao().prepareStatement(sql);
+            st.setString(1, nome);
+            ResultSet rs = st.executeQuery();
+            if(rs.next()) {
+                c = new Campus();
+                c.setId_campus(rs.getLong("id_campus"));
+                c.setNome(rs.getString("nome"));
+                c.setEndereco(rs.getString("endereco"));
+                c.setTelefone(rs.getString("telefone"));
+                c.setBiblioteca(new BibliotecaDAO().buscarPorId(rs.getLong("id_biblioteca")));
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            // fechar a conexao
+            conexao.fecharConexao();
+        }
+
+        return c;
     }
 }

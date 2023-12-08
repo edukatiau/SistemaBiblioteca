@@ -344,4 +344,37 @@ public class AlunoDAO {
 
 		return listaAlunos;
     }
+
+    public List<Aluno> buscarPorCampus(long id_campus) {
+        List<Aluno> listaAlunos = new ArrayList<>();
+		Aluno u = null;
+
+		conexao.abrirConexao();
+
+		String sql = "SELECT * FROM aluno WHERE id_campus=?;";
+		PreparedStatement st;
+
+		try {
+			st = conexao.getConexao().prepareStatement(sql);
+			st.setLong(1, id_campus);
+			ResultSet rs = st.executeQuery();
+			while (rs.next()) {
+				u = new Aluno();
+				u.setIdUsuario(rs.getLong("id_aluno"));
+				u.setNome(rs.getString("nome"));
+				u.setEmail(rs.getString("email"));
+				u.setSenha(rs.getString("senha"));
+				u.setCampus(new CampusDAO().buscarPorId(rs.getLong("id_campus")));
+				u.setCurso(rs.getString("curso"));
+				u.setMatricula(rs.getString("matricula"));
+				listaAlunos.add(u);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			conexao.fecharConexao();
+		}
+
+		return listaAlunos;
+    }
 }

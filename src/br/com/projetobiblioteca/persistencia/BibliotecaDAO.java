@@ -118,7 +118,7 @@ public class BibliotecaDAO {
     }
 
     //metodo deletar
-    public void deletar(Biblioteca biblioteca){
+    public void deletar(long id){
         //abrir conexao
         conexao.abrirConexao();
         //inserir no bd
@@ -126,7 +126,7 @@ public class BibliotecaDAO {
         PreparedStatement st;
         try {
             st = conexao.getConexao().prepareStatement(sql);
-            st.setLong(1, biblioteca.getId_biblioteca());
+            st.setLong(1, id);
             st.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
@@ -134,5 +134,31 @@ public class BibliotecaDAO {
             // fechar a conexao
             conexao.fecharConexao();
         }
+    }
+
+    public Biblioteca buscarPorCampus(long id_campus) {
+        Biblioteca b = null;
+        // abrir conexao com bd
+        this.conexao.abrirConexao();
+        // inserir no banco
+        String sql = "SELECT * FROM campus WHERE id_campus=?;";
+        PreparedStatement st;
+        try {
+            st = conexao.getConexao().prepareStatement(sql);
+            st.setLong(1, id_campus);
+            ResultSet rs = st.executeQuery();
+            if(rs.next()) {
+                b = new Biblioteca();
+                b.setId_biblioteca(rs.getLong("id_biblioteca"));
+                b.setNome(rs.getString("nome"));
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            // fechar a conexao
+            conexao.fecharConexao();
+        }
+        
+        return b;
     }
 }

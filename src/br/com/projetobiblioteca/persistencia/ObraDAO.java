@@ -307,4 +307,39 @@ public class ObraDAO {
 
         return listaObras;
     }
+
+    public List<Obra> buscarPorBiblioteca(long id_biblioteca) {
+        List<Obra> listaObras = new ArrayList<>();
+        Obra u = null;
+        
+        conexao.abrirConexao();
+
+        String sql = "SELECT * FROM obra WHERE id_biblioteca=?;";
+        PreparedStatement st;
+
+        try {
+            st = conexao.getConexao().prepareStatement(sql);
+            st.setLong(1, id_biblioteca);
+            ResultSet rs = st.executeQuery();
+            while (rs.next()) {
+                u = new Obra();
+                u.setIdObra(rs.getLong("id_obra"));
+                u.setTitulo(rs.getString("titulo"));
+                u.setAutor(rs.getString("autor"));
+                u.setEdicao(rs.getString("edicao"));
+                u.setAnoLancamento(rs.getString("ano_lancamento"));
+                GeneroDAO GeneroDAO = new GeneroDAO();
+                u.setGenero(GeneroDAO.buscarPorId(rs.getLong("id_genero")));
+                BibliotecaDAO bibliotecaDAO = new BibliotecaDAO();
+                u.setBiblioteca(bibliotecaDAO.buscarPorId(rs.getLong("id_biblioteca")));
+                listaObras.add(u);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            conexao.fecharConexao();
+        }
+
+        return listaObras;
+        }
 }
