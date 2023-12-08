@@ -58,7 +58,7 @@ public class TelaEditarFuncionario {
         } else {
             System.out.println(Colors.ANSI_RED + "Entrada inválida. Tente novamente...\n" + Colors.ANSI_RESET);
             sc.next(); // Discard the invalid input
-            editarFuncionario();
+            exibirOpcoesEdicao(funcionario);
         }
         System.out.println(Colors.ANSI_BLUE + "-------------------" + Colors.ANSI_RESET);
 
