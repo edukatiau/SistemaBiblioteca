@@ -3,6 +3,7 @@ package br.com.projetobiblioteca.apresentacao.telamenu.alunos;
 import java.util.Scanner;
 
 import br.com.projetobiblioteca.model.Aluno;
+import br.com.projetobiblioteca.model.Emprestimo;
 import br.com.projetobiblioteca.model.Funcionário;
 import br.com.projetobiblioteca.persistencia.AlunoDAO;
 import br.com.projetobiblioteca.persistencia.EmprestimoDAO;
@@ -26,7 +27,7 @@ public class TelaRemoverAluno {
             System.out.println(Colors.ANSI_RED + "Aluno não encontrado!" + Colors.ANSI_RESET);
         } else {
 
-            if(verificarEmprestimo()){
+            if(verificarEmprestimo(aluno)){
                 return;
             }
 
@@ -44,12 +45,16 @@ public class TelaRemoverAluno {
         }
     }
 
-    public static boolean verificarEmprestimo(){
+    public static boolean verificarEmprestimo(Aluno aluno){
         EmprestimoDAO emprestimoDAO = new EmprestimoDAO();
 
         if(emprestimoDAO.buscarTodos().size() > 0){
-            System.out.println(Colors.ANSI_RED + "Não é possível remover um aluno com empréstimos pendentes!" + Colors.ANSI_RESET);
-            return true;
+            for(Emprestimo emprestimo : emprestimoDAO.buscarTodos()){
+                if(emprestimo.getAluno().getMatricula() == aluno.getMatricula()){
+                    System.out.println(Colors.ANSI_RED + "Não é possível remover um aluno com empréstimos pendentes!" + Colors.ANSI_RESET);
+                    return true;
+                }
+            }
         }
         
         return false;
