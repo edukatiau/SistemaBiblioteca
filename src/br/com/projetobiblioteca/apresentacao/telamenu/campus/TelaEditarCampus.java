@@ -20,7 +20,7 @@ System.out.println(Colors.ANSI_BLUE + "-----EDITAR CAMPUS-----" + Colors.ANSI_RE
             id = sc.nextLong();
         } else {
             System.out.println(Colors.ANSI_RED + "Entrada inválida. Tente novamente...\n" + Colors.ANSI_RESET);
-            sc.next(); // Discard the invalid input
+            sc.next();
             editarCampus();
         }
 
@@ -34,6 +34,7 @@ System.out.println(Colors.ANSI_BLUE + "-----EDITAR CAMPUS-----" + Colors.ANSI_RE
 
         System.out.println(campus.toString());
         System.out.println("Confirmar Campus? (S/N)");
+        sc.nextLine();
         String confirmacao = sc.nextLine();
 
         if (confirmacao.equalsIgnoreCase("S")) {
@@ -88,7 +89,7 @@ System.out.println(Colors.ANSI_BLUE + "-----EDITAR CAMPUS-----" + Colors.ANSI_RE
     public static void editarNome(Campus campus) throws SQLException {
         System.out.println("Insira o novo nome: ");
         sc.nextLine();
-        String nome = sc.nextLine();
+        String nome = sc.nextLine().toUpperCase();
 
         System.out.println("Trocar " + campus.getNome() + " por " + nome + "? (S/N)");
         String confirmacao = sc.next().toUpperCase();
