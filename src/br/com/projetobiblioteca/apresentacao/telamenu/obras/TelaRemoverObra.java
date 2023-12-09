@@ -2,7 +2,6 @@ package br.com.projetobiblioteca.apresentacao.telamenu.obras;
 
 import java.util.Scanner;
 
-import br.com.projetobiblioteca.model.Aluno;
 import br.com.projetobiblioteca.model.Emprestimo;
 import br.com.projetobiblioteca.model.Funcionário;
 import br.com.projetobiblioteca.model.Obra;
