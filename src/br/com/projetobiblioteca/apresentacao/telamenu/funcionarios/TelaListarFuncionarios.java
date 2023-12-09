@@ -4,17 +4,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-<<<<<<< HEAD
-import br.com.projetobiblioteca.model.Aluno;
-import br.com.projetobiblioteca.model.Campus;
-import br.com.projetobiblioteca.model.Funcionário;
-import br.com.projetobiblioteca.persistencia.AlunoDAO;
-import br.com.projetobiblioteca.persistencia.CampusDAO;
-=======
 import br.com.projetobiblioteca.model.Biblioteca;
 import br.com.projetobiblioteca.model.Funcionário;
 import br.com.projetobiblioteca.persistencia.BibliotecaDAO;
->>>>>>> 1958ea7bfc1a24af342cc1394523f5d26729cd09
 import br.com.projetobiblioteca.persistencia.FuncionarioDAO;
 import br.com.projetobiblioteca.utils.Colors;
 
@@ -61,14 +53,14 @@ public class TelaListarFuncionarios {
         List<Funcionário> funcionariosList = new ArrayList<>();
         FuncionarioDAO funcionarioDAO = new FuncionarioDAO();
 
-        for(Funcionário funcionario : funcionarioDAO.buscarTodos()){
-            funcionariosList.add(funcionario);
+        for(Funcionário funcionário : funcionarioDAO.buscarTodos()){
+            funcionariosList.add(funcionário);
         }
 
         System.out.println(Colors.ANSI_BLUE + "-----LISTAR FUNCIONÁRIOS-----" + Colors.ANSI_RESET);
         int i = 1;
         for(Funcionário funcionário : funcionariosList){
-            System.out.println("Aluno " + i);
+            System.out.println("Funcionário " + i);
             System.out.println(funcionário.toString() + "\n");
             i++;
             Thread.sleep(500);
@@ -92,6 +84,11 @@ public class TelaListarFuncionarios {
 
         for(Funcionário funcionário : funcionarioDAO.buscarPorBiblioteca(bibliotecaObj.getId_biblioteca())){
             funcionarioList.add(funcionário);
+        }
+
+        if(funcionarioList.isEmpty()){
+            System.out.println(Colors.ANSI_RED + "Não há funcionários cadastrados na biblioteca " + biblioteca + "!" + Colors.ANSI_RESET);
+            return;
         }
 
         System.out.println(Colors.ANSI_BLUE + "-----FUNCIONÁRIOS DA BIBLIOTECA " + biblioteca.toUpperCase() + "-----" + Colors.ANSI_RESET);
