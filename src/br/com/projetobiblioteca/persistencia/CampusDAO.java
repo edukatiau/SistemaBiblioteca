@@ -66,6 +66,7 @@ public class CampusDAO {
                 c.setNome(rs.getString("nome"));
                 c.setEndereco(rs.getString("endereco"));
                 c.setTelefone(rs.getString("telefone"));
+                c.setBiblioteca(new BibliotecaDAO().buscarPorId(rs.getLong("id_biblioteca")));
             }
         } catch (SQLException e) {
             e.printStackTrace();

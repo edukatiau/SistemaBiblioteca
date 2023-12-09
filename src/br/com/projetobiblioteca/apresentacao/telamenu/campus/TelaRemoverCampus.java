@@ -59,7 +59,7 @@ public class TelaRemoverCampus {
 
 
 
-        System.out.println("Deseja remover as obras/alunos/empréstimos? (S/N)");
+        System.out.println("Deseja remover as obras/alunos/empréstimos/funcionários? (S/N)");
         String confirmacao = sc.next().toUpperCase();
         return confirmacao.equals("S") ? false : true;
 

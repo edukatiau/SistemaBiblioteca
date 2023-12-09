@@ -5,6 +5,7 @@ import java.util.Scanner;
 
 import br.com.projetobiblioteca.model.Biblioteca;
 import br.com.projetobiblioteca.model.Campus;
+import br.com.projetobiblioteca.persistencia.BibliotecaDAO;
 import br.com.projetobiblioteca.persistencia.CampusDAO;
 import br.com.projetobiblioteca.utils.Colors;
 
@@ -99,7 +100,10 @@ System.out.println(Colors.ANSI_BLUE + "-----EDITAR CAMPUS-----" + Colors.ANSI_RE
             CampusDAO campusDAO = new CampusDAO();
             Biblioteca biblioteca = new Biblioteca();
             biblioteca.setId_biblioteca(campus.getId_campus());
+            biblioteca.setNome(campus.getNome());
             campusDAO.editar(campus, biblioteca);
+            BibliotecaDAO bibliotecaDAO = new BibliotecaDAO();
+            bibliotecaDAO.editar(biblioteca);
 
             System.out.println(Colors.ANSI_GREEN + "Nome alterado com sucesso!" + Colors.ANSI_RESET);
         } else {

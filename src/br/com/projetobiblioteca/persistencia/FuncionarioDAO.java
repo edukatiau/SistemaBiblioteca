@@ -168,8 +168,8 @@ public class FuncionarioDAO{
 			st.setString(1, funcionario.getNome());
 			st.setString(2, funcionario.getEmail());
 			st.setString(3, funcionario.getSenha());
-			st.setLong(4, funcionario.getIdUsuario());
-			st.setLong(5, funcionario.getBiblioteca().getId_biblioteca());
+			st.setLong(4, funcionario.getBiblioteca().getId_biblioteca());
+			st.setLong(5, funcionario.getIdUsuario());
 			st.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();

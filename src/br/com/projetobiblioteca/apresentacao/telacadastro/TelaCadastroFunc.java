@@ -27,6 +27,7 @@ public class TelaCadastroFunc {
 
         // fazer verificação das bibliotecas existentes
         System.out.print("Insira o nome da biblioteca do funcionario: ");
+        sc.nextLine();
         String biblioName = sc.nextLine().toUpperCase();
         Biblioteca biblioteca = new Biblioteca();
         BibliotecaDAO bibliotecaDAO = new BibliotecaDAO();
