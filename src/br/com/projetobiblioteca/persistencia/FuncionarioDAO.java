@@ -161,7 +161,7 @@ public class FuncionarioDAO{
 		// abrir conexao com bd
 		this.conexao.abrirConexao();
 		// inserir no banco
-		String sql = "UPDATE funcionario SET nome=?, email=?, senha=? WHERE id_funcionario=?;";
+		String sql = "UPDATE funcionario SET nome=?, email=?, senha=?, id_biblioteca=? WHERE id_funcionario=?;";
 		PreparedStatement st;
 		try {
 			st = conexao.getConexao().prepareStatement(sql);
@@ -169,6 +169,7 @@ public class FuncionarioDAO{
 			st.setString(2, funcionario.getEmail());
 			st.setString(3, funcionario.getSenha());
 			st.setLong(4, funcionario.getIdUsuario());
+			st.setLong(5, funcionario.getBiblioteca().getId_biblioteca());
 			st.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();

@@ -33,6 +33,7 @@ public class TelaEditarFuncionario {
 
         System.out.println(funcionario.toString());
         System.out.println("Confirmar funcionário? (S/N)");
+        sc.nextLine();
         String confirmacao = sc.nextLine();
 
         if (confirmacao.equalsIgnoreCase("S")) {
@@ -152,9 +153,9 @@ public class TelaEditarFuncionario {
     public static void editarBiblioteca(Funcionário funcionario) {
         System.out.print("Insira a nova biblioteca: ");
         sc.nextLine();
-        String biblioteca = sc.nextLine();
+        String biblioteca = sc.nextLine().toUpperCase();
 
-        System.out.println("Trocar " + funcionario.getBiblioteca() + " por " + biblioteca + "? (S/N)");
+        System.out.println("Trocar " + funcionario.getBiblioteca().getNome() + " por " + biblioteca + "? (S/N)");
         String confirmacao = sc.next().toUpperCase();
 
         if (confirmacao.equals("S")){
