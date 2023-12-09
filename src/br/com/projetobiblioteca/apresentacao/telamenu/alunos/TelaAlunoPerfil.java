@@ -30,20 +30,18 @@ public class TelaAlunoPerfil {
         switch (escolha) {
             case 1:
                 editarEmail(aluno);
-                meuPerfil(aluno);
                 break;
             case 2:
                 editarSenha(aluno);
-                meuPerfil(aluno);
                 break;
             case 0:
                 // Voltar
                 return;
             default:
                 System.out.println("Opção inválida!");
-                meuPerfil(aluno);
                 break;
         }
+        meuPerfil(aluno);
     }
 
     private static void editarEmail(Aluno aluno) {

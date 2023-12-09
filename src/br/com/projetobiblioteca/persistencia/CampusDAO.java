@@ -106,7 +106,7 @@ public class CampusDAO {
     }
 
     //metodo atualizar
-    public void atualizar(Campus campus, Biblioteca biblioteca) throws SQLException{
+    public void editar(Campus campus, Biblioteca biblioteca) throws SQLException{
         //abrir conexao
         conexao.abrirConexao();
 
