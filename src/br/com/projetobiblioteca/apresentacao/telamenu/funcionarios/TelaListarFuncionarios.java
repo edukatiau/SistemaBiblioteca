@@ -4,8 +4,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
+import br.com.projetobiblioteca.model.Aluno;
 import br.com.projetobiblioteca.model.Campus;
 import br.com.projetobiblioteca.model.Funcionário;
+import br.com.projetobiblioteca.persistencia.AlunoDAO;
 import br.com.projetobiblioteca.persistencia.CampusDAO;
 import br.com.projetobiblioteca.persistencia.FuncionarioDAO;
 import br.com.projetobiblioteca.utils.Colors;
@@ -53,21 +55,20 @@ public class TelaListarFuncionarios {
         List<Funcionário> funcionariosList = new ArrayList<>();
         FuncionarioDAO funcionarioDAO = new FuncionarioDAO();
 
-        for(Funcionário funcionário : funcionarioDAO.buscarTodos()){
-            funcionariosList.add(funcionário);
+        for(Funcionário funcionario : funcionarioDAO.buscarTodos()){
+            funcionariosList.add(funcionario);
         }
 
-        System.out.println(Colors.ANSI_BLUE + "-----LISTAR FUNCIONÁRIO-----" + Colors.ANSI_RESET);
+        System.out.println(Colors.ANSI_BLUE + "-----LISTAR FUNCIONÁRIOS-----" + Colors.ANSI_RESET);
         int i = 1;
         for(Funcionário funcionário : funcionariosList){
-            System.out.println("Funcionário " + i);
+            System.out.println("Aluno " + i);
             System.out.println(funcionário.toString() + "\n");
             i++;
             Thread.sleep(500);
         }
 
         System.out.println(Colors.ANSI_BLUE + "-------------------" + Colors.ANSI_RESET);
-
     }
 
     public static void listarFuncionariosCampus() throws InterruptedException{

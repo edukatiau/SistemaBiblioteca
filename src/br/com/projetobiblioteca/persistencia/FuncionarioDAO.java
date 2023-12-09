@@ -6,6 +6,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import br.com.projetobiblioteca.model.Aluno;
 import br.com.projetobiblioteca.model.Biblioteca;
 import br.com.projetobiblioteca.model.Campus;
 import br.com.projetobiblioteca.model.Funcionário;
