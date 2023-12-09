@@ -8,7 +8,7 @@ import br.com.projetobiblioteca.utils.Colors;
 
 public class TelaListarCampus {
 
-    public static void listarCampus() {
+    public static void listarCampus() throws InterruptedException {
         System.out.println(Colors.ANSI_BLUE + "-----LISTAR CAMPUS-----" + Colors.ANSI_RESET);
         CampusDAO campusDAO = new CampusDAO();
         List<Campus> listaCampus = campusDAO.buscarTodos();
@@ -21,6 +21,7 @@ public class TelaListarCampus {
             for (Campus campus : listaCampus) {
                 System.out.println("Campus " + i++ + ": ");
                 System.out.println(campus.toString() + "\n");
+                Thread.sleep(500);
             }
         }
     }
