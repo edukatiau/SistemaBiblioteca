@@ -73,8 +73,11 @@ public class TelaDevolucaoObra {
         Calendar calender1 = Calendar.getInstance();
         Date dataDevolucaoEfetiva = new Date(calender1.getTimeInMillis()); //Pega a data atual
         emprestimo.setDataDevolucaoEfetiva(dataDevolucaoEfetiva);
+
         emprestimo.setStatus("DEVOLVIDO");
         obra.setObraEmprestada(false);
+        ObraDAO obraDAO = new ObraDAO();
+        obraDAO.editar(obra);
         emprestimoDAO.editar(emprestimo);
 
         System.out.println(Colors.ANSI_GREEN + "Obra devolvida com sucesso" + Colors.ANSI_RESET);

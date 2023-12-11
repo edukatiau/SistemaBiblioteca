@@ -66,6 +66,10 @@ public class TelaEmprestarObra {
         Emprestimo emprestimo = new Emprestimo(0, dataEmprestimo, dataDevolucao, aluno, obra);
         EmprestimoDAO emprestimoDAO = new EmprestimoDAO();
         emprestimo = emprestimoDAO.adicionar(emprestimo);
+        
+        obra.setObraEmprestada(true);
+        ObraDAO obraDAO = new ObraDAO();
+        obraDAO.editar(obra);
 
         System.out.println(Colors.ANSI_GREEN + "Obra emprestada com sucesso!" + Colors.ANSI_RESET);
         System.out.println(Colors.ANSI_BLUE + "-------------------" + Colors.ANSI_RESET);

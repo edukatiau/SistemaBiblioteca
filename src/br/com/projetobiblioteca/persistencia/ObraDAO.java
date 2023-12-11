@@ -23,7 +23,7 @@ public class ObraDAO {
         conexao.abrirConexao();
 
         //inserir no bd
-        String sql = "INSERT INTO obra VALUES (null, ?, ?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO obra VALUES (null, ?, ?, ?, ?, ?, ?, ?)";
         PreparedStatement st;
         try {
             st = conexao.getConexao().prepareStatement(sql, PreparedStatement.RETURN_GENERATED_KEYS);
@@ -31,8 +31,11 @@ public class ObraDAO {
             st.setString(2, obra.getAutor());
             st.setString(3, obra.getEdicao());
             st.setString(4, obra.getAnoLancamento());
-            st.setLong(5, obra.getGenero().getId_Genero());
-            st.setLong(6, obra.getBiblioteca().getId_biblioteca());
+
+            st.setInt(5, obra.getObraEmprestada() ? 1 : 0);
+
+            st.setLong(6, obra.getGenero().getId_Genero());
+            st.setLong(7, obra.getBiblioteca().getId_biblioteca());
             int linhasAfetadas = st.executeUpdate();
             if(linhasAfetadas>0) {
                 ResultSet rs = st.getGeneratedKeys();
@@ -71,6 +74,9 @@ public class ObraDAO {
                 u.setAutor(rs.getString("autor"));
                 u.setEdicao(rs.getString("edicao"));
                 u.setAnoLancamento(rs.getString("ano_lancamento"));
+                
+                u.setObraEmprestada(rs.getInt("emprestado") == 1 ? true : false);
+
                 GeneroDAO GeneroDAO = new GeneroDAO();
                 u.setGenero(GeneroDAO.buscarPorId(rs.getLong("id_genero")));
                 BibliotecaDAO bibliotecaDAO = new BibliotecaDAO();
@@ -108,6 +114,9 @@ public class ObraDAO {
                 u.setAutor(rs.getString("autor"));
                 u.setEdicao(rs.getString("edicao"));
                 u.setAnoLancamento(rs.getString("ano_lancamento"));
+
+                u.setObraEmprestada(rs.getInt("emprestado") == 1 ? true : false);
+
                 GeneroDAO GeneroDAO = new GeneroDAO();
                 u.setGenero(GeneroDAO.buscarPorId(rs.getLong("id_genero")));
                 BibliotecaDAO bibliotecaDAO = new BibliotecaDAO();
@@ -127,7 +136,7 @@ public class ObraDAO {
     public Obra editar(Obra obra){
         this.conexao.abrirConexao();
 
-        String sql = "UPDATE obra SET titulo=?, autor=?, edicao=?, ano_lancamento=?, id_genero=?, id_biblioteca=? WHERE id_obra=?";
+        String sql = "UPDATE obra SET titulo=?, autor=?, edicao=?, ano_lancamento=?, emprestado=?, id_genero=?, id_biblioteca=? WHERE id_obra=?";
         PreparedStatement st;
         try {
             st = conexao.getConexao().prepareStatement(sql);
@@ -135,9 +144,12 @@ public class ObraDAO {
             st.setString(2, obra.getAutor());
             st.setString(3, obra.getEdicao());
             st.setString(4, obra.getAnoLancamento());
-            st.setLong(5, obra.getGenero().getId_Genero());
-            st.setLong(6, obra.getBiblioteca().getId_biblioteca());
-            st.setLong(7, obra.getIdObra());
+            
+            st.setInt(5, obra.getObraEmprestada() ? 1 : 0);
+            
+            st.setLong(6, obra.getGenero().getId_Genero());
+            st.setLong(7, obra.getBiblioteca().getId_biblioteca());
+            st.setLong(8, obra.getIdObra());
             st.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
@@ -190,6 +202,9 @@ public class ObraDAO {
                     u.setAutor(rs.getString("autor"));
                     u.setEdicao(rs.getString("edicao"));
                     u.setAnoLancamento(rs.getString("ano_lancamento"));
+
+                    u.setObraEmprestada(rs.getInt("emprestado") == 1 ? true : false);
+
                     u.setGenero(GeneroDAO.buscarPorId(rs.getLong("id_genero")));
                     BibliotecaDAO bibliotecaDAO = new BibliotecaDAO();
                     u.setBiblioteca(bibliotecaDAO.buscarPorId(rs.getLong("id_biblioteca")));
@@ -223,6 +238,9 @@ public class ObraDAO {
                 u.setAutor(rs.getString("autor"));
                 u.setEdicao(rs.getString("edicao"));
                 u.setAnoLancamento(rs.getString("ano_lancamento"));
+
+                u.setObraEmprestada(rs.getInt("emprestado") == 1 ? true : false);
+
                 GeneroDAO GeneroDAO = new GeneroDAO();
                 u.setGenero(GeneroDAO.buscarPorId(rs.getLong("id_genero")));
                 BibliotecaDAO bibliotecaDAO = new BibliotecaDAO();
@@ -258,6 +276,9 @@ public class ObraDAO {
                 u.setAutor(rs.getString("autor"));
                 u.setEdicao(rs.getString("edicao"));
                 u.setAnoLancamento(rs.getString("ano_lancamento"));
+
+                u.setObraEmprestada(rs.getInt("emprestado") == 1 ? true : false);
+
                 GeneroDAO GeneroDAO = new GeneroDAO();
                 u.setGenero(GeneroDAO.buscarPorId(rs.getLong("id_genero")));
                 BibliotecaDAO bibliotecaDAO = new BibliotecaDAO();
@@ -293,6 +314,9 @@ public class ObraDAO {
                 u.setAutor(rs.getString("autor"));
                 u.setEdicao(rs.getString("edicao"));
                 u.setAnoLancamento(rs.getString("ano_lancamento"));
+
+                u.setObraEmprestada(rs.getInt("emprestado") == 1 ? true : false);
+
                 GeneroDAO GeneroDAO = new GeneroDAO();
                 u.setGenero(GeneroDAO.buscarPorId(rs.getLong("id_genero")));
                 BibliotecaDAO bibliotecaDAO = new BibliotecaDAO();
@@ -328,6 +352,9 @@ public class ObraDAO {
                 u.setAutor(rs.getString("autor"));
                 u.setEdicao(rs.getString("edicao"));
                 u.setAnoLancamento(rs.getString("ano_lancamento"));
+
+                u.setObraEmprestada(rs.getInt("emprestado") == 1 ? true : false);
+
                 GeneroDAO GeneroDAO = new GeneroDAO();
                 u.setGenero(GeneroDAO.buscarPorId(rs.getLong("id_genero")));
                 BibliotecaDAO bibliotecaDAO = new BibliotecaDAO();
