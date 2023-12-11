@@ -31,6 +31,9 @@ public class TelaListarEmprestimos {
             Thread.sleep(500);
         }
 
+        if(emprestimos.isEmpty()){
+            System.out.println(Colors.ANSI_RED+"Nenhum empréstimo encontrado"+Colors.ANSI_RESET);
+        }
     }
 
     public static void listarEmprestimosAtrasados(Funcionário funcionario) throws InterruptedException {
@@ -50,6 +53,10 @@ public class TelaListarEmprestimos {
                 i++;
                 Thread.sleep(500);
             }
+        }
+
+        if(i == 1){
+            System.out.println(Colors.ANSI_RED+"Nenhum empréstimo atrasado encontrado"+Colors.ANSI_RESET);
         }
     }
 
